@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import json
 import datetime
 from tables import *
@@ -20,9 +21,11 @@ if __name__ == '__main__':
     print('Content-type:text/markdown\n')
 
     DBSession = sessionmaker(bind=engine)
-    session = DBSession()
+    session = DBSession(autocommit=True)
 
+    session.begin()
     print('#POST\n')
+
     print('##Instructor')
     instructor = Instructor(
         instructor_name='Test Instructor',
@@ -42,20 +45,20 @@ if __name__ == '__main__':
     session.add(release)
     pretty_print(release)
 
-    print('##Department')
-    dept = Department(department_name='Test Dept')
-    session.add(dept)
-    pretty_print(dept)
+    print('##Prefix')
+    prefix = Prefix(prefix_name='Test Prefix')
+    session.add(prefix)
+    pretty_print(prefix)
 
     print('##Course')
     test_course_1 = Course(
         course_name='Test Course 1',
-        department=dept,
+        prefix=prefix,
         course_credit_hours=4.0
     )
     test_course_2 = Course(
         course_name='Test Course 2',
-        department=dept,
+        prefix=prefix,
         course_credit_hours=4.0
     )
     pretty_print(test_course_1)
@@ -110,9 +113,14 @@ if __name__ == '__main__':
     session.add(section)
     pretty_print(section)
 
+    session.commit()
+
     print('#Get')
-    pretty_print(
-        session.query(Instructor).filter(
-            Instructor.instructor_id == 1
-        ).all()[-1]
-    )
+    print('##Instructor')
+    for item in session.query(Instructor).all():
+        pretty_print(item)
+    print('##Section')
+    for section in session.query(Section).all():
+        pretty_print(section)
+    session.close()
+
