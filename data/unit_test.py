@@ -2,7 +2,7 @@
 
 import json
 import datetime
-from tables import *
+from data.tables import *
 
 
 def pretty_print(data):
@@ -39,8 +39,7 @@ if __name__ == '__main__':
     release = Release(
         instructor=instructor,
         release_name='Test Release',
-        release_hours=42,
-        release_reason='Test Reason'
+        release_hours=42
     )
     session.add(release)
     pretty_print(release)
@@ -95,7 +94,7 @@ if __name__ == '__main__':
     print('##Room')
     room = Room(
         room_name='S201',
-        room_size='30',
+        room_capacity='30',
         building=building
     )
     session.add(room)
