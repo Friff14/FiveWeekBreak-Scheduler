@@ -15,6 +15,20 @@ def row2dict(row):
     return d
 
 
+# # # # # # # # # # # # # # # # #   Tables  # # # # # # # # # # # # # # # # #
+#
+# So basically, each class created here is added to the database as a table.
+#
+# We can add functions to these classes that also include the database stuff.
+#
+# Each table has a to_data() function that returns a dictionary object that
+#  can easily be translated to json to return for the API. to_data() takes an
+#  option argument top_level, which makes it return more data if true, so we
+#  can call a class's to_data within another's, without having an infinite
+#  loop making the dictionary infinitely huge.
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 # # Tables with no dependencies # #
 
 # Instructor
@@ -276,7 +290,6 @@ class Section(Base):
 
         return returned_data
 
-    
 
 # ScheduleTime
 class ScheduleTime(Base):
