@@ -6,8 +6,10 @@ session = DBSession(autocommit=True)
 session.begin()
 
 
-def put():
-    pass
+def put(data):
+    instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
+    instructor.instructor_name = data['instructor_name']
+    # ...and so on
 
 
 def post(data):
@@ -19,8 +21,12 @@ def post(data):
     session.add(inserted_instructor)
 
 
-def get():
-    pass
+def get(data):
+    x = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
+    if x:
+        return x.to_data()
+    else:
+        return {"error": 'Hey, man, that\'s a bad burrito'}
 
 
 def delete():

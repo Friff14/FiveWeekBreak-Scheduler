@@ -166,6 +166,10 @@ class Building(Base):
         return returned_data
 
 
+    def get_full_room_name(self):
+        pass
+
+
 # # More layers # #
 
 sectionFeature = Table('sectionFeature', Base.metadata,
