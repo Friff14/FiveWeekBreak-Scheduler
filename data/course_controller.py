@@ -12,6 +12,7 @@ session.begin()
 # prefix_id = Column(Integer, ForeignKey('prefix.prefix_id'))
 # prefix = relationship('Prefix')
 
+
 def put(data):
     course = session.query(Course).filter(course_id=data['course_id']).first()
     course.course_name = data['course_name']

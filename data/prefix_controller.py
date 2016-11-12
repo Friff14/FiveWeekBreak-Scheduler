@@ -9,10 +9,11 @@ session.begin()
 #prefix_name = Column(String(16), nullable=False)
 #courses = relationship('Course', back_populates='prefix')
 
+
 def put(data):
     prefix = session.query(Prefix).filter(prefix_id=data['prefix_id']).first()
     prefix.prefix_name = data['prefix_name']
-   # prefix.courses = data['courses']
+    # prefix.courses = data['courses']
     # ...and so on
 
 
