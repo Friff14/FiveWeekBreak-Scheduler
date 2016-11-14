@@ -30,8 +30,12 @@ def get(data):
     if x:
         return x.to_data()
     else:
-        return {"error": 'Hey, man, that\'s a bad burrito'}
+        return {"error": 'Cannot retrieve; prefix does not exist'}
 
 
 def delete():
-    pass
+    to_delete = session.query(Prefix).filter(course_id=data['prefix_id']).first()
+    if to_delete:
+        session.delete(to_delete)
+    else:
+        return {"error": 'Cannot delete; prefix does not exist.'}
