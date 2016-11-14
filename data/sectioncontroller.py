@@ -35,6 +35,9 @@ session.begin()
 #                         back_populates='sections'
 #                         )
 
+class SectionController(object):
+    pass
+
 def put(data):
     section = session.query(Section).filter(section_id=data['course_id']).first()
     section.section_name = data['section_name']
