@@ -24,7 +24,7 @@ def post(data):
 
 
 def get(data):
-    x = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
+    x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
     if x:
         return x.to_data()
     else:

@@ -1,3 +1,6 @@
 import os
 
-from data import instructor_controller
+from data import *
+from data.tables import *
+
+
