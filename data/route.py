@@ -1,11 +1,11 @@
 import falcon
 import json
-from data import instructor_controller
+from data import instructorcontroller
 from wsgiref import simple_server
 
 app = falcon.API()
 
-instructor = instructor_controller.instructor_controller()
+instructor = instructorcontroller.InstructorController()
 
 app.add_route('/instructor/{instructor_id}', instructor)
 

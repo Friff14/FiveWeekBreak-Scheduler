@@ -5,6 +5,7 @@ session = DBSession(autocommit=True)
 
 session.begin()
 
+
 # section_id = Column(Integer, primary_key=True)
 # section_name = Column(String(64), nullable=False)
 # section_crn = Column(String(32))
@@ -47,13 +48,13 @@ def put(data):
 
 def post(data):
     inserted_section = Section(
-        section_name = data['section_name'],
-        seection_crn = data['section_crn'],
-        section_capacity = data['section_capacity'],
-        course_id = data['course_id'],
-        instructor_id = data['instructor_id'],
-        semester_id = data['semester_id'],
-        room_id = data['room_id']
+        section_name=data['section_name'],
+        seection_crn=data['section_crn'],
+        section_capacity=data['section_capacity'],
+        course_id=data['course_id'],
+        instructor_id=data['instructor_id'],
+        semester_id=data['semester_id'],
+        room_id=data['room_id']
     )
     session.add(inserted_section)
 

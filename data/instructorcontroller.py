@@ -10,7 +10,7 @@ session = DBSession(autocommit=True)
 session.begin()
 
 
-class instructor_controller(object):
+class InstructorController(object):
     def put(self, data):
         instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
         instructor.instructor_name = data['instructor_name']
@@ -39,7 +39,6 @@ class instructor_controller(object):
             session.delete(to_delete)
         else:
             return {"error": 'Cannot delete; instructor does not exist.'}
-
 
     def on_get(self, req, resp, instructor_id):
         resp.status = falcon.HTTP_200
