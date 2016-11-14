@@ -1,3 +1,7 @@
+import json
+
+import falcon
+
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
@@ -38,41 +42,42 @@ session.begin()
 class SectionController(object):
     pass
 
-def put(data):
-    section = session.query(Section).filter(section_id=data['course_id']).first()
-    section.section_name = data['section_name']
-    section.seection_crn = data['section_crn']
-    section.section_capacity = data['section_capacity']
-    section.course_id = data['course_id']
-    section.instructor_id = data['instructor_id']
-    section.semester_id = data['semester_id']
-    section.room_id = data['room_id']
+    def put(self, data):
+        section = session.query(Section).filter(section_id=data['course_id']).first()
+        section.section_name = data['section_name']
+        section.seection_crn = data['section_crn']
+        section.section_capacity = data['section_capacity']
+        section.course_id = data['course_id']
+        section.instructor_id = data['instructor_id']
+        section.semester_id = data['semester_id']
+        section.room_id = data['room_id']
 
+    def post(self, data):
+        inserted_section = Section(
+            section_name=data['section_name'],
+            seection_crn=data['section_crn'],
+            section_capacity=data['section_capacity'],
+            course_id=data['course_id'],
+            instructor_id=data['instructor_id'],
+            semester_id=data['semester_id'],
+            room_id=data['room_id']
+        )
+        session.add(inserted_section)
 
-def post(data):
-    inserted_section = Section(
-        section_name=data['section_name'],
-        seection_crn=data['section_crn'],
-        section_capacity=data['section_capacity'],
-        course_id=data['course_id'],
-        instructor_id=data['instructor_id'],
-        semester_id=data['semester_id'],
-        room_id=data['room_id']
-    )
-    session.add(inserted_section)
+    def get(self, data):
+        x = session.query(Section).filter(Section.section_id == data['section_id']).first()
+        if x:
+            return x.to_data()
+        else:
+            return {'Error': 'cannot retrieve section; section does not exist.'}
 
+    def delete(self, data):
+        to_delete = session.query(Section).filter(section_id=data['section_id']).first()
+        if to_delete:
+            session.delete(to_delete)
+        else:
+            return {'Error': 'cannot delete section; section does not exist.'}
 
-def get(data):
-    x = session.query(Section).filter(section_id=data['section_id']).first()
-    if x:
-        return x.to_data()
-    else:
-        return {'Error': 'cannot retrieve section; section does not exist.'}
-
-
-def delete(data):
-    to_delete = session.query(Section).filter(section_id=data['section_id']).first()
-    if to_delete:
-        session.delete(to_delete)
-    else:
-        return {'Error': 'cannot delete section; section does not exist.'}
+    def on_get(self, req, resp, section_id):
+        resp.status = falcon.HTTP_200
+        resp.body = json.dumps(self.get({"section_id": section_id}))
