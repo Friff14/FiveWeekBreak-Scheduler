@@ -8,7 +8,10 @@ session = DBSession(autocommit=True)
 
 session.begin()
 
-
+key_error = falcon.HTTPBadRequest(
+    'Argument List Incomplete',
+    'You must include all the arguments to make this request'
+)
 # course_id = Column(Integer, primary_key=True)
 # course_name = Column(String(64), nullable=False)
 # course_credit_hours = Column(Float, nullable=False)
@@ -33,6 +36,9 @@ class CourseController(object):
             prefix_id=data['prefix_id']
         )
         session.add(inserted_course)
+        session.refresh(inserted_course)
+
+        return inserted_course.to_data()
 
     def get(self, data):
         x = session.query(Course).filter(Course.course_id == data['course_id']).first()
@@ -50,4 +56,22 @@ class CourseController(object):
 
     def on_get(self, req, resp, course_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"course_id": course_id}))
+        resp.body = '[' + json.dumps(self.get({"course_id": course_id})) + ']'
+        resp.set_header('Access-Control-Allow-Origin', '*')
+
+
+    def on_post(self, req, resp):
+        try:
+            args = {
+                "course_name": req.context['course_name'],
+                "course_credit_hours": req.context["course_credit_hours"],
+                "course_description": req.context["course_description"],
+                "prefix_id": req.context["prefix_id"]
+            }
+
+        except KeyError:
+            raise key_error
+
+        resp.body = json.dumps(
+            self.post(args)
+        )

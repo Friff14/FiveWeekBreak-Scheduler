@@ -1,4 +1,3 @@
-// This will be the app component that 
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19,7 +18,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'fwb-app',
-            template: '<h1>{{ appTitle }}</h1>'
+            template: "<div><h1>{{ appTitle }}</h1>\n        <pm-courses></pm-courses>\n    </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
