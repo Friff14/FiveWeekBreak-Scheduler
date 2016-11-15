@@ -4,7 +4,8 @@ from data import instructorcontroller, semestercontroller, sectioncontroller, ro
 from data import buildingcontroller, campuscontroller, coursecontroller, featurecontroller
 from wsgiref import simple_server
 
-app = falcon.API()
+
+app = application = falcon.API(middleware=[])
 
 instructor = instructorcontroller.InstructorController()
 semester = semestercontroller.SemesterController()
@@ -25,7 +26,6 @@ app.add_route('/building/{building_id}', building)
 app.add_route('/campus/{campus_id}', campus)
 app.add_route('/course/{course_id}', course)
 app.add_route('/feature/{feature_id}', feature)
-
 
 if __name__ == '__main__':
     httpd = simple_server.make_server('localhost', 8000, app)
