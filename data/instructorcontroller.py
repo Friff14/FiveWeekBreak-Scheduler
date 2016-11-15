@@ -9,6 +9,13 @@ session = DBSession(autocommit=True)
 
 session.begin()
 
+key_error = falcon.HTTPBadRequest(
+    'Argument List Incomplete',
+    'You must include all the arguments to make this request'
+)
+
+
+
 
 class InstructorController(object):
     def put(self, data):
@@ -25,6 +32,9 @@ class InstructorController(object):
             instructor_notes=data['instructor_notes']
         )
         session.add(inserted_instructor)
+        session.refresh(inserted_instructor)
+
+        return inserted_instructor.to_data()
 
     def get(self, data):
         x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
@@ -43,3 +53,19 @@ class InstructorController(object):
     def on_get(self, req, resp, instructor_id):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"instructor_id": instructor_id}))
+        resp.set_header('Access-Control-Allow-Origin', '*')
+
+    def on_post(self, req, resp):
+        try:
+            args = {
+                "instructor_name": req.context['instructor_name'],
+                "instructor_hours_required": req.context["instructor_hours_required"],
+                "instructor_notes": req.context["instructor_notes"]
+            }
+
+        except KeyError:
+            raise key_error
+
+        resp.body = json.dumps(
+            self.post(args)
+        )
