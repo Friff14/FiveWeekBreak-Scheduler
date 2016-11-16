@@ -32,16 +32,25 @@ class InstructorController(object):
             instructor_notes=data['instructor_notes']
         )
         session.add(inserted_instructor)
+        session.flush()
         session.refresh(inserted_instructor)
+        # inserted_instructor = session.query(Instructor).
 
         return inserted_instructor.to_data()
 
     def get(self, data):
-        x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
-        if x:
-            return x.to_data()
+        if data['instructor_id']:
+            x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
-            return {"error": 'Hey, man, that\'s a bad burrito'}
+            instructors = session.query(Instructor).all()
+            data = []
+            for instructor in instructors:
+                data.append(instructor.to_data())
+            return data
 
     def delete(self, data):
         to_delete = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
@@ -50,22 +59,32 @@ class InstructorController(object):
         else:
             return {"error": 'Cannot delete; instructor does not exist.'}
 
-    def on_get(self, req, resp, instructor_id):
+    def on_get(self, req, resp, instructor_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"instructor_id": instructor_id}))
         resp.set_header('Access-Control-Allow-Origin', '*')
 
     def on_post(self, req, resp):
+        params = json.loads(req.stream.read().decode('utf-8'))
+
         try:
             args = {
-                "instructor_name": req.context['instructor_name'],
-                "instructor_hours_required": req.context["instructor_hours_required"],
-                "instructor_notes": req.context["instructor_notes"]
+                "instructor_name": params['instructor_name'],
+                "instructor_hours_required": params["instructor_hours_required"],
+                "instructor_notes": params["instructor_notes"]
             }
 
-        except KeyError:
+        except KeyError or TypeError:
+            print("params: " + str(req.params))
             raise key_error
 
         resp.body = json.dumps(
             self.post(args)
         )
+
+if __name__ == '__main__':
+    InstructorController().post({
+        "instructor_name": "Test!",
+        "instructor_hours_required": 6,
+        "instructor_notes": "Test notes!"
+    })

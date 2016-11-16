@@ -1,11 +1,16 @@
-import falcon
-import json
-from data import instructorcontroller, semestercontroller, sectioncontroller, roomcontroller, prefixcontroller
-from data import buildingcontroller, campuscontroller, coursecontroller, featurecontroller
 from wsgiref import simple_server
 
+import falcon
 
-app = application = falcon.API(middleware=[])
+from data import buildingcontroller, campuscontroller, coursecontroller, featurecontroller
+from data import instructorcontroller, semestercontroller, sectioncontroller, roomcontroller, prefixcontroller
+
+app = application = falcon.API('application/json')
+
+
+def process_response(req, resp):
+    resp.add_header('Access-Control-Allow-Origin', 'localhost')
+
 
 instructor = instructorcontroller.InstructorController()
 semester = semestercontroller.SemesterController()
@@ -18,6 +23,7 @@ course = coursecontroller.CourseController()
 feature = featurecontroller.FeatureController()
 
 app.add_route('/instructor/{instructor_id}', instructor)
+app.add_route('/instructor/', instructor)
 app.add_route('/semester/{semester_id}', semester)
 app.add_route('/section/{section_id}', section)
 app.add_route('/room/{room_id}', room)
