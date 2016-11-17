@@ -13,6 +13,7 @@ session.begin()
 # campus_name = Column(String(64), nullable=False)
 
 class CampusController(object):
+
     def put(self, data):
         campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
         campus.campus_name = data['campus_name']

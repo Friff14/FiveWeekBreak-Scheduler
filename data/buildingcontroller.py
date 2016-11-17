@@ -1,5 +1,6 @@
 import json
 import falcon
+from data import middleware
 
 from data.tables import *
 
@@ -22,7 +23,6 @@ class BuildingController(object):
         building.building_abbreviation = data['building_abbreviation']
         building.campus_id = data['campus_id']
 
-
     def post(self, data):
         inserted_building = Building(
             building_name=data['building_name'],
@@ -30,7 +30,9 @@ class BuildingController(object):
             campus_id=data['campus_id']
         )
         session.add(inserted_building)
-
+        session.flush()
+        session.refresh(inserted_building)
+        return inserted_building.to_data()
 
     def get(self, data):
         x = session.query(Building).filter(Building.building_id == data['building_id']).first()
@@ -38,7 +40,6 @@ class BuildingController(object):
             return x.to_data()
         else:
             return {"error": 'Cannot retrieve; building does not exist.'}
-
 
     def delete(self, data):
         to_delete = session.query(Building).filter(Building.building_id == data['building_id']).first()
@@ -50,3 +51,15 @@ class BuildingController(object):
     def on_get(self, req, resp, building_id):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"building_id": building_id}))
+
+    def on_post(self, req, resp):
+        params = json.loads(req.stream.read().decode('utf-8'))
+        args = {
+            "building_name": params['building_name'],
+            "building_abbreviation": params["building_abbreviation"],
+            "campus_id": params["campus_id"]
+        }
+
+        resp.body = json.dumps(
+            self.post(args)
+        )

@@ -3,6 +3,7 @@ import json
 import falcon
 
 from data.tables import *
+from data import middleware
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession(autocommit=True)
@@ -66,7 +67,6 @@ class InstructorController(object):
 
     def on_post(self, req, resp):
         params = json.loads(req.stream.read().decode('utf-8'))
-
         try:
             args = {
                 "instructor_name": params['instructor_name'],
@@ -83,8 +83,4 @@ class InstructorController(object):
         )
 
 if __name__ == '__main__':
-    InstructorController().post({
-        "instructor_name": "Test!",
-        "instructor_hours_required": 6,
-        "instructor_notes": "Test notes!"
-    })
+    pass
