@@ -8,21 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// imports the component to be used as the decorator.
 var core_1 = require('@angular/core');
-// The function decorator that determines the selector directive as well as the template (metadata)
-var AppComponent = (function () {
-    function AppComponent() {
-        this.appTitle = 'Five Week Break Scheduler';
+var router_1 = require('@angular/router');
+var course_list_component_1 = require('./course-list.component');
+var course_service_1 = require('./course.service');
+var CourseModule = (function () {
+    function CourseModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'fwb-app',
-            templateUrl: './app/app.component.html'
+    CourseModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forChild([
+                    { path: 'courses', component: course_list_component_1.CourseListComponent },
+                ])
+            ],
+            declarations: [
+                course_list_component_1.CourseListComponent
+            ],
+            providers: [
+                course_service_1.CourseService
+            ]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CourseModule);
+    return CourseModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.CourseModule = CourseModule;
+//# sourceMappingURL=course.module.js.map

@@ -11,20 +11,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // The imports we need for this module.
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 // The imports from the components we have made.
 var app_component_1 = require('./app.component');
+//import { ResourceModule } from './resources/resource.module';
+//import { CourseModule } from './courses/course.module';
+var home_component_1 = require('./home/home.component');
 var course_list_component_1 = require('./courses/course-list.component');
+var course_form_component_1 = require('./forms/course-form.component');
+var calendar_component_1 = require('./calendar/calendar.component');
 var course_service_1 = require('./courses/course.service');
+//import { CourseFormComponent } from './courses/course-form.component';
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, course_list_component_1.CourseListComponent],
+            imports: [platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot([
+                    { path: 'home', component: home_component_1.HomeComponent },
+                    { path: 'courses', component: course_form_component_1.CourseFormComponent },
+                    { path: 'courseList', component: course_list_component_1.CourseListComponent },
+                    { path: 'calendar', component: calendar_component_1.CalendarComponent },
+                    { path: 'add', component: course_form_component_1.CourseFormComponent },
+                    { path: '', redirectTo: 'home', pathMatch: 'full' },
+                    { path: '**', redirectTo: 'home', pathMatch: 'full' }
+                ]),
+            ],
+            declarations: [app_component_1.AppComponent,
+                home_component_1.HomeComponent,
+                course_list_component_1.CourseListComponent,
+                course_form_component_1.CourseFormComponent,
+                calendar_component_1.CalendarComponent
+            ],
             bootstrap: [app_component_1.AppComponent],
             providers: [course_service_1.CourseService]
         }), 
