@@ -11,7 +11,10 @@ Base = declarative_base()
 def row2dict(row):
     d = {}
     for column in row.__table__.columns:
-        d[column.name] = str(getattr(row, column.name))
+        if getattr(row, column.name):
+            d[column.name] = str(getattr(row, column.name))
+        else:
+            d[column.name] = None
     return d
 
 
