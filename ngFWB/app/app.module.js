@@ -19,6 +19,7 @@ var app_component_1 = require('./app.component');
 //import { CourseModule } from './courses/course.module';
 var home_component_1 = require('./home/home.component');
 var course_list_component_1 = require('./courses/course-list.component');
+var instructor_list_component_1 = require('./instructors/instructor-list.component');
 var course_form_component_1 = require('./forms/course-form.component');
 var calendar_component_1 = require('./calendar/calendar.component');
 var course_service_1 = require('./courses/course.service');
@@ -44,6 +45,7 @@ var AppModule = (function () {
             declarations: [app_component_1.AppComponent,
                 home_component_1.HomeComponent,
                 course_list_component_1.CourseListComponent,
+                instructor_list_component_1.InstructorListComponent,
                 course_form_component_1.CourseFormComponent,
                 calendar_component_1.CalendarComponent
             ],
