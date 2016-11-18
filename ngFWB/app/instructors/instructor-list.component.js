@@ -14,7 +14,8 @@ var InstructorListComponent = (function () {
     }
     InstructorListComponent = __decorate([
         core_1.Component({
-            templateUrl: './instructor-list.component.html'
+            moduleId: module.id,
+            templateUrl: 'instructor-list.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], InstructorListComponent);
