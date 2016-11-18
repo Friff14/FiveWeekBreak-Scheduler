@@ -53,13 +53,6 @@ class BuildingController(object):
         resp.body = json.dumps(self.get({"building_id": building_id}))
 
     def on_post(self, req, resp):
-        params = json.loads(req.stream.read().decode('utf-8'))
-        args = {
-            "building_name": params['building_name'],
-            "building_abbreviation": params["building_abbreviation"],
-            "campus_id": params["campus_id"]
-        }
-
         resp.body = json.dumps(
-            self.post(args)
+            self.post(req.passed_parameters)
         )

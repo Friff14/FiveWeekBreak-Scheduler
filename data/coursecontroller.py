@@ -59,19 +59,7 @@ class CourseController(object):
         resp.body = '[' + json.dumps(self.get({"course_id": course_id})) + ']'
         resp.set_header('Access-Control-Allow-Origin', '*')
 
-
     def on_post(self, req, resp):
-        try:
-            args = {
-                "course_name": req.context['course_name'],
-                "course_credit_hours": req.context["course_credit_hours"],
-                "course_description": req.context["course_description"],
-                "prefix_id": req.context["prefix_id"]
-            }
-
-        except KeyError:
-            raise key_error
-
         resp.body = json.dumps(
-            self.post(args)
+            self.post(req.passed_parameters)
         )

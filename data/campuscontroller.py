@@ -13,7 +13,6 @@ session.begin()
 # campus_name = Column(String(64), nullable=False)
 
 class CampusController(object):
-
     def put(self, data):
         campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
         campus.campus_name = data['campus_name']
@@ -41,3 +40,8 @@ class CampusController(object):
     def on_get(self, req, resp, campus_id):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"campus_id": campus_id}))
+
+    def on_post(self, req, resp):
+        resp.body = json.dumps(
+            self.post(req.passed_parameters)
+        )

@@ -51,3 +51,7 @@ class SemesterController(object):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"semester_id": semester_id}))
 
+    def on_post(self, req, resp):
+        resp.body = json.dumps(
+            self.post(req.passed_parameters)
+        )

@@ -46,3 +46,8 @@ class FeatureController(object):
     def on_get(self, req, resp, feature_id):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"feature_id": feature_id}))
+
+    def on_post(self, req, resp):
+        resp.body = json.dumps(
+            self.post(req.passed_parameters)
+        )

@@ -6,7 +6,11 @@ from data import buildingcontroller, campuscontroller, coursecontroller, feature
 from data import instructorcontroller, semestercontroller, sectioncontroller, roomcontroller, prefixcontroller
 from data import middleware
 
-app = application = falcon.API('application/json', middleware=[middleware.CrossOriginHeader()])
+app = application = falcon.API('application/json',
+                               middleware=[
+                                   middleware.CrossOriginHeader(),
+                                   middleware.JSONDecoding()
+                               ])
 
 
 instructor = instructorcontroller.InstructorController()

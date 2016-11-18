@@ -66,20 +66,8 @@ class InstructorController(object):
         resp.set_header('Access-Control-Allow-Origin', '*')
 
     def on_post(self, req, resp):
-        params = json.loads(req.stream.read().decode('utf-8'))
-        try:
-            args = {
-                "instructor_name": params['instructor_name'],
-                "instructor_hours_required": params["instructor_hours_required"],
-                "instructor_notes": params["instructor_notes"]
-            }
-
-        except KeyError or TypeError:
-            print("params: " + str(req.params))
-            raise key_error
-
         resp.body = json.dumps(
-            self.post(args)
+            self.post(req.passed_parameters)
         )
 
 if __name__ == '__main__':
