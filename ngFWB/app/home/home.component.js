@@ -8,21 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// imports the component to be used as the decorator.
 var core_1 = require('@angular/core');
-// The function decorator that determines the selector directive as well as the template (metadata)
-var AppComponent = (function () {
-    function AppComponent() {
-        this.appTitle = 'Five Week Break Scheduler';
+var HomeComponent = (function () {
+    function HomeComponent() {
     }
-    AppComponent = __decorate([
+    HomeComponent = __decorate([
         core_1.Component({
-            selector: 'fwb-app',
-            templateUrl: './app/app.component.html'
+            moduleId: module.id,
+            templateUrl: 'home.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HomeComponent = HomeComponent;
+//# sourceMappingURL=home.component.js.map

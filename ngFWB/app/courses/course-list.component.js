@@ -13,8 +13,11 @@ var course_service_1 = require('./course.service');
 var CourseListComponent = (function () {
     function CourseListComponent(_courseService) {
         this._courseService = _courseService;
+        // The name of this list as it will be displayed in the templateUrl
+        // 
         this.pageTitle = 'Course List';
     }
+    // Subscribes to the service from above.
     CourseListComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log("Hiii");
@@ -23,7 +26,7 @@ var CourseListComponent = (function () {
     };
     CourseListComponent = __decorate([
         core_1.Component({
-            selector: 'pm-courses',
+            // selector: pm-courses,
             moduleId: module.id,
             templateUrl: 'course-list.component.html'
         }), 

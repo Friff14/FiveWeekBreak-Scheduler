@@ -1,4 +1,6 @@
-export interface ICourse {
+//import { IResource } from '../resources/resource';
+
+export interface ICourse {//extends IResource {
     course_id: number;
     course_name: string;
     course_description: string;

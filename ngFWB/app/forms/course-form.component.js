@@ -8,21 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// imports the component to be used as the decorator.
 var core_1 = require('@angular/core');
-// The function decorator that determines the selector directive as well as the template (metadata)
-var AppComponent = (function () {
-    function AppComponent() {
-        this.appTitle = 'Five Week Break Scheduler';
+var CourseFormComponent = (function () {
+    function CourseFormComponent() {
     }
-    AppComponent = __decorate([
+    CourseFormComponent = __decorate([
         core_1.Component({
-            selector: 'fwb-app',
-            templateUrl: './app/app.component.html'
+            moduleId: module.id,
+            templateUrl: 'course-form.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CourseFormComponent);
+    return CourseFormComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.CourseFormComponent = CourseFormComponent;
+//# sourceMappingURL=course-form.component.js.map
