@@ -56,3 +56,14 @@ class BuildingController(object):
         resp.body = json.dumps(
             self.post(req.passed_parameters)
         )
+
+    def on_put(self, req, resp):
+        resp.body = json.dumps(
+            self.put(req.passed_parameters)
+        )
+
+    def on_delete(self, req, resp):
+        resp.body = json.dumps(
+            self.delete(req.passed_parameters)
+        )
+
