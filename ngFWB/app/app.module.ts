@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 //import { CourseModule } from './courses/course.module';
 import { HomeComponent } from './home/home.component';
 import { CourseListComponent } from './courses/course-list.component';
+import { InstructorListComponent } from './instructors/instructor-list.component';
+
 import { CourseFormComponent } from './forms/course-form.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CourseService } from './courses/course.service';
@@ -34,6 +36,7 @@ import { CourseService } from './courses/course.service';
     declarations: [ AppComponent, 
                     HomeComponent,
                     CourseListComponent,
+                    InstructorListComponent,
                     CourseFormComponent,
                     CalendarComponent
                       ],
