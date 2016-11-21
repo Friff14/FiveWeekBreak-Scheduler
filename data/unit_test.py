@@ -36,6 +36,40 @@ def http_test():
     )
     print(r.text)
 
+    # course
+    data = {
+        "course_name": 'TEST COURSE',
+        "course_credit_hours": 4.0,
+        "course_description": "hi",
+        "prefix_id": 1
+    }
+    r = requests.post(
+        'http://localhost:8000/course',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # feature
+    data = {
+        "feature_name": 'TEST FEATURE'
+    }
+    r = requests.post(
+        'http://localhost:8000/feature',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # instructor
+    data = {
+        "instructor_name": "TEST INSTRUCTOR",
+        "instructor_hours_required": 12,
+        "instructor_notes": "my name is doug i have just met you and i love you"
+    }
+    r = requests.post(
+        "http://localhost:8000/instructor",
+        data=json.dumps(data)
+    )
+    print(r.text)
 
     # # PUT
     # building
@@ -57,7 +91,6 @@ def http_test():
         data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
     )
     print(r.text)
-
 
 
 if __name__ == '__main__':

@@ -21,6 +21,7 @@ class ReleaseController(object):
             return release.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_release = Release(
             release_name=data['release_name'],
             release_hours=data['release_hours'],

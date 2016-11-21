@@ -23,6 +23,7 @@ class FeatureController(object):
             return feature
 
     def post(self, data):
+        session = DBSession()
         inserted_feature = Feature(
             feature_name=data['feature_name']
         )

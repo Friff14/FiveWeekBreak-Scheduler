@@ -29,6 +29,7 @@ class InstructorController(object):
             return instructor
 
     def post(self, data):
+        session = DBSession()
         inserted_instructor = Instructor(
             instructor_name=data['instructor_name'],
             instructor_hours_required=data['instructor_hours_required'],

@@ -26,6 +26,7 @@ class CourseController(object):
             return course.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_course = Course(
             course_name=data['course_name'],
             course_credit_hours=data['course_credit_hours'],
@@ -33,6 +34,8 @@ class CourseController(object):
             prefix_id=data['prefix_id']
         )
         session.add(inserted_course)
+
+        session.flush()
         session.refresh(inserted_course)
 
         session.commit()

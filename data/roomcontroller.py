@@ -27,6 +27,7 @@ class RoomController(object):
             return room.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_room = Room(
             room_name=data['room_name'],
             room_capacity=data['room_capacity'],

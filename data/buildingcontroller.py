@@ -27,6 +27,7 @@ class BuildingController(object):
             return building.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_building = Building(
             building_name=data['building_name'],
             building_abbreviation=data['building_abbreviation'],

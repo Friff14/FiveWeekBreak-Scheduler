@@ -28,6 +28,7 @@ class SemesterController(object):
             return semester.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_semester = Semester(
             semester_name=data['semester_name'],
             semester_start_date=data['semester_start_date'],

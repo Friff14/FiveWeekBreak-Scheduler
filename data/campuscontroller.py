@@ -21,6 +21,7 @@ class CampusController(object):
             return campus.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_campus = Campus(
             campus_name=data['campus_name']
         )

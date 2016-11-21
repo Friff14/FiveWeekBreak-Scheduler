@@ -56,6 +56,7 @@ class SectionController(object):
             return section.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_section = Section(
             section_name=data['section_name'],
             seection_crn=data['section_crn'],

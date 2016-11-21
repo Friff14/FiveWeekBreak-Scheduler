@@ -18,6 +18,7 @@ class PrefixController(object):
             return prefix.to_data()
 
     def post(self, data):
+        session = DBSession()
         inserted_course = Prefix(
             prefix_name=data['prefix_name'],
             courses=data['courses']
