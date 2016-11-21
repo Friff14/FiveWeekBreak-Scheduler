@@ -24,7 +24,7 @@ def http_test():
         'http://localhost:8000/building/',
         data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
     )
-    print(json.loads(r.text))
+    print(r.text)
 
     # campus
     data = {
@@ -34,8 +34,24 @@ def http_test():
         'http://localhost:8000/campus',
         data=json.dumps(data)
     )
-    print(json.loads(r.text))
+    print(r.text)
 
+
+    # # PUT
+    # building
+    data = {
+        "building_name": "TEST_BUILDING",
+        "building_abbreviation": "TB",
+        "campus_id": 1,
+        "building_id": 1
+    }
+    r = requests.put(
+        'http://localhost:8000/building',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # campus
     r = requests.put(
         'http://localhost:8000/campus',
         data='''{"campus_name": "Test!!!!", "campus_id": 1}'''

@@ -38,6 +38,8 @@ class SemesterController(object):
         session.flush()
         session.refresh(inserted_semester)
 
+        session.commit()
+
         return inserted_semester
 
     def get(self, data):

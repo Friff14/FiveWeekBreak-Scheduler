@@ -27,6 +27,8 @@ class PrefixController(object):
         session.flush()
         session.refresh(inserted_course)
 
+        session.commit()
+
         return inserted_course.to_data()
 
     def get(self, data):

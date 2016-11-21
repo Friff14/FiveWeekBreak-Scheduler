@@ -37,6 +37,8 @@ class RoomController(object):
         session.flush()
         session.refresh(inserted_room)
 
+        session.commit()
+
         return inserted_room.to_data()
 
     def get(self, data):

@@ -31,6 +31,8 @@ class ReleaseController(object):
         session.flush()
         session.refresh(inserted_release)
 
+        session.commit()
+
         return inserted_release
 
     def get(self, data):

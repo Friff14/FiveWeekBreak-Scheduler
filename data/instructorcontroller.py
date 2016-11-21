@@ -38,6 +38,8 @@ class InstructorController(object):
         session.flush()
         session.refresh(inserted_instructor)
 
+        session.commit()
+
         return inserted_instructor.to_data()
 
     def get(self, data):

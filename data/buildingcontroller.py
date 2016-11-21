@@ -35,6 +35,9 @@ class BuildingController(object):
         session.add(inserted_building)
         session.flush()
         session.refresh(inserted_building)
+
+        session.commit()
+
         return inserted_building.to_data()
 
     def get(self, data):

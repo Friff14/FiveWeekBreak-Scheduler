@@ -70,6 +70,8 @@ class SectionController(object):
         session.flush()
         session.refresh(inserted_section)
 
+        session.commit()
+
         return inserted_section.to_data()
 
     def get(self, data):

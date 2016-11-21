@@ -35,6 +35,8 @@ class CourseController(object):
         session.add(inserted_course)
         session.refresh(inserted_course)
 
+        session.commit()
+
         return inserted_course.to_data()
 
     def get(self, data):

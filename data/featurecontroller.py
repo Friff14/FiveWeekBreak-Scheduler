@@ -31,6 +31,8 @@ class FeatureController(object):
         session.flush()
         session.refresh(inserted_feature)
 
+        session.commit()
+
         return inserted_feature.to_data()
 
     def get(self, data):

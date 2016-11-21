@@ -27,6 +27,9 @@ class CampusController(object):
         session.add(inserted_campus)
         session.flush()
         session.refresh(inserted_campus)
+
+        session.commit()
+
         return inserted_campus.to_data()
 
     def get(self, data):
