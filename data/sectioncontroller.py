@@ -43,14 +43,17 @@ class SectionController(object):
     pass
 
     def put(self, data):
-        section = session.query(Section).filter(section_id=data['course_id']).first()
-        section.section_name = data['section_name']
-        section.seection_crn = data['section_crn']
-        section.section_capacity = data['section_capacity']
-        section.course_id = data['course_id']
-        section.instructor_id = data['instructor_id']
-        section.semester_id = data['semester_id']
-        section.room_id = data['room_id']
+        with session.no_autoflush:
+            section = session.query(Section).filter(section_id=data['course_id']).first()
+            section.section_name = data['section_name']
+            section.seection_crn = data['section_crn']
+            section.section_capacity = data['section_capacity']
+            section.course_id = data['course_id']
+            section.instructor_id = data['instructor_id']
+            section.semester_id = data['semester_id']
+            section.room_id = data['room_id']
+
+            return section.to_data()
 
     def post(self, data):
         inserted_section = Section(
@@ -63,6 +66,11 @@ class SectionController(object):
             room_id=data['room_id']
         )
         session.add(inserted_section)
+
+        session.flush()
+        session.refresh(inserted_section)
+
+        return inserted_section.to_data()
 
     def get(self, data):
         x = session.query(Section).filter(Section.section_id == data['section_id']).first()
@@ -85,14 +93,4 @@ class SectionController(object):
     def on_post(self, req, resp):
         resp.body = json.dumps(
             self.post(req.passed_parameters)
-        )
-
-    def on_put(self, req, resp):
-        resp.body = json.dumps(
-            self.put(req.passed_parameters)
-        )
-
-    def on_delete(self, req, resp):
-        resp.body = json.dumps(
-            self.delete(req.passed_parameters)
         )

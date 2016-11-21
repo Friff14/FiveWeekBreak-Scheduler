@@ -18,10 +18,13 @@ session.begin()
 
 class BuildingController(object):
     def put(self, data):
-        building = session.query(Building).filter(Building.building_id == data['building_id']).first()
-        building.building_name = data['building_name']
-        building.building_abbreviation = data['building_abbreviation']
-        building.campus_id = data['campus_id']
+        with session.no_autoflush:
+            building = session.query(Building).filter(Building.building_id == data['building_id']).first()
+            building.building_name = data['building_name']
+            building.building_abbreviation = data['building_abbreviation']
+            building.campus_id = data['campus_id']
+
+            return building.to_data()
 
     def post(self, data):
         inserted_building = Building(

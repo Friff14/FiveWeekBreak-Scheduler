@@ -3,6 +3,7 @@
 import json
 import datetime
 from data.tables import *
+import requests
 
 
 def pretty_print(data):
@@ -16,8 +17,25 @@ def pretty_print(data):
     ))
 
 
-# # Test # #
+def http_test():
+    r = requests.post(
+        'http://localhost:8000/building/',
+        data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
+    )
+    print(json.loads(r.text))
+
+    r = requests.put(
+        'http://localhost:8000/campus',
+        data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
+    )
+    print(r.text)
+
+
 if __name__ == '__main__':
+    http_test()
+
+
+def data_test():
     print('Content-type:text/markdown\n')
 
     DBSession = sessionmaker(bind=engine)
@@ -122,4 +140,3 @@ if __name__ == '__main__':
     for section in session.query(Section).all():
         pretty_print(section)
     session.close()
-

@@ -18,10 +18,13 @@ session.begin()
 
 class RoomController(object):
     def put(self, data):
-        room = session.query(Room).filter(room_id=data['room_id']).first()
-        room.room_name = data['room_name']
-        room.room_capacity = data['room_capacity']
-        room.building_id = data['building_id']
+        with session.no_autoflush:
+            room = session.query(Room).filter(room_id=data['room_id']).first()
+            room.room_name = data['room_name']
+            room.room_capacity = data['room_capacity']
+            room.building_id = data['building_id']
+
+            return room.to_data()
 
     def post(self, data):
         inserted_room = Room(
@@ -30,6 +33,11 @@ class RoomController(object):
             building_id=data['building_id']
         )
         session.add(inserted_room)
+
+        session.flush()
+        session.refresh(inserted_room)
+
+        return inserted_room.to_data()
 
     def get(self, data):
         x = session.query(Room).filter(Room.room_id == data['room_id']).first()

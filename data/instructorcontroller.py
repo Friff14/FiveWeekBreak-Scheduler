@@ -20,11 +20,13 @@ key_error = falcon.HTTPBadRequest(
 
 class InstructorController(object):
     def put(self, data):
-        instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
-        instructor.instructor_name = data['instructor_name']
-        instructor.instructor_hours_required = data['instructor_hours_required']
-        instructor.instructor_notes = data['instructor_notes']
-        # ...and so on
+        with session.no_autoflush:
+            instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
+            instructor.instructor_name = data['instructor_name']
+            instructor.instructor_hours_required = data['instructor_hours_required']
+            instructor.instructor_notes = data['instructor_notes']
+
+            return instructor
 
     def post(self, data):
         inserted_instructor = Instructor(
@@ -35,7 +37,6 @@ class InstructorController(object):
         session.add(inserted_instructor)
         session.flush()
         session.refresh(inserted_instructor)
-        # inserted_instructor = session.query(Instructor).
 
         return inserted_instructor.to_data()
 

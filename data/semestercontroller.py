@@ -17,13 +17,15 @@ session.begin()
 # sections = relationship('Section')
 
 class SemesterController(object):
-    pass
 
     def put(self, data):
-        semester = session.query(Semester).filter(semester_id=data['semester_id']).first()
-        semester.semester_name = data['semester_name']
-        semester.semester_start_date = data['semester_start_date']
-        semester.semester_end_date = data['semester_end_date']
+        with session.no_autoflush:
+            semester = session.query(Semester).filter(semester_id=data['semester_id']).first()
+            semester.semester_name = data['semester_name']
+            semester.semester_start_date = data['semester_start_date']
+            semester.semester_end_date = data['semester_end_date']
+
+            return semester.to_data()
 
     def post(self, data):
         inserted_semester = Semester(
@@ -32,6 +34,11 @@ class SemesterController(object):
             semester_end_date=data['semester_end_date']
         )
         session.add(inserted_semester)
+
+        session.flush()
+        session.refresh(inserted_semester)
+
+        return inserted_semester
 
     def get(self, data):
         x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()

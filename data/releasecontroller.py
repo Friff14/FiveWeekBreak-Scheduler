@@ -11,11 +11,14 @@ session.begin()
 
 class ReleaseController(object):
     def put(self, data):
-        release = session.query(Release).filter(Release.release_id == data['release_id']).first()
-        release.release_name = data['release_name']
-        release.release_hours = data['release_hours']
-        release.instructor_id = data['instructor_id']
-        # ...and so on
+        with session.no_autoflush:
+
+            release = session.query(Release).filter(Release.release_id == data['release_id']).first()
+            release.release_name = data['release_name']
+            release.release_hours = data['release_hours']
+            release.instructor_id = data['instructor_id']
+
+            return release.to_data()
 
     def post(self, data):
         inserted_release = Release(
@@ -24,6 +27,11 @@ class ReleaseController(object):
             instructor_id=data['instructor_id']
         )
         session.add(inserted_release)
+
+        session.flush()
+        session.refresh(inserted_release)
+
+        return inserted_release
 
     def get(self, data):
         x = session.query(Release).filter(Release.release_id == data['release_id']).first()

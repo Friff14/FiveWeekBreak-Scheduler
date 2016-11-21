@@ -16,18 +16,22 @@ session.begin()
 
 class FeatureController(object):
     def put(self, data):
-        feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
-        feature.feature_name = data['feature_name']
-        # feature.sections = data['sections']
-        # feature.rooms = data['rooms']
+        with session.no_autoflush:
+            feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
+            feature.feature_name = data['feature_name']
+
+            return feature
 
     def post(self, data):
         inserted_feature = Feature(
             feature_name=data['feature_name']
-            # sections=data['sections'],
-            # rooms=data['rooms']
         )
         session.add(inserted_feature)
+
+        session.flush()
+        session.refresh(inserted_feature)
+
+        return inserted_feature.to_data()
 
     def get(self, data):
         x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()

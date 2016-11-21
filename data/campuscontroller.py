@@ -14,14 +14,20 @@ session.begin()
 
 class CampusController(object):
     def put(self, data):
-        campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
-        campus.campus_name = data['campus_name']
+        with session.no_autoflush:
+            campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
+            campus.campus_name = data['campus_name']
+
+            return campus.to_data()
 
     def post(self, data):
         inserted_campus = Campus(
             campus_name=data['campus_name']
         )
         session.add(inserted_campus)
+        session.flush()
+        session.refresh(inserted_campus)
+        return inserted_campus.to_data()
 
     def get(self, data):
         x = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()

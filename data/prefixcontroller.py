@@ -9,16 +9,13 @@ session = DBSession(autocommit=True)
 session.begin()
 
 
-# prefix_id = Column(Integer, primary_key=True)
-# prefix_name = Column(String(16), nullable=False)
-# courses = relationship('Course', back_populates='prefix')
-
 class PrefixController(object):
     def put(self, data):
-        prefix = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
-        prefix.prefix_name = data['prefix_name']
-        # prefix.courses = data['courses']
-        # ...and so on
+        with session.no_autoflush:
+            prefix = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
+            prefix.prefix_name = data['prefix_name']
+
+            return prefix.to_data()
 
     def post(self, data):
         inserted_course = Prefix(
@@ -26,6 +23,11 @@ class PrefixController(object):
             courses=data['courses']
         )
         session.add(inserted_course)
+
+        session.flush()
+        session.refresh(inserted_course)
+
+        return inserted_course.to_data()
 
     def get(self, data):
         x = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()

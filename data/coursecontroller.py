@@ -12,21 +12,18 @@ key_error = falcon.HTTPBadRequest(
     'Argument List Incomplete',
     'You must include all the arguments to make this request'
 )
-# course_id = Column(Integer, primary_key=True)
-# course_name = Column(String(64), nullable=False)
-# course_credit_hours = Column(Float, nullable=False)
-# course_description = Column(String(255))
-# prefix_id = Column(Integer, ForeignKey('prefix.prefix_id'))
-# prefix = relationship('Prefix')
+
 
 class CourseController(object):
     def put(self, data):
-        course = session.query(Course).filter(Course.course_id == data['course_id']).first()
-        course.course_name = data['course_name']
-        course.course_credit_hours = data['course_credit_hours']
-        course.course_description = data['course_description']
-        course.prefix_id = data['prefix_id']
-        # ...and so on
+        with session.no_autoflush:
+            course = session.query(Course).filter(Course.course_id == data['course_id']).first()
+            course.course_name = data['course_name']
+            course.course_credit_hours = data['course_credit_hours']
+            course.course_description = data['course_description']
+            course.prefix_id = data['prefix_id']
+
+            return course.to_data()
 
     def post(self, data):
         inserted_course = Course(
