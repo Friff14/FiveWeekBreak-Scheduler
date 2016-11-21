@@ -18,9 +18,21 @@ def pretty_print(data):
 
 
 def http_test():
+    # # POST # #
+    # building
     r = requests.post(
         'http://localhost:8000/building/',
         data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
+    )
+    print(json.loads(r.text))
+
+    # campus
+    data = {
+        "campus_name": "Tanner's House"
+    }
+    r = requests.post(
+        'http://localhost:8000/campus',
+        data=json.dumps(data)
     )
     print(json.loads(r.text))
 
@@ -29,6 +41,7 @@ def http_test():
         data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
     )
     print(r.text)
+
 
 
 if __name__ == '__main__':
