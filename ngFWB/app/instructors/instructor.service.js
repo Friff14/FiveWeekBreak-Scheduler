@@ -14,32 +14,32 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/do');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
-var CourseService = (function () {
-    function CourseService(_http) {
+var InstructorService = (function () {
+    function InstructorService(_http) {
         this._http = _http;
         this._instructorUrl = 'http://localhost:8000/course/1';
     }
-    CourseService.prototype.getInstructors = function () {
+    InstructorService.prototype.getInstructors = function () {
         return this._http.get(this._instructorUrl)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    CourseService.prototype.getInstructor = function (id) {
+    InstructorService.prototype.getInstructor = function (id) {
         return this.getInstructors()
             .map(function (instructors) { return instructors.find(function (i) { return i.instructor_id === id; }); });
     };
-    CourseService.prototype.handleError = function (error) {
+    InstructorService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
-    CourseService = __decorate([
+    InstructorService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], CourseService);
-    return CourseService;
+    ], InstructorService);
+    return InstructorService;
 }());
-exports.CourseService = CourseService;
+exports.InstructorService = InstructorService;
 //# sourceMappingURL=instructor.service.js.map

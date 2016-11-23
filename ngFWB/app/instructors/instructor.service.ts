@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import { IInstructor } from './instructor';
 
 @Injectable()
-export class CourseService {
+export class InstructorService {
     private _instructorUrl = 'http://localhost:8000/course/1';
 
     constructor(private _http: Http) { }

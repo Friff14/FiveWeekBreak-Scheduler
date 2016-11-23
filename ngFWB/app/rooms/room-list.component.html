@@ -1,0 +1,26 @@
+<div>
+    <p>This page will show the current list of rooms as well as links for
+        adding, editing, or removing courses.
+        </p>
+    <h1>{{pageTitle}}</h1>
+<table border='1'>
+    <tr>
+        <th>Room ID</th>
+        <th>Room Name</th>
+        <th>Room Description</th>
+        <th>Room Capacity</th>
+    </tr>
+    <tbody>
+        <tr *ngFor='let room of rooms'>
+            <td>{{ room.room_id }}</td>
+            <td>{{ room.room_name }}</td>
+            <td>{{ room.room_capacity }}</td>
+            <td>{{ room.room_building_id }}</td>
+        </tr>
+    </tbody>
+</table>
+    <li><a [routerLink]="['/add']">Add Course</a></li>
+    <li><a [routerLink]="['/edit']">Edit Course</a></li>
+    <li><a [routerLink]="['/remove']">Remove Course</a></li>
+
+</div>

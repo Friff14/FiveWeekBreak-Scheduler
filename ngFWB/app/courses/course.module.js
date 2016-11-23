@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var course_list_component_1 = require('./course-list.component');
+var course_form_component_1 = require('./course-form.component');
 var course_service_1 = require('./course.service');
 var CourseModule = (function () {
     function CourseModule() {
@@ -19,11 +20,19 @@ var CourseModule = (function () {
         core_1.NgModule({
             imports: [
                 router_1.RouterModule.forChild([
-                    { path: 'courses', component: course_list_component_1.CourseListComponent },
+                    { path: 'courseList', component: course_list_component_1.CourseListComponent },
+                    // { path: 'product/:id',
+                    //  canActivate: [ ProductDetailGuard],
+                    // component: ProductDetailComponent
+                    //}
+                    { path: 'addCourse', component: course_form_component_1.CourseFormComponent },
+                    { path: 'editCourse', component: course_form_component_1.CourseFormComponent },
+                    { path: 'removeCourse', component: course_list_component_1.CourseListComponent }
                 ])
             ],
             declarations: [
-                course_list_component_1.CourseListComponent
+                course_list_component_1.CourseListComponent,
+                course_form_component_1.CourseFormComponent
             ],
             providers: [
                 course_service_1.CourseService
