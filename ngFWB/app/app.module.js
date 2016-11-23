@@ -16,15 +16,16 @@ var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 // The imports from the modules we have made.
 var app_component_1 = require('./app.component');
+var course_module_1 = require('./courses/course.module');
 // Until modules connections are taken care of, use components for now.
 var home_component_1 = require('./home/home.component');
-var course_list_component_1 = require('./courses/course-list.component');
-var room_form_component_1 = require('./rooms/room-form.component');
-var room_list_component_1 = require('./rooms/room-list.component');
-var instructor_list_component_1 = require('./instructors/instructor-list.component');
-var course_form_component_1 = require('./courses/course-form.component');
+//import { CourseListComponent } from './courses/course-list.component';
+//import { CourseFormComponent } from './courses/course-form.component';
+//import { RoomFormComponent } from './rooms/room-form.component';
+//import { RoomListComponent } from './rooms/room-list.component';
+//import { InstructorListComponent } from './instructors/instructor-list.component';
 var section_form_component_1 = require('./sections/section-form.component');
-var course_service_1 = require('./courses/course.service');
+//import { CourseService } from './courses/course.service';
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
@@ -35,27 +36,23 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
                     { path: 'home', component: home_component_1.HomeComponent },
-                    { path: 'courseForm', component: course_form_component_1.CourseFormComponent },
-                    { path: 'courseList', component: course_list_component_1.CourseListComponent },
-                    { path: 'instructorList', component: instructor_list_component_1.InstructorListComponent },
-                    { path: 'roomList', component: room_list_component_1.RoomListComponent },
+                    //{ path: 'instructorList', component: InstructorListComponent },
+                    //{ path: 'roomList', component: RoomListComponent },
                     { path: 'sectionForm', component: section_form_component_1.SectionFormComponent },
-                    { path: 'addCourse', component: course_form_component_1.CourseFormComponent },
+                    //{ path: 'addCourse', component: CourseFormComponent },                
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
                     { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]),
+                course_module_1.CourseModule
             ],
             declarations: [app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                course_list_component_1.CourseListComponent,
-                instructor_list_component_1.InstructorListComponent,
-                course_form_component_1.CourseFormComponent,
+                //CourseListComponent,
+                //InstructorListComponent,
+                // CourseFormComponent,
                 section_form_component_1.SectionFormComponent,
-                room_form_component_1.RoomFormComponent,
-                room_list_component_1.RoomListComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [course_service_1.CourseService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

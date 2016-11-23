@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { CourseListComponent } from './course-list.component';
 import { CourseFormComponent } from './course-form.component';
@@ -7,7 +8,9 @@ import { CourseFormComponent } from './course-form.component';
 import { CourseService } from './course.service';
 
 @NgModule({
-  imports: [
+  imports: 
+  [ 
+    CommonModule,
     RouterModule.forChild([
       { path: 'courseList', component: CourseListComponent },
      // { path: 'product/:id',
@@ -19,11 +22,18 @@ import { CourseService } from './course.service';
       { path: 'removeCourse', component: CourseListComponent }
     ])
   ],
-  declarations: [
+  declarations: 
+  [
     CourseListComponent,
     CourseFormComponent
   ],
-  providers: [
+  exports: 
+  [ 
+    CourseListComponent, 
+    CourseFormComponent 
+  ],
+  providers: 
+  [
     CourseService
   ]
 })

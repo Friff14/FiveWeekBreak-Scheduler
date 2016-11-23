@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { RoomListComponent } from './room-list.component';
 import { RoomFormComponent } from './room-form.component';
@@ -7,20 +8,30 @@ import { RoomFormComponent } from './room-form.component';
 import { RoomService } from './room.service';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-      { path: 'courses', component: RoomListComponent },
-     // { path: 'product/:id',
-      //  canActivate: [ ProductDetailGuard],
-       // component: ProductDetailComponent
-      //}
-    ])
+  imports: 
+  [
+      CommonModule,
+      RouterModule.forChild([
+          { path: 'roomList', component: RoomListComponent },
+          { path: 'roomForm', component: RoomFormComponent },
+        // { path: 'product/:id',
+        //  canActivate: [ ProductDetailGuard],
+        // component: ProductDetailComponent
+        //}
+        ])
   ],
-  declarations: [
+  declarations: 
+  [
     RoomListComponent,
     RoomFormComponent
   ],
-  providers: [
+  exports:
+  [
+      RoomListComponent,
+      RoomFormComponent
+  ],
+  providers: 
+  [
     RoomService
   ]
 })

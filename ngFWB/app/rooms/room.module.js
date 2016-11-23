@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 var room_list_component_1 = require('./room-list.component');
 var room_form_component_1 = require('./room-form.component');
 var room_service_1 = require('./room.service');
@@ -19,11 +20,17 @@ var RoomModule = (function () {
     RoomModule = __decorate([
         core_1.NgModule({
             imports: [
+                common_1.CommonModule,
                 router_1.RouterModule.forChild([
-                    { path: 'courses', component: room_list_component_1.RoomListComponent },
+                    { path: 'roomList', component: room_list_component_1.RoomListComponent },
+                    { path: 'roomForm', component: room_form_component_1.RoomFormComponent },
                 ])
             ],
             declarations: [
+                room_list_component_1.RoomListComponent,
+                room_form_component_1.RoomFormComponent
+            ],
+            exports: [
                 room_list_component_1.RoomListComponent,
                 room_form_component_1.RoomFormComponent
             ],

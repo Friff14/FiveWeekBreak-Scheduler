@@ -14,14 +14,14 @@ import { RoomModule } from './rooms/room.module';
 
 // Until modules connections are taken care of, use components for now.
 import { HomeComponent } from './home/home.component';
-import { CourseListComponent } from './courses/course-list.component';
-import { RoomFormComponent } from './rooms/room-form.component';
-import { RoomListComponent } from './rooms/room-list.component';
-import { InstructorListComponent } from './instructors/instructor-list.component';
+//import { CourseListComponent } from './courses/course-list.component';
+//import { CourseFormComponent } from './courses/course-form.component';
+//import { RoomFormComponent } from './rooms/room-form.component';
+//import { RoomListComponent } from './rooms/room-list.component';
+//import { InstructorListComponent } from './instructors/instructor-list.component';
 
-import { CourseFormComponent } from './courses/course-form.component';
 import { SectionFormComponent } from './sections/section-form.component';
-import { CourseService } from './courses/course.service';
+//import { CourseService } from './courses/course.service';
 
 // The NgModule decorator for metadata.
 @NgModule({
@@ -29,27 +29,25 @@ import { CourseService } from './courses/course.service';
                 HttpModule, 
                RouterModule.forRoot([
                 { path: 'home', component: HomeComponent },
-                { path: 'courseForm', component: CourseFormComponent },
-                { path: 'courseList', component: CourseListComponent },
-                { path: 'instructorList', component: InstructorListComponent },
-                { path: 'roomList', component: RoomListComponent },
+                //{ path: 'instructorList', component: InstructorListComponent },
+                //{ path: 'roomList', component: RoomListComponent },
                 { path: 'sectionForm', component: SectionFormComponent },
-                { path: 'addCourse', component: CourseFormComponent },                
+                //{ path: 'addCourse', component: CourseFormComponent },                
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]), 
-                //CourseModule
+                CourseModule
                  ],
     declarations: [ AppComponent, 
                     HomeComponent,
-                    CourseListComponent,
-                    InstructorListComponent,
-                    CourseFormComponent,
+                    //CourseListComponent,
+                    //InstructorListComponent,
+                   // CourseFormComponent,
                     SectionFormComponent,
-                    RoomFormComponent,
-                    RoomListComponent
+                    //RoomFormComponent,
+                    //RoomListComponent
                       ],
     bootstrap: [ AppComponent ],
-    providers: [ CourseService ]
+    //providers: [ CourseService ]
 })
 export class AppModule { }

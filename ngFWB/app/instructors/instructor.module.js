@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 var instructor_list_component_1 = require('./instructor-list.component');
 var instructor_form_component_1 = require('./instructor-form.component');
 var instructor_service_1 = require('./instructor.service');
@@ -19,11 +20,17 @@ var InstructorModule = (function () {
     InstructorModule = __decorate([
         core_1.NgModule({
             imports: [
+                common_1.CommonModule,
                 router_1.RouterModule.forChild([
-                    { path: 'courses', component: instructor_list_component_1.InstructorListComponent },
+                    { path: 'instructorList', component: instructor_list_component_1.InstructorListComponent },
+                    { path: 'instructorForm', component: instructor_form_component_1.InstructorFormComponent },
                 ])
             ],
             declarations: [
+                instructor_list_component_1.InstructorListComponent,
+                instructor_form_component_1.InstructorFormComponent
+            ],
+            exports: [
                 instructor_list_component_1.InstructorListComponent,
                 instructor_form_component_1.InstructorFormComponent
             ],

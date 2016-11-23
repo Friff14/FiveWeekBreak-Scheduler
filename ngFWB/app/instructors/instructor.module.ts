@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { InstructorListComponent } from './instructor-list.component';
 import { InstructorFormComponent } from './instructor-form.component';
@@ -7,20 +8,30 @@ import { InstructorFormComponent } from './instructor-form.component';
 import { InstructorService } from './instructor.service';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-      { path: 'courses', component: InstructorListComponent },
+  imports: 
+  [
+      CommonModule,
+      RouterModule.forChild([
+        { path: 'instructorList', component: InstructorListComponent },
+        { path: 'instructorForm', component: InstructorFormComponent },
      // { path: 'product/:id',
       //  canActivate: [ ProductDetailGuard],
        // component: ProductDetailComponent
       //}
-    ])
+      ])
   ],
-  declarations: [
+  declarations: 
+  [
     InstructorListComponent,
     InstructorFormComponent
   ],
-  providers: [
+  exports: 
+  [ 
+      InstructorListComponent, 
+      InstructorFormComponent 
+  ],
+  providers: 
+  [
     InstructorService
   ]
 })

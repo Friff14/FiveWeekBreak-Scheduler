@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 var course_list_component_1 = require('./course-list.component');
 var course_form_component_1 = require('./course-form.component');
 var course_service_1 = require('./course.service');
@@ -19,6 +20,7 @@ var CourseModule = (function () {
     CourseModule = __decorate([
         core_1.NgModule({
             imports: [
+                common_1.CommonModule,
                 router_1.RouterModule.forChild([
                     { path: 'courseList', component: course_list_component_1.CourseListComponent },
                     // { path: 'product/:id',
@@ -31,6 +33,10 @@ var CourseModule = (function () {
                 ])
             ],
             declarations: [
+                course_list_component_1.CourseListComponent,
+                course_form_component_1.CourseFormComponent
+            ],
+            exports: [
                 course_list_component_1.CourseListComponent,
                 course_form_component_1.CourseFormComponent
             ],
