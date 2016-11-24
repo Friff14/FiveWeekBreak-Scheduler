@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+//import { FormsModule } from '@angular/form';
 var common_1 = require('@angular/common');
 var instructor_list_component_1 = require('./instructor-list.component');
 var instructor_form_component_1 = require('./instructor-form.component');

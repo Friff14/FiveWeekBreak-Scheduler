@@ -8,14 +8,14 @@ import { RouterModule } from '@angular/router';
 
 // The imports from the modules we have made.
 import { AppComponent } from './app.component';
-import { CourseModule } from './courses/course.module';
-import { InstructorModule } from './instructors/instructor.module';
-import { RoomModule } from './rooms/room.module';
+import { CourseModule } from './resources/courses/course.module';
+import { InstructorModule } from './resources/instructors/instructor.module';
+import { RoomModule } from './resources/rooms/room.module';
 
 // Home component
 import { HomeComponent } from './home/home.component';
 
-import { SectionFormComponent } from './sections/section-form.component';
+import { SectionFormComponent } from './resources/sections/section-form.component';
 
 // The NgModule decorator for metadata.
 @NgModule({

@@ -16,12 +16,12 @@ var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 // The imports from the modules we have made.
 var app_component_1 = require('./app.component');
-var course_module_1 = require('./courses/course.module');
-var instructor_module_1 = require('./instructors/instructor.module');
-var room_module_1 = require('./rooms/room.module');
+var course_module_1 = require('./resources/courses/course.module');
+var instructor_module_1 = require('./resources/instructors/instructor.module');
+var room_module_1 = require('./resources/rooms/room.module');
 // Home component
 var home_component_1 = require('./home/home.component');
-var section_form_component_1 = require('./sections/section-form.component');
+var section_form_component_1 = require('./resources/sections/section-form.component');
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
