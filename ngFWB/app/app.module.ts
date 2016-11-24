@@ -12,16 +12,10 @@ import { CourseModule } from './courses/course.module';
 import { InstructorModule } from './instructors/instructor.module';
 import { RoomModule } from './rooms/room.module';
 
-// Until modules connections are taken care of, use components for now.
+// Home component
 import { HomeComponent } from './home/home.component';
-//import { CourseListComponent } from './courses/course-list.component';
-//import { CourseFormComponent } from './courses/course-form.component';
-//import { RoomFormComponent } from './rooms/room-form.component';
-//import { RoomListComponent } from './rooms/room-list.component';
-//import { InstructorListComponent } from './instructors/instructor-list.component';
 
 import { SectionFormComponent } from './sections/section-form.component';
-//import { CourseService } from './courses/course.service';
 
 // The NgModule decorator for metadata.
 @NgModule({
@@ -29,25 +23,18 @@ import { SectionFormComponent } from './sections/section-form.component';
                 HttpModule, 
                RouterModule.forRoot([
                 { path: 'home', component: HomeComponent },
-                //{ path: 'instructorList', component: InstructorListComponent },
-                //{ path: 'roomList', component: RoomListComponent },
-                { path: 'sectionForm', component: SectionFormComponent },
-                //{ path: 'addCourse', component: CourseFormComponent },                
+                { path: 'sectionForm', component: SectionFormComponent },             
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]), 
-                CourseModule
+                CourseModule,
+                InstructorModule,
+                RoomModule
                  ],
     declarations: [ AppComponent, 
                     HomeComponent,
-                    //CourseListComponent,
-                    //InstructorListComponent,
-                   // CourseFormComponent,
                     SectionFormComponent,
-                    //RoomFormComponent,
-                    //RoomListComponent
                       ],
-    bootstrap: [ AppComponent ],
-    //providers: [ CourseService ]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

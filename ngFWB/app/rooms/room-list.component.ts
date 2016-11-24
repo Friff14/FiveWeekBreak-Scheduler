@@ -8,4 +8,5 @@ import { IRoom } from './room';
 })
 export class RoomListComponent {
     rooms: IRoom[];
+    pageTitle: string = 'Room List';
 }

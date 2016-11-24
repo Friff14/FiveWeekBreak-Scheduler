@@ -23,7 +23,7 @@ var InstructorModule = (function () {
                 common_1.CommonModule,
                 router_1.RouterModule.forChild([
                     { path: 'instructorList', component: instructor_list_component_1.InstructorListComponent },
-                    { path: 'instructorForm', component: instructor_form_component_1.InstructorFormComponent },
+                    { path: 'instructorForm', component: instructor_form_component_1.InstructorFormComponent }
                 ])
             ],
             declarations: [

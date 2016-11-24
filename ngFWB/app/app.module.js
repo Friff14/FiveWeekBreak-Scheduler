@@ -17,15 +17,11 @@ var router_1 = require('@angular/router');
 // The imports from the modules we have made.
 var app_component_1 = require('./app.component');
 var course_module_1 = require('./courses/course.module');
-// Until modules connections are taken care of, use components for now.
+var instructor_module_1 = require('./instructors/instructor.module');
+var room_module_1 = require('./rooms/room.module');
+// Home component
 var home_component_1 = require('./home/home.component');
-//import { CourseListComponent } from './courses/course-list.component';
-//import { CourseFormComponent } from './courses/course-form.component';
-//import { RoomFormComponent } from './rooms/room-form.component';
-//import { RoomListComponent } from './rooms/room-list.component';
-//import { InstructorListComponent } from './instructors/instructor-list.component';
 var section_form_component_1 = require('./sections/section-form.component');
-//import { CourseService } from './courses/course.service';
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
@@ -36,23 +32,19 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
                     { path: 'home', component: home_component_1.HomeComponent },
-                    //{ path: 'instructorList', component: InstructorListComponent },
-                    //{ path: 'roomList', component: RoomListComponent },
                     { path: 'sectionForm', component: section_form_component_1.SectionFormComponent },
-                    //{ path: 'addCourse', component: CourseFormComponent },                
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
                     { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]),
-                course_module_1.CourseModule
+                course_module_1.CourseModule,
+                instructor_module_1.InstructorModule,
+                room_module_1.RoomModule
             ],
             declarations: [app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                //CourseListComponent,
-                //InstructorListComponent,
-                // CourseFormComponent,
                 section_form_component_1.SectionFormComponent,
             ],
-            bootstrap: [app_component_1.AppComponent],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

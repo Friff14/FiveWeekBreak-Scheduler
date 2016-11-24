@@ -8,4 +8,5 @@ import { IInstructor } from './instructor';
 })
 export class InstructorListComponent {
     instructors: IInstructor[];
+    pageTitle: string = 'Instructor List';
 }

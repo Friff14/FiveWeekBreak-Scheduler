@@ -13,7 +13,7 @@ import { InstructorService } from './instructor.service';
       CommonModule,
       RouterModule.forChild([
         { path: 'instructorList', component: InstructorListComponent },
-        { path: 'instructorForm', component: InstructorFormComponent },
+        { path: 'instructorForm', component: InstructorFormComponent }
      // { path: 'product/:id',
       //  canActivate: [ ProductDetailGuard],
        // component: ProductDetailComponent
