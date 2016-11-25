@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
-//import { FormsModule } from '@angular/form';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { InstructorListComponent } from './instructor-list.component';
@@ -9,9 +9,10 @@ import { InstructorFormComponent } from './instructor-form.component';
 import { InstructorService } from './instructor.service';
 
 @NgModule({
-  imports: 
+  imports:
   [
     CommonModule,
+    FormsModule,
     RouterModule.forChild([
       { path: 'instructorList', component: InstructorListComponent },
       { path: 'instructorForm', component: InstructorFormComponent }

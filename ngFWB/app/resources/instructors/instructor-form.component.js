@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var InstructorFormComponent = (function () {
     function InstructorFormComponent() {
         this.pageTitle = 'Add Instructor';
+        this.testItems = ['testItem1', 'testItem2', 'testItem3'];
     }
     InstructorFormComponent = __decorate([
         core_1.Component({

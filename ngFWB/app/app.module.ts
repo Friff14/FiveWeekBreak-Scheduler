@@ -23,7 +23,8 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
 @NgModule({
     imports: 
     [ 
-        BrowserModule, 
+        BrowserModule,
+        FormsModule,
         HttpModule, 
         RouterModule.forRoot([
             { path: 'home', component: HomeComponent },           
