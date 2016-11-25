@@ -3,6 +3,7 @@
     <p>This page will show the current list of instructors as well as links for
         adding, editing, or removing instructors.
         </p>
+<!--
 <table border='1'>
     <tr>
         <th>Instructor ID</th>
@@ -20,8 +21,38 @@
         </tr>
     </tbody>
 </table>
-    <li><a [routerLink]="['/instructorForm']">Add Instructor</a></li>
+
     <li><a [routerLink]="['/edit']">Edit Instructor</a></li>
     <li><a [routerLink]="['/remove']">Remove Instructor</a></li>
-
+-->
+    <p>Note: The following is only sample data to show off the buttons and routing, and will be erased once actual data is inserted</p>
+    <ul class="list">
+        <!-- Some sample data -->
+        <li>
+            <div class="instructorItem">Spencer Hilton
+                <span class="buttons">
+                    <a [routerLink]="['/instructorForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+        <li>
+            <div class="instructorItem">Hugo Valle
+                <span class="buttons">
+                    <a [routerLink]="['/instructorForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+        <!-- End sample data -->
+        <li *ngFor='let instructor of instructors'> <!-- *ngFor for the element to be repeated?-->
+            <div class="instructorItem">{{ instructor.instructor_name }}
+                <span class="buttons">
+                    <a [routerLink]="['/instructorForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+    </ul>
+        <li><a [routerLink]="['/instructorForm']">Add Instructor</a></li>
 </div>
