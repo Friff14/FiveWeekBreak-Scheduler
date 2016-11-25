@@ -2,60 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c022080-7b94-405a-9d3f-807d7cafe0ee" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ngFWB/app/resources/prefix/prefix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ngFWB/app/resources/prefix/prefix.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ngFWB/app/resources/prefix/prefix.ts" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/app.component.css" afterPath="$PROJECT_DIR$/ngFWB/app/app.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/app.module.js" afterPath="$PROJECT_DIR$/ngFWB/app/app.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/app.module.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/app.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/app.module.ts" afterPath="$PROJECT_DIR$/ngFWB/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course-form.component.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course-form.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course-list.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course-list.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/courses/course.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-form.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-list.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor-list.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.module.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.module.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/instructors/instructor.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-form.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-list.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room-list.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/rooms/room.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-form.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section-list.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.js" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.js.map" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.ts" afterPath="$PROJECT_DIR$/ngFWB/app/resources/sections/section.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngFWB/app/app.component.html" afterPath="$PROJECT_DIR$/ngFWB/app/app.component.html" />
     </list>
     <ignored path="FiveWeekBreak-Scheduler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +16,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/FiveWeekBreak-Scheduler$unit_test.coverage" NAME="unit_test Coverage Results" MODIFIED="1480026248440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
-    <SUITE FILE_PATH="coverage/FiveWeekBreak-Scheduler$route.coverage" NAME="route Coverage Results" MODIFIED="1480027174262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
+    <SUITE FILE_PATH="coverage/FiveWeekBreak-Scheduler$route.coverage" NAME="route Coverage Results" MODIFIED="1480044973572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -80,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ngFWB/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            <state relative-caret-position="462">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -126,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="route.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="route.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/route.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+            <state relative-caret-position="330">
+              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -293,7 +240,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.unit_test">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="route" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -548,9 +495,9 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.route" />
-        <item index="1" class="java.lang.String" itemvalue="Python.unit_test" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+        <item index="1" class="java.lang.String" itemvalue="Python.route" />
+        <item index="2" class="java.lang.String" itemvalue="Python.unit_test" />
       </list>
     </recent_temporary>
   </component>
@@ -723,21 +670,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/route.py">
+    <entry file="file://$PROJECT_DIR$/ngFWB/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="462">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ngFWB/index.html">
+    <entry file="file://$PROJECT_DIR$/data/route.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="330">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
