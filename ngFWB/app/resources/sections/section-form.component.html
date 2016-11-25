@@ -1,4 +1,38 @@
 <div>
-    <h1>THIS IS WHERE ADDING SECTIONS OR WHATEVER
-        APPEARS HERE</h1>
-    </div>
+    <h3>{{pageTitle}}</h3>
+    <form>
+        <div class="form-group">
+            <label>Prefix</label>
+            <select>
+                <option>Just to see at least one option</option>
+                <option *ngFor='let prefix of prefixes'>
+                    {{ prefix.prefix_name }}
+                </option>
+            </select>
+            <br/>
+            <label>Course</label>
+            <select>
+                <option>Just to see at least one option</option>
+                <option *ngFor='let building of buildings'>
+                    {{ course.course_name }}
+                </option>
+            </select>
+                        <br/>
+            <label>Instructor</label>
+            <select>
+                <option>Just to see at least one option</option>
+                <option *ngFor='let instructor of instructors'>
+                    {{ instructor.instructor_name }}
+                </option>
+            </select>
+                            <br/>
+            <label>Capacity</label>
+                <input type="text" class="form-control" required placeholder="#####"/>
+                            <br/>
+            <label>Features</label>
+                        <br/>
+            <button type="reset">Cancel</button>
+            <button type="submit">Accept</button>
+        </div>
+    </form>
+ </div>

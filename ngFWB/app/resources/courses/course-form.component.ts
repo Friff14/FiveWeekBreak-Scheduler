@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 
-import { IPrefix } from '../prefix/prefix';
+import { IPrefix } from '../prefixes/prefix';
 
 @Component({
     moduleId: module.id,

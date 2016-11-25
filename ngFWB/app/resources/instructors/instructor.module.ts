@@ -11,15 +11,15 @@ import { InstructorService } from './instructor.service';
 @NgModule({
   imports: 
   [
-      CommonModule,
-      RouterModule.forChild([
-        { path: 'instructorList', component: InstructorListComponent },
-        { path: 'instructorForm', component: InstructorFormComponent }
-     // { path: 'product/:id',
-      //  canActivate: [ ProductDetailGuard],
-       // component: ProductDetailComponent
-      //}
-      ])
+    CommonModule,
+    RouterModule.forChild([
+      { path: 'instructorList', component: InstructorListComponent },
+      { path: 'instructorForm', component: InstructorFormComponent }
+    // { path: 'product/:id',
+    //  canActivate: [ ProductDetailGuard],
+      // component: ProductDetailComponent
+    //}
+    ])
   ],
   declarations: 
   [
@@ -28,8 +28,8 @@ import { InstructorService } from './instructor.service';
   ],
   exports: 
   [ 
-      InstructorListComponent, 
-      InstructorFormComponent 
+    InstructorListComponent, 
+    InstructorFormComponent 
   ],
   providers: 
   [

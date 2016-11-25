@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 // The imports from the modules we have made.
 import { AppComponent } from './app.component';
 import { CourseModule } from './resources/courses/course.module';
 import { InstructorModule } from './resources/instructors/instructor.module';
 import { RoomModule } from './resources/rooms/room.module';
+import { SectionModule } from './resources/sections/section.module';
 
 // Home component
 import { HomeComponent } from './home/home.component';
@@ -19,22 +21,35 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
 
 // The NgModule decorator for metadata.
 @NgModule({
-    imports: [ BrowserModule, 
-                HttpModule, 
-               RouterModule.forRoot([
-                { path: 'home', component: HomeComponent },
-                { path: 'sectionForm', component: SectionFormComponent },             
-                { path: '', redirectTo: 'home', pathMatch: 'full' },
-                { path: '**', redirectTo: 'home', pathMatch: 'full' }
-                ]), 
-                CourseModule,
-                InstructorModule,
-                RoomModule
-                 ],
-    declarations: [ AppComponent, 
-                    HomeComponent,
-                    SectionFormComponent,
-                      ],
-    bootstrap: [ AppComponent ]
+    imports: 
+    [ 
+        BrowserModule, 
+        HttpModule, 
+        RouterModule.forRoot([
+            { path: 'home', component: HomeComponent },           
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '**', redirectTo: 'home', pathMatch: 'full' }
+        ]), 
+        CourseModule,
+        InstructorModule,
+        RoomModule,
+        SectionModule
+    ],
+    declarations: 
+    [
+         AppComponent, 
+         HomeComponent,
+    ],
+    providers:
+    [
+        {
+            provide: LocationStrategy, 
+            useClass: HashLocationStrategy
+        }
+    ],
+    bootstrap: 
+    [ 
+        AppComponent 
+    ]
 })
 export class AppModule { }

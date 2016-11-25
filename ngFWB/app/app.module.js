@@ -14,37 +14,47 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 // The imports from the modules we have made.
 var app_component_1 = require('./app.component');
 var course_module_1 = require('./resources/courses/course.module');
 var instructor_module_1 = require('./resources/instructors/instructor.module');
 var room_module_1 = require('./resources/rooms/room.module');
+var section_module_1 = require('./resources/sections/section.module');
 // Home component
 var home_component_1 = require('./home/home.component');
-var section_form_component_1 = require('./resources/sections/section-form.component');
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule,
+            imports: [
+                platform_browser_1.BrowserModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
                     { path: 'home', component: home_component_1.HomeComponent },
-                    { path: 'sectionForm', component: section_form_component_1.SectionFormComponent },
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
                     { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]),
                 course_module_1.CourseModule,
                 instructor_module_1.InstructorModule,
-                room_module_1.RoomModule
+                room_module_1.RoomModule,
+                section_module_1.SectionModule
             ],
-            declarations: [app_component_1.AppComponent,
+            declarations: [
+                app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                section_form_component_1.SectionFormComponent,
             ],
-            bootstrap: [app_component_1.AppComponent]
+            providers: [
+                {
+                    provide: common_1.LocationStrategy,
+                    useClass: common_1.HashLocationStrategy
+                }
+            ],
+            bootstrap: [
+                app_component_1.AppComponent
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

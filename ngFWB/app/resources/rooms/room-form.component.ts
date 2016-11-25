@@ -7,6 +7,6 @@ import { IRoom } from './room';
     templateUrl: 'room-form.component.html'
 })
 export class RoomFormComponent {
-
+    pageTitle: string = 'Add Form';
     
 }

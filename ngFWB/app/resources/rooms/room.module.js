@@ -28,7 +28,7 @@ var RoomModule = (function () {
             ],
             declarations: [
                 room_list_component_1.RoomListComponent,
-                room_form_component_1.RoomFormComponent
+                room_form_component_1.RoomFormComponent,
             ],
             exports: [
                 room_list_component_1.RoomListComponent,

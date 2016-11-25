@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RoomListComponent } from './room-list.component';
 import { RoomFormComponent } from './room-form.component';
 
+
 import { RoomService } from './room.service';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { RoomService } from './room.service';
       RouterModule.forChild([
           { path: 'roomList', component: RoomListComponent },
           { path: 'roomForm', component: RoomFormComponent },
+          
         // { path: 'product/:id',
         //  canActivate: [ ProductDetailGuard],
         // component: ProductDetailComponent
@@ -23,7 +25,7 @@ import { RoomService } from './room.service';
   declarations: 
   [
     RoomListComponent,
-    RoomFormComponent
+    RoomFormComponent,
   ],
   exports:
   [

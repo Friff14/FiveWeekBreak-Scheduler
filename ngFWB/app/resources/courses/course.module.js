@@ -27,7 +27,7 @@ var CourseModule = (function () {
                     //  canActivate: [ ProductDetailGuard],
                     // component: ProductDetailComponent
                     //}
-                    { path: 'addCourse', component: course_form_component_1.CourseFormComponent },
+                    { path: 'courseForm', component: course_form_component_1.CourseFormComponent },
                     { path: 'editCourse', component: course_form_component_1.CourseFormComponent },
                     { path: 'removeCourse', component: course_list_component_1.CourseListComponent }
                 ])

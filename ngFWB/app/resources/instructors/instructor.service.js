@@ -17,7 +17,7 @@ require('rxjs/add/operator/map');
 var InstructorService = (function () {
     function InstructorService(_http) {
         this._http = _http;
-        this._instructorUrl = 'http://localhost:8000/course/1';
+        this._instructorUrl = 'http://localhost:8000/instructor/';
     }
     InstructorService.prototype.getInstructors = function () {
         return this._http.get(this._instructorUrl)

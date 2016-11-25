@@ -10,3 +10,11 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.buttons {
+    visibility: hidden;
+}
+
+.courseItem:hover .buttons {
+    visibility: visible;
+}

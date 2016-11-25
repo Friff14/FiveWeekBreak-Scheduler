@@ -17,7 +17,7 @@ require('rxjs/add/operator/map');
 var RoomService = (function () {
     function RoomService(_http) {
         this._http = _http;
-        this._roomUrl = 'http://localhost:8000/course/1';
+        this._roomUrl = 'http://localhost:8000/room/';
     }
     RoomService.prototype.getRooms = function () {
         return this._http.get(this._roomUrl)
@@ -25,7 +25,7 @@ var RoomService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    RoomService.prototype.getInstructor = function (id) {
+    RoomService.prototype.getRoom = function (id) {
         return this.getRooms()
             .map(function (rooms) { return rooms.find(function (i) { return i.room_id === id; }); });
     };

@@ -10,7 +10,7 @@ import { IInstructor } from './instructor';
 
 @Injectable()
 export class InstructorService {
-    private _instructorUrl = 'http://localhost:8000/course/1';
+    private _instructorUrl = 'http://localhost:8000/instructor/';
 
     constructor(private _http: Http) { }
 

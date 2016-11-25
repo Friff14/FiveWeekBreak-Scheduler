@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: 'instructor-form.component.html'
 })
 export class InstructorFormComponent {
-    
+    pageTitle: string = 'Add Instructor';
 }

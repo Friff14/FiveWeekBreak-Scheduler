@@ -1,3 +1,33 @@
 <div>
-    THIS IS THE ROOM LIST COMPONENT TEMPlATE
-    </div>
+    <h3>{{pageTitle}}</h3>
+    <form>
+        <div class="form-group">
+            <label>Campus</label>
+            <select>
+                <option>Just to see at least one option</option>
+                <option *ngFor='let campus of campuses'>
+                    {{ campus.campus_name }}
+                </option>
+            </select>
+            <br/>
+            <label>Building</label>
+            <select>
+                <option>Just to see at least one option</option>
+                <option *ngFor='let building of buildings'>
+                    {{ building.building_name }}
+                </option>
+            </select>
+                        <br/>
+            <label>Room #</label>
+                <input type="text" class="form-control" required placeholder="#####"/>
+                            <br/>
+            <label>Capacity</label>
+                <input type="text" class="form-control" required placeholder="#####"/>
+                            <br/>
+            <label>Features</label>
+                        <br/>
+            <button type="reset">Cancel</button>
+            <button type="submit">Accept</button>
+        </div>
+    </form>
+ </div>

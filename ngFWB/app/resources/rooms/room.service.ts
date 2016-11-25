@@ -10,7 +10,7 @@ import { IRoom } from './room';
 
 @Injectable()
 export class RoomService {
-    private _roomUrl = 'http://localhost:8000/course/1';
+    private _roomUrl = 'http://localhost:8000/room/';
 
     constructor(private _http: Http) { }
 
@@ -21,7 +21,7 @@ export class RoomService {
             .catch(this.handleError);
     }
 
-    getInstructor(id: number): Observable<IRoom> {
+    getRoom(id: number): Observable<IRoom> {
         return this.getRooms()
             .map((rooms: IRoom[]) => rooms.find(i => i.room_id === id));
     }

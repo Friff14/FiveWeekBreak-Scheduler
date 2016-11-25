@@ -17,7 +17,7 @@ import { CourseService } from './course.service';
       //  canActivate: [ ProductDetailGuard],
        // component: ProductDetailComponent
       //}
-      { path: 'addCourse', component: CourseFormComponent },
+      { path: 'courseForm', component: CourseFormComponent },
       { path: 'editCourse', component: CourseFormComponent },
       { path: 'removeCourse', component: CourseListComponent }
     ])

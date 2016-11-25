@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: 'section-form.component.html'
 })
 export class SectionFormComponent {
-    
+    pageTitle: string = 'Add Section';
 }
