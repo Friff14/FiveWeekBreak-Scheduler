@@ -1,0 +1,59 @@
+<div>
+        <h1>{{pageTitle}}</h1>
+    <p>This page will show the current list of courses as well as links for
+        adding, editing, or removing courses.
+        </p>
+        <!--
+<table border='1'>
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Desc</th>
+        <th>Credit Hours</th>
+        <th>Prefix ID</th>
+    </tr>
+    <tbody>
+        <tr *ngFor='let course of courses'>
+            <td>{{ course.course_id }}</td>
+            <td>{{ course.course_name }}</td>
+            <td>{{ course.course_description }}</td>
+            <td>{{ course.course_credit_hours }}</td>
+            <td>{{ course.prefix_id }}</td>
+        </tr>
+    </tbody>
+</table> -->
+    <p>Note: The following is only sample data to show off the buttons and routing, and will be erased once actual data is inserted</p>
+    <ul class="list">
+        <!-- Some sample data -->
+        <li>
+            <div class="courseItem">Advanced Internet Programming
+                <span class="buttons">
+                    <a [routerLink]="['/courseForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+        <li>
+            <div class="courseItem">Adv. Software Engineering Methods
+                <span class="buttons">
+                    <a [routerLink]="['/courseForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+        <!-- End sample data -->
+        <li *ngFor='let course of courses'> <!-- *ngFor for the element to be repeated?-->
+            <div class="courseItem">{{ course.course_name }}
+                <span class="buttons">
+                    <a [routerLink]="['/courseForm']">Edit</a>
+                    <a href="#">Remove</a>
+                </span>
+            </div>
+        </li>
+    </ul>
+
+    <li><a [routerLink]="['/addCourse']">Add Course</a></li>
+    <li><a [routerLink]="['/editCourse']">Edit Course</a></li>
+    <li><a [routerLink]="['/removeCourse']">Remove Course</a></li>
+
+</div>
