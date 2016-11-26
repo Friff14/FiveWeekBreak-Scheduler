@@ -14,6 +14,7 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/do');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
+require('rxjs/Rx');
 var InstructorService = (function () {
     function InstructorService(_http) {
         this._http = _http;
@@ -29,10 +30,23 @@ var InstructorService = (function () {
         return this.getInstructors()
             .map(function (instructors) { return instructors.find(function (i) { return i.instructor_id === id; }); });
     };
+    InstructorService.prototype.postInstructorForm = function (instructor) {
+        console.log('posting instructor: ', instructor);
+        var body = JSON.stringify(instructor);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(this._instructorUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    InstructorService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.fields || {};
+    };
     InstructorService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
-        console.error(error);
+        console.error('post error: ', error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     InstructorService = __decorate([
