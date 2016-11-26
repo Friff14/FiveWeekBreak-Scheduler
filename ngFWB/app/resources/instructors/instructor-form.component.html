@@ -1,15 +1,16 @@
 <div>
     <h3>{{pageTitle}}</h3>
-    <form #form="ngForm" novalidate>
+
+    <form #form="ngForm" (submit)='submitForm(form)'>
         <div class="form-group">
             <label>First Name</label>
-                <input type="text" class="form-control" required placeholder="First Name" name="firstName" ngModel/>
+                <input type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]="model.firstName"/>
                 <br/>
             <label>Last Name</label>
-                <input type="text" class="form-control" required placeholder="Last Name" name="lastName" ngModel/>
+                <input type="text" class="form-control" required placeholder="Last Name" name="lastName" [(ngModel)]="model.lastName"/>
                 <br/>
             <label>Hours Required</label>
-                <input type="text" class="form-control" required placeholder="##" name="hoursRequired" ngModel/>
+                <input type="text" class="form-control" required placeholder="##" name="hoursRequired" [(ngModel)]="model.hoursRequired"/>
                 <br/>
             <label>Release Hours</label>
                 <br/>
@@ -18,10 +19,10 @@
             <label>Notes</label>
                 <br/>
 
-            <!-- Testing input types from Angular Forms tutorial -->
+            <!-- Testing input types from Angular Forms tutorial
             <div class ="checkbox">
                 <label>
-                    <input type="checkbox" name="test-checkbox" ngModel> Test Checkbox
+                    <input type="checkbox" name="test-checkbox" [(ngModel)]="model.checkboxTest"> Test Checkbox
                 </label>
             </div>
 
@@ -39,12 +40,14 @@
 
             <div class="form-group">
                 <label>Select Test</label>
-                <select class="form-control">
+                <select class="form-control"
+                    name="selectTest"
+                [(ngModel)]="model.primaryLanguage">
                     <option *ngFor="let testItem of testItems">
                         {{ testItem }}
                     </option>
                 </select>
-            </div>
+            </div>-->
 
 
 
@@ -54,6 +57,8 @@
         </div>
     </form>
 
-    Form.pristine: {{ form.pristine }}
+    Model: {{ model | json }}
+    <br>
+    Angular: {{ form.value | json }}
 
  </div>

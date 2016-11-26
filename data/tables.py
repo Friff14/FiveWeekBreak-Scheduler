@@ -38,7 +38,8 @@ def row2dict(row):
 class Instructor(Base):
     __tablename__ = 'instructor'
     instructor_id = Column(Integer, primary_key=True)
-    instructor_name = Column(String(255), nullable=False)
+    instructor_first_name = Column(String(255), nullable=False)
+    instructor_last_name = Column(String(255), nullable=False)
     instructor_hours_required = Column(Float)
     instructor_notes = Column(String(255))
     release = relationship('Release', back_populates='instructor')
