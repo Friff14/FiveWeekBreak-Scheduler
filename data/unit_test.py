@@ -61,7 +61,8 @@ def http_test():
 
     # instructor
     data = {
-        "instructor_name": "TEST INSTRUCTOR",
+        "instructor_first_name": "TEST",
+        "instructor_last_name": "INSTRUCTOR",
         "instructor_hours_required": 12,
         "instructor_notes": "my name is doug i have just met you and i love you"
     }

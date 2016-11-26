@@ -143,7 +143,8 @@ class Course(Base):
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
-            returned_data['prefix'] = self.prefix.to_data(top_level=False)
+            if self.prefix:
+                returned_data['prefix'] = self.prefix.to_data(top_level=False)
             returned_data['sections'] = []
             for section in self.sections:
                 returned_data['sections'].append(section.to_data(top_level=False))
@@ -166,9 +167,9 @@ class Building(Base):
             returned_data['rooms'] = []
             for room in self.rooms:
                 returned_data['rooms'].append(room.to_data(top_level=False))
-            returned_data['campus'] = self.campus.to_data(top_level=False)
+            if self.campus:
+                returned_data['campus'] = self.campus.to_data(top_level=False)
         return returned_data
-
 
     def get_full_room_name(self):
         pass
