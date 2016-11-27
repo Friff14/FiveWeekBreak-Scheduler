@@ -1,3 +1,6 @@
+/**
+ * Created by adsal on 11/26/2016.
+ */
 import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
@@ -7,35 +10,35 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { IInstructor } from './instructor';
-import {Instructor} from "./instructor.model";
+import { ICampus } from './campus';
+import { Campus } from "./campus.model";
 
 @Injectable()
-export class InstructorService {
-    private _instructorUrl = 'http://localhost:8000/instructor/';
+export class CampusService {
+    private _campusUrl = 'http://localhost:8000/campus/';
 
     constructor(private _http: Http) { }
 
-    getInstructors(): Observable<IInstructor[]> {
-        return this._http.get(this._instructorUrl)
-            .map((response: Response) => <IInstructor[]> response.json())
+    getCampuses(): Observable<ICampus[]> {
+        return this._http.get(this._campusUrl)
+            .map((response: Response) => <ICampus[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getInstructor(id: number): Observable<IInstructor> {
-        return this.getInstructors()
-            .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
-    }
+    // getInstructor(id: number): Observable<IInstructor> {
+    //     return this.getInstructors()
+    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
+    // }
 
-    postInstructorForm(instructor: Instructor): Observable<any> {
-        console.log('posting instructor: ', instructor);
+    postCampusForm(campus: Campus): Observable<any> {
+        console.log('posting campus: ', campus);
 
-        let body = JSON.stringify(instructor);
+        let body = JSON.stringify(campus);
         let headers = new Headers({ 'Content-type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-        return this._http.post(this._instructorUrl, body, options)
+        return this._http.post(this._campusUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

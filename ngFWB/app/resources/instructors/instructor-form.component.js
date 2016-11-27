@@ -16,12 +16,12 @@ var InstructorFormComponent = (function () {
         this.instructorService = instructorService;
         this.pageTitle = 'Add Instructor';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
-        this.model = new instructor_model_1.Instructor('Spencer', 'Hilton', 12);
+        this.model = new instructor_model_1.Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
     }
     InstructorFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
         this.instructorService.postInstructorForm(this.model)
-            .subscribe(function (data) { return console.log('succes: ', data); }, function (err) { return console.log('error: ', err); });
+            .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
     };
     InstructorFormComponent.prototype.testFunction = function (param) {
         return 'testFunction worked';

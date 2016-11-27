@@ -28,7 +28,8 @@ def http_test():
 
     # campus
     data = {
-        "campus_name": "Tanner's House"
+        "campus_name": "Tanner's House",
+        "campus_address": "123 Main st."
     }
     r = requests.post(
         'http://localhost:8000/campus',

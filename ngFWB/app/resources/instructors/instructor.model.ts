@@ -3,9 +3,10 @@
  */
 export class Instructor {
     constructor(
-        public firstName: string,
-        public lastName: string,
-        public hoursRequired: number,
+        public instructor_first_name: string,
+        public instructor_last_name: string,
+        public instructor_hours_required: number,
+        public instructor_notes: string
         //public checkboxTest: boolean,
         //public primaryLanguage: string
     ){

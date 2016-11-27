@@ -11,7 +11,7 @@ import {InstructorService} from "./instructor.service";
 export class InstructorFormComponent {
     pageTitle: string = 'Add Instructor';
     testItems = ['testItem1', 'testItem2', 'testItem3'];
-    model = new Instructor('Spencer', 'Hilton', 12);
+    model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
 
     constructor(private instructorService: InstructorService) {
     }
@@ -20,7 +20,7 @@ export class InstructorFormComponent {
         console.log(this.model);
         this.instructorService.postInstructorForm(this.model)
             .subscribe(
-                data => console.log('succes: ', data),
+                data => console.log('success: ', data),
                 err => console.log('error: ', err)
             )
     }
