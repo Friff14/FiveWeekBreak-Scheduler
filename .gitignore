@@ -1,0 +1,5 @@
+# That darn .idea/ folder
+.idea/
+
+# That darn schedule.db
+data/schedule.db

@@ -14,6 +14,7 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/do');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
+require('rxjs/Rx');
 var RoomService = (function () {
     function RoomService(_http) {
         this._http = _http;
@@ -25,10 +26,23 @@ var RoomService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    RoomService.prototype.getRoom = function (id) {
-        return this.getRooms()
-            .map(function (rooms) { return rooms.find(function (i) { return i.room_id === id; }); });
+    RoomService.prototype.postRoomForm = function (room) {
+        console.log('posting room: ', room);
+        var body = JSON.stringify(room);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(this._roomUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
+    RoomService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.fields || {};
+    };
+    // getRoom(id: number): Observable<IRoom> {
+    //     return this.getRooms()
+    //         .map((rooms: IRoom[]) => rooms.find(i => i.room_id === id));
+    // }
     RoomService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
