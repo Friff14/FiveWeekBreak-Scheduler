@@ -3,7 +3,7 @@
  */
 export class Prefix {
     constructor(
-        public prfefix_name: string
+        public prefix_name: string
     ){
 
     }

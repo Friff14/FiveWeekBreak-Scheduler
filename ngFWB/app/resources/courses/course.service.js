@@ -14,10 +14,11 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/do');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
+require('rxjs/Rx');
 var CourseService = (function () {
     function CourseService(_http) {
         this._http = _http;
-        this._courseUrl = 'http://localhost:8000/course/1';
+        this._courseUrl = 'http://localhost:8000/course/';
     }
     CourseService.prototype.getCourses = function () {
         return this._http.get(this._courseUrl)
@@ -27,12 +28,25 @@ var CourseService = (function () {
     };
     CourseService.prototype.getCourse = function (id) {
         return this.getCourses()
-            .map(function (courses) { return courses.find(function (c) { return c.course_id === id; }); });
+            .map(function (courses) { return courses.find(function (i) { return i.course_id === id; }); });
+    };
+    CourseService.prototype.postCourseForm = function (course) {
+        console.log('posting course: ', course);
+        var body = JSON.stringify(course);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(this._courseUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    CourseService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.fields || {};
     };
     CourseService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
-        console.error(error);
+        console.error('post error: ', error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     CourseService = __decorate([
