@@ -44,13 +44,24 @@ class BuildingController(object):
 
         return inserted_building.to_data()
 
-    def get(self, data):
+    def get(self, data, req):
         session = DBSession()
-        x = session.query(Building).filter(Building.building_id == data['building_id']).first()
-        if x:
-            return x.to_data()
+        if data['building_id']:
+            x = session.query(Building).filter(Building.building_id == data['building_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; building does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; building does not exist.'}
+            buildings = session.query(Building)
+            if 'campus' in req.params:
+                buildings = buildings.filter_by(campus_id=req.params['campus'])
+                print(buildings)
+            data = []
+            for building in buildings:
+                data.append(building.to_data())
+                print(building.campus_id)
+            return data
 
     def delete(self, data):
         session = DBSession()
@@ -60,9 +71,9 @@ class BuildingController(object):
         else:
             return {"error": 'Cannot delete; building does not exist.'}
 
-    def on_get(self, req, resp, building_id):
+    def on_get(self, req, resp, building_id=None):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"building_id": building_id}))
+        resp.body = json.dumps(self.get({"building_id": building_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

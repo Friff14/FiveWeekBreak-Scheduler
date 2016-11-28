@@ -45,23 +45,21 @@ class CourseController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data:
-            x = session.query(Course).filter(Course.course_id == data['course_id']).first()
-            if x:
-                return x.to_data()
+        if data['course_id']:
+            courses = session.query(Course).filter(Course.course_id == data['course_id']).first()
+            if courses:
+                return courses.to_data()
             else:
                 return {"error": 'Cannot retrieve; course does not exist.'}
         else:
-
-            x = session.query(Course)
+            courses = session.query(Course)
             if 'prefix' in req.params:
-                x.filter(Course.prefix_id.in_(req.params['prefix']))
+                courses = courses.filter(Course.prefix_id.in_(req.params['prefix']))
+            data = []
+            for course in courses:
+                data.append(course.to_data())
 
-            ret = []
-            for course in x:
-                ret.append(course.to_data())
-
-            return ret
+            return data
 
     def delete(self, data):
         session = DBSession()
