@@ -34,13 +34,21 @@ class SemesterController(object):
 
         return inserted_semester
 
-    def get(self, data):
+    def get(self, data, req):
+
         session = DBSession()
-        x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
-        if x:
-            return x.to_data()
+        if data['semester_id']:
+            x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; semester does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; semester does not exist.'}
+            semesters = session.query(Semester)
+            data = []
+            for semester in semesters:
+                data.append(semester.to_data())
+            return data
 
     def delete(self, data):
         session = DBSession()
@@ -52,7 +60,7 @@ class SemesterController(object):
 
     def on_get(self, req, resp, semester_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"semester_id": semester_id}))
+        resp.body = json.dumps(self.get({"semester_id": semester_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

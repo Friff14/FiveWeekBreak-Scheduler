@@ -69,6 +69,7 @@ class FeatureController(object):
         else:
             features = session.query(Feature)
             data = []
+
             for feature in features:
                 data.append(feature.to_data())
             return data

@@ -36,13 +36,20 @@ class ReleaseController(object):
 
         return inserted_release
 
-    def get(self, data):
+    def get(self, data, req):
         session = DBSession()
-        x = session.query(Release).filter(Release.release_id == data['release_id']).first()
-        if x:
-            return x.to_data()
+        if data['release_id']:
+            x = session.query(Release).filter(Release.release_id == data['release_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
-            return {"error": 'Hey, man, that\'s a bad burrito'}
+            releases = session.query(Release)
+            data = []
+            for release in releases:
+                data.append(release.to_data())
+            return data
 
     def delete(self, data):
         session = DBSession()
@@ -54,7 +61,7 @@ class ReleaseController(object):
 
     def on_get(self, req, resp, release_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"release_id": release_id}))
+        resp.body = json.dumps(self.get({"release_id": release_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

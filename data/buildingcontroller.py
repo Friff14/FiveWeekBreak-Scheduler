@@ -56,11 +56,9 @@ class BuildingController(object):
             buildings = session.query(Building)
             if 'campus' in req.params:
                 buildings = buildings.filter_by(campus_id=req.params['campus'])
-                print(buildings)
             data = []
             for building in buildings:
                 data.append(building.to_data())
-                print(building.campus_id)
             return data
 
     def delete(self, data):

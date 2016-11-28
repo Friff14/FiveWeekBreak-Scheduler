@@ -41,15 +41,15 @@ class PrefixController(object):
     def get(self, data, req):
         session = DBSession()
         if data:
-            x = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
-            if x:
-                return x.to_data()
+            prefixes = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
+            if prefixes:
+                return prefixes.to_data()
             else:
                 return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
-            x = session.query(Prefix)
+            prefixes = session.query(Prefix)
             ret = []
-            for prefix in x:
+            for prefix in prefixes:
                 ret.append(prefix.to_data())
             return ret
 

@@ -12,15 +12,15 @@ class CampusController(object):
         with session.no_autoflush:
             campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
             campus.campus_name = data['campus_name']
-            campus.campus_address = data['campus_address']
+            # campus.campus_address = data['campus_address']
 
             return campus.to_data()
 
     def post(self, data):
         session = DBSession()
         inserted_campus = Campus(
-            campus_name=data['campus_name'],
-            campus_address = data['campus_address']
+            campus_name=data['campus_name']  # ,
+            # campus_address = data['campus_address']
         )
         session.add(inserted_campus)
         session.flush()

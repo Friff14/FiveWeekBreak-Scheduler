@@ -43,13 +43,21 @@ class RoomController(object):
 
         return inserted_room.to_data()
 
-    def get(self, data):
+    def get(self, data, req):
         session = DBSession()
-        x = session.query(Room).filter(Room.room_id == data['room_id']).first()
-        if x:
-            return x.to_data()
+        if data['room_id']:
+            x = session.query(Room).filter(Room.room_id == data['room_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; room does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; room does not exist.'}
+            rooms = session.query(Room)
+            data = []
+            # Filter by building
+            for room in rooms:
+                data.append(room.to_data())
+            return data
 
     def delete(self, data):
         session = DBSession()
@@ -61,7 +69,7 @@ class RoomController(object):
 
     def on_get(self, req, resp, room_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"room_id": room_id}))
+        resp.body = json.dumps(self.get({"room_id": room_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(
