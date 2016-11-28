@@ -13,6 +13,7 @@ import { CourseModule } from './resources/courses/course.module';
 import { InstructorModule } from './resources/instructors/instructor.module';
 import { RoomModule } from './resources/rooms/room.module';
 import { SectionModule } from './resources/sections/section.module';
+import { SemesterModule } from './resources/semesters/semester.module';
 import { CampusModule } from './resources/campuses/campus.module';
 import { PrefixModule } from './resources/prefixes/prefix.module';
 
@@ -38,6 +39,7 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
         InstructorModule,
         RoomModule,
         SectionModule,
+        SemesterModule,
         CampusModule,
         PrefixModule
     ],

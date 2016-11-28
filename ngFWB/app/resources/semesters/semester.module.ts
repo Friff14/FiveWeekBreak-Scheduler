@@ -6,6 +6,7 @@ import { RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { SemesterListComponent } from './semester-list.component';
 import { SemesterFormComponent } from './semester-form.component';
 
 import { SemesterService } from './semester.service';
@@ -16,7 +17,8 @@ import { SemesterService } from './semester.service';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: 'semesterForm', component: SemesterFormComponent }
+        { path: 'semesterList', component: SemesterListComponent },
+        { path: 'semesterForm', component: SemesterFormComponent }
     // { path: 'product/:id',
     //  canActivate: [ ProductDetailGuard],
       // component: ProductDetailComponent
@@ -25,15 +27,16 @@ import { SemesterService } from './semester.service';
   ],
   declarations:
   [
-    SemesterFormComponent
+      SemesterListComponent,
+      SemesterFormComponent
   ],
   exports:
   [
-    SemesterFormComponent
+      SemesterFormComponent
   ],
   providers:
   [
-    SemesterService
+      SemesterService
   ]
 })
 export class SemesterModule {}

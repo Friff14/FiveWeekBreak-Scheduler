@@ -10,6 +10,7 @@ import {SectionService} from "./section.service";
 })
 export class SectionFormComponent {
     pageTitle: string = 'Add Section';
+    /*
     testItems = ['testItem1', 'testItem2', 'testItem3'];
     model = new Section('Spencer', 'Hilton', 12, 'Sample notes!');
 
@@ -28,5 +29,5 @@ export class SectionFormComponent {
     testFunction(param: string) {
         return 'testFunction worked';
     }
-
+    */
 }

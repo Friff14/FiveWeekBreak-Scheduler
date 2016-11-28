@@ -10,23 +10,23 @@ import {CourseService} from "./course.service";
 })
 export class CourseFormComponent {
     pageTitle: string = 'Add Course';
-    testItems = ['testItem1', 'testItem2', 'testItem3'];
-    model = new Course('Spencer', 'Hilton', 12, 'Sample notes!');
+    //testItems = ['testItem1', 'testItem2', 'testItem3'];
+    //model = new Course('Spencer Hilton', 12, 'Sample notes!');
 
-    constructor(private courseService: CourseService) {
-    }
+    //constructor(private courseService: CourseService) {
+    //}
 
-    submitForm(form: NgForm) {
-        console.log(this.model);
-        this.courseService.postCourseForm(this.model)
-            .subscribe(
-                data => console.log('success: ', data),
-                err => console.log('error: ', err)
-            )
-    }
+    //submitForm(form: NgForm) {
+    //    console.log(this.model);
+    //    this.courseService.postCourseForm(this.model)
+    //        .subscribe(
+    //            data => console.log('success: ', data),
+    //            err => console.log('error: ', err)
+    //        )
+    //}
 
-    testFunction(param: string) {
-        return 'testFunction worked';
-    }
+    //testFunction(param: string) {
+    //    return 'testFunction worked';
+    //}
 
 }

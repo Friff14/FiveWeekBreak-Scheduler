@@ -9,30 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var section_model_1 = require('./section.model');
-var section_service_1 = require("./section.service");
 var SectionFormComponent = (function () {
-    function SectionFormComponent(sectionService) {
-        this.sectionService = sectionService;
+    function SectionFormComponent() {
         this.pageTitle = 'Add Section';
-        this.testItems = ['testItem1', 'testItem2', 'testItem3'];
-        this.model = new section_model_1.Section('Spencer', 'Hilton', 12, 'Sample notes!');
     }
-    SectionFormComponent.prototype.submitForm = function (form) {
-        console.log(this.model);
-        this.sectionService.postSectionForm(this.model)
-            .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
-    };
-    SectionFormComponent.prototype.testFunction = function (param) {
-        return 'testFunction worked';
-    };
     SectionFormComponent = __decorate([
         core_1.Component({
             selector: 'section-form',
             moduleId: module.id,
             templateUrl: 'section-form.component.html'
         }), 
-        __metadata('design:paramtypes', [section_service_1.SectionService])
+        __metadata('design:paramtypes', [])
     ], SectionFormComponent);
     return SectionFormComponent;
 }());
