@@ -19,10 +19,6 @@ import { SemesterService } from './semester.service';
     RouterModule.forChild([
         { path: 'semesterList', component: SemesterListComponent },
         { path: 'semesterForm', component: SemesterFormComponent }
-    // { path: 'product/:id',
-    //  canActivate: [ ProductDetailGuard],
-      // component: ProductDetailComponent
-    //}
     ])
   ],
   declarations:
