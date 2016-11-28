@@ -5,9 +5,11 @@ from data import middleware
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
+
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # building_id = Column(Integer, primary_key=True)
@@ -18,6 +20,7 @@ session.begin()
 
 class BuildingController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             building = session.query(Building).filter(Building.building_id == data['building_id']).first()
             building.building_name = data['building_name']
@@ -41,23 +44,34 @@ class BuildingController(object):
 
         return inserted_building.to_data()
 
-    def get(self, data):
-        x = session.query(Building).filter(Building.building_id == data['building_id']).first()
-        if x:
-            return x.to_data()
+    def get(self, data, req):
+        session = DBSession()
+        if data['building_id']:
+            x = session.query(Building).filter(Building.building_id == data['building_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; building does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; building does not exist.'}
+            buildings = session.query(Building)
+            if 'campus' in req.params:
+                buildings = buildings.filter_by(campus_id=req.params['campus'])
+            data = []
+            for building in buildings:
+                data.append(building.to_data())
+            return data
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Building).filter(Building.building_id == data['building_id']).first()
         if to_delete:
             session.delete(to_delete)
         else:
             return {"error": 'Cannot delete; building does not exist.'}
 
-    def on_get(self, req, resp, building_id):
+    def on_get(self, req, resp, building_id=None):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"building_id": building_id}))
+        resp.body = json.dumps(self.get({"building_id": building_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(
@@ -73,4 +87,3 @@ class BuildingController(object):
         resp.body = json.dumps(
             self.delete(req.passed_parameters)
         )
-

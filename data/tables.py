@@ -105,8 +105,9 @@ class Campus(Base):
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
+            returned_data['buildings'] = []
             for building in self.buildings:
-                returned_data['buildings'] = building.to_data()
+                returned_data['buildings'].append(building.to_data())
         return returned_data
 
 
@@ -140,6 +141,12 @@ class Course(Base):
 
     sections = relationship('Section', back_populates='course')
 
+    # Feature
+    features = relationship("Feature",
+                            secondary="courseFeature",
+                            back_populates='courses'
+                            )
+
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
@@ -148,6 +155,10 @@ class Course(Base):
             returned_data['sections'] = []
             for section in self.sections:
                 returned_data['sections'].append(section.to_data(top_level=False))
+            returned_data['features'] = []
+            for feature in self.features:
+                returned_data['features'].append(feature.to_data(top_level=False))
+
         return returned_data
 
 
@@ -177,10 +188,11 @@ class Building(Base):
 
 # # More layers # #
 
-sectionFeature = Table('sectionFeature', Base.metadata,
-                       Column('section_id', Integer, ForeignKey('section.section_id')),
-                       Column('feature_id', Integer, ForeignKey('feature.feature_id'))
-                       )
+
+courseFeature = Table('courseFeature', Base.metadata,
+                      Column('course_id', Integer, ForeignKey('course.course_id')),
+                      Column('feature_id', Integer, ForeignKey('feature.feature_id'))
+                      )
 
 roomFeature = Table('roomFeature', Base.metadata,
                     Column('feature_id', Integer, ForeignKey('feature.feature_id')),
@@ -215,6 +227,7 @@ class Room(Base):
         if top_level:
             returned_data['building'] = self.building.to_data(top_level=False)
             returned_data['sections'] = []
+            returned_data['features'] = []
             for section in self.sections:
                 returned_data['sections'].append(section.to_data(top_level=False))
             for feature in self.features:
@@ -228,8 +241,8 @@ class Feature(Base):
     feature_id = Column(Integer, primary_key=True)
     feature_name = Column(String(64), nullable=False)
 
-    sections = relationship("Section",
-                            secondary=sectionFeature,
+    courses = relationship("Course",
+                            secondary=courseFeature,
                             back_populates='features'
                             )
 
@@ -243,10 +256,12 @@ class Feature(Base):
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
+            returned_data['rooms'] = []
+            returned_data['courses'] = []
             for room in self.rooms:
                 returned_data['rooms'].append(room.to_data(top_level=False))
-            for section in self.sections:
-                returned_data['sections'].append(section.to_data(top_level=False))
+            for course in self.courses:
+                returned_data['courses'].append(course.to_data(top_level=False))
 
         return returned_data
 
@@ -278,12 +293,6 @@ class Section(Base):
     # ScheduleTime
     schedule_times = relationship('ScheduleTime', back_populates='section')
 
-    # Feature
-    features = relationship("Feature",
-                            secondary=sectionFeature,
-                            back_populates='sections'
-                            )
-
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
@@ -294,8 +303,6 @@ class Section(Base):
             returned_data['times'] = []
             for time in self.schedule_times:
                 returned_data['times'].append(time.to_data(top_level=False))
-            for feature in self.features:
-                returned_data['features'].append(feature.to_data(top_level=False))
 
         return returned_data
 

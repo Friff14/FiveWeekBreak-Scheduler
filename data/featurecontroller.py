@@ -4,9 +4,11 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
+
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # feature_id = Column(Integer, primary_key=True
@@ -16,6 +18,7 @@ session.begin()
 
 class FeatureController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             feature.feature_name = data['feature_name']
@@ -24,35 +27,66 @@ class FeatureController(object):
 
     def post(self, data):
         session = DBSession()
-        inserted_feature = Feature(
-            feature_name=data['feature_name']
-        )
-        session.add(inserted_feature)
+        if 'feature_name' in data:
+            inserted_feature = Feature(
+                feature_name=data['feature_name']
+            )
+            session.add(inserted_feature)
 
-        session.flush()
-        session.refresh(inserted_feature)
+            session.flush()
+            session.refresh(inserted_feature)
 
-        session.commit()
+            session.commit()
 
-        return inserted_feature.to_data()
+            return inserted_feature.to_data()
 
-    def get(self, data):
-        x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
-        if x:
-            return x.to_data()
+        elif 'feature' in data and 'room' in data:
+            altered_feature = session.query(Feature).filter_by(feature_id=data['feature']).first()
+            altered_room = session.query(Room).filter_by(room_id=data['room']).first()
+            altered_room.features.append(altered_feature)
+            session.flush()
+            session.refresh(altered_feature)
+            session.commit()
+            return altered_feature.to_data()
+
+        elif 'feature' in data and 'course' in data:
+            altered_feature = session.query(Feature).filter_by(feature_id=data['feature']).first()
+            altered_course = session.query(Course).filter_by(course_id=data['course']).first()
+            altered_course.features.append(altered_feature)
+            session.flush()
+            session.refresh(altered_feature)
+            session.commit()
+            return altered_feature.to_data()
+
+    def get(self, data, req):
+        session = DBSession()
+        if data['feature_id']:
+            x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; feature does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; feature does not exist.'}
+            features = session.query(Feature)
+            data = []
+
+            for feature in features:
+                data.append(feature.to_data())
+            return data
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
         if to_delete:
             session.delete(to_delete)
         else:
             return {"error": 'Cannot delete; feature does not exist.'}
 
-    def on_get(self, req, resp, feature_id):
+    def on_get(self, req, resp, feature_id=None):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"feature_id": feature_id}))
+        resp.body = json.dumps(
+            self.get({"feature_id": feature_id}, req)
+        )
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

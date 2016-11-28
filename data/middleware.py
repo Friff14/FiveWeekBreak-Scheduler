@@ -20,5 +20,6 @@ class CrossOriginHeader:
         resp.set_header('Access-Control-Allow-Origin', '*')
         resp.set_header('Access-Control-Allow-Credentials', "true")
         resp.set_header('Access-Control-Max-Age', '1000')
-        resp.set_header('Access-Control-Allow-Headers', "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding")
-        resp.set_header('Access-Control-Allow-Methods',"POST, GET, OPTIONS, DELETE, PUT")
+        resp.set_header('Access-Control-Allow-Headers',
+                        "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding")
+        resp.set_header('Access-Control-Allow-Methods', "POST, GET, OPTIONS, DELETE, PUT")

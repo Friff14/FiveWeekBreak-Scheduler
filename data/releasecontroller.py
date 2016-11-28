@@ -4,15 +4,15 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
-
-session.begin()
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 class ReleaseController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
-
             release = session.query(Release).filter(Release.release_id == data['release_id']).first()
             release.release_name = data['release_name']
             release.release_hours = data['release_hours']
@@ -36,14 +36,23 @@ class ReleaseController(object):
 
         return inserted_release
 
-    def get(self, data):
-        x = session.query(Release).filter(Release.release_id == data['release_id']).first()
-        if x:
-            return x.to_data()
+    def get(self, data, req):
+        session = DBSession()
+        if data['release_id']:
+            x = session.query(Release).filter(Release.release_id == data['release_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
-            return {"error": 'Hey, man, that\'s a bad burrito'}
+            releases = session.query(Release)
+            data = []
+            for release in releases:
+                data.append(release.to_data())
+            return data
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Release).filter(Release.release_id == data['release_id']).first()
         if to_delete:
             session.delete(to_delete)
@@ -52,7 +61,7 @@ class ReleaseController(object):
 
     def on_get(self, req, resp, release_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"release_id": release_id}))
+        resp.body = json.dumps(self.get({"release_id": release_id}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

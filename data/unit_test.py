@@ -18,6 +18,8 @@ def pretty_print(data):
 
 
 def http_test():
+    pass
+
     # # POST # #
     # building
     r = requests.post(
@@ -28,8 +30,7 @@ def http_test():
 
     # campus
     data = {
-        "campus_name": "Tanner's House",
-        "campus_address": "123 Main st."
+        "campus_name": "Tanner's House"
     }
     r = requests.post(
         'http://localhost:8000/campus',
@@ -42,10 +43,23 @@ def http_test():
         "course_name": 'TEST COURSE',
         "course_credit_hours": 4.0,
         "course_description": "hi",
-        "prefix_id": 1
+        "prefix_id": 1,
+        "instructor_id": 1
     }
     r = requests.post(
         'http://localhost:8000/course',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # room
+    data = {
+        "room_name": "The Party Room",
+        "room_capacity": 7,
+        "building_id": 1
+    }
+    r = requests.post(
+        'http://localhost:8000/room',
         data=json.dumps(data)
     )
     print(r.text)
@@ -59,7 +73,25 @@ def http_test():
         data=json.dumps(data)
     )
     print(r.text)
-
+    # feature part 2 - courses and rooms
+    data = {
+        'feature': 1,
+        'room': 1
+    }
+    r = requests.post(
+        'http://localhost:8000/feature',
+        data=json.dumps(data)
+    )
+    print(r.text)
+    data = {
+        'feature': 1,
+        'course': 1
+    }
+    r = requests.post(
+        'http://localhost:8000/feature',
+        data=json.dumps(data)
+    )
+    print(r.text)
     # instructor
     data = {
         "instructor_first_name": "TEST",
@@ -69,6 +101,16 @@ def http_test():
     }
     r = requests.post(
         "http://localhost:8000/instructor",
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # prefix
+    data = {
+        "prefix_name": "TP"
+    }
+    r = requests.post(
+        "http://localhost:8000/prefix",
         data=json.dumps(data)
     )
     print(r.text)
@@ -95,11 +137,8 @@ def http_test():
     print(r.text)
 
 
-if __name__ == '__main__':
-    http_test()
-
-
 def data_test():
+    pass
     print('Content-type:text/markdown\n')
 
     DBSession = sessionmaker(bind=engine)
@@ -110,7 +149,8 @@ def data_test():
 
     print('##Instructor')
     instructor = Instructor(
-        instructor_name='Test Instructor',
+        instructor_first_name='Test',
+        instructor_last_name='Instructor',
         instructor_hours_required=12
     )
     pretty_print(instructor)
@@ -173,12 +213,25 @@ def data_test():
     session.add(building)
     pretty_print(building)
 
+    print('##Feature')
+    feature = Feature(
+        feature_name="Computers"
+    )
+    feature2 = Feature(
+        feature_name="Projector"
+    )
+    session.add(feature)
+    session.add(feature2)
+    pretty_print(feature)
+    pretty_print(feature2)
+
     print('##Room')
     room = Room(
         room_name='S201',
         room_capacity='30',
         building=building
     )
+    room.features = [feature, feature2]
     session.add(room)
     pretty_print(room)
 
@@ -204,3 +257,11 @@ def data_test():
     for section in session.query(Section).all():
         pretty_print(section)
     session.close()
+
+    print('##SectionFeature')
+
+
+if __name__ == '__main__':
+    http_test()
+    # data_test()
+    pass

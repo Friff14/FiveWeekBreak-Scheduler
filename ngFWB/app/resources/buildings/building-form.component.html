@@ -1,0 +1,23 @@
+<div>
+    <h3>{{pageTitle}}</h3>
+
+    <form #form="ngForm" (submit)='submitForm(form)'>
+        <div class="form-group">
+            <label>Building Name</label>
+                <input type="text" class="form-control" required placeholder="Building Name" name="building_name" [(ngModel)]="model.building_name"/>
+                <br/>
+            <label>Building Abbreviation</label>
+                <input type="text" class="form-control" required placeholder="Building Abbreviation" name="building_abbreviation" [(ngModel)]="model.building_abbreviation"/>
+                <br/>
+            <label>Campus ID</label>
+                <input type="text" class="form-control" required placeholder="Campus ID" name="campus_id" [(ngModel)]="model.campus_id"/>
+                <br/>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    Model: {{ model | json }}
+    <br>
+    Angular: {{ form.value | json }}
+
+ </div>
