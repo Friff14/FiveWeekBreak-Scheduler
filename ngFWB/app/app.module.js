@@ -22,6 +22,7 @@ var course_module_1 = require('./resources/courses/course.module');
 var instructor_module_1 = require('./resources/instructors/instructor.module');
 var room_module_1 = require('./resources/rooms/room.module');
 var section_module_1 = require('./resources/sections/section.module');
+var campus_module_1 = require('./resources/campuses/campus.module');
 // Home component
 var home_component_1 = require('./home/home.component');
 // The NgModule decorator for metadata.
@@ -42,7 +43,8 @@ var AppModule = (function () {
                 course_module_1.CourseModule,
                 instructor_module_1.InstructorModule,
                 room_module_1.RoomModule,
-                section_module_1.SectionModule
+                section_module_1.SectionModule,
+                campus_module_1.CampusModule
             ],
             declarations: [
                 app_component_1.AppComponent,

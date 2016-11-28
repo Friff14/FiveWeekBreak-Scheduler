@@ -33,7 +33,7 @@ var InstructorService = (function () {
     InstructorService.prototype.postInstructorForm = function (instructor) {
         console.log('posting instructor: ', instructor);
         var body = JSON.stringify(instructor);
-        var headers = new http_1.Headers({ 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this._http.post(this._instructorUrl, body, options)
             .map(this.extractData)

@@ -13,6 +13,8 @@ import { CourseModule } from './resources/courses/course.module';
 import { InstructorModule } from './resources/instructors/instructor.module';
 import { RoomModule } from './resources/rooms/room.module';
 import { SectionModule } from './resources/sections/section.module';
+import { CampusModule } from './resources/campuses/campus.module';
+
 
 // Home component
 import { HomeComponent } from './home/home.component';
@@ -34,7 +36,8 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
         CourseModule,
         InstructorModule,
         RoomModule,
-        SectionModule
+        SectionModule,
+        CampusModule
     ],
     declarations: 
     [

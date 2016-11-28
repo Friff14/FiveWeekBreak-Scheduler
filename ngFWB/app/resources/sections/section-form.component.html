@@ -1,38 +1,67 @@
 <div>
     <h3>{{pageTitle}}</h3>
-    <form>
+
+    <form #form="ngForm" (submit)='submitForm(form)'>
         <div class="form-group">
-            <label>Prefix</label>
-            <select>
-                <option>Just to see at least one option</option>
-                <option *ngFor='let prefix of prefixes'>
-                    {{ prefix.prefix_name }}
-                </option>
-            </select>
-            <br/>
-            <label>Course</label>
-            <select>
-                <option>Just to see at least one option</option>
-                <option *ngFor='let building of buildings'>
-                    {{ course.course_name }}
-                </option>
-            </select>
-                        <br/>
-            <label>Instructor</label>
-            <select>
-                <option>Just to see at least one option</option>
-                <option *ngFor='let instructor of instructors'>
-                    {{ instructor.instructor_name }}
-                </option>
-            </select>
-                            <br/>
-            <label>Capacity</label>
-                <input type="text" class="form-control" required placeholder="#####"/>
-                            <br/>
-            <label>Features</label>
-                        <br/>
-            <button type="reset">Cancel</button>
-            <button type="submit">Accept</button>
+            <label>First Name</label>
+                <input type="text" class="form-control" required placeholder="First Name" name="instructor_first_name" [(ngModel)]="model.instructor_first_name"/>
+                <br/>
+            <label>Last Name</label>
+                <input type="text" class="form-control" required placeholder="Last Name" name="instructor_last_name" [(ngModel)]="model.instructor_last_name"/>
+                <br/>
+            <label>Hours Required</label>
+                <input type="text" class="form-control" required placeholder="##" name="instructor_hours_required" [(ngModel)]="model.instructor_hours_required"/>
+                <br/>
+            <label>Notes</label>
+                <input type="text" class="form-control" required placeholder="Notes" name="instructor_notes" [(ngModel)]="model.instructor_notes"/>
+                <br/>
+            <label>Release Hours</label>
+                <br/>
+            <label>Courses</label>
+                <br/>
+            <label>Notes</label>
+                <br/>
+
+            <!-- Testing input types from Angular Forms tutorial
+            <div class ="checkbox">
+                <label>
+                    <input type="checkbox" name="test-checkbox" [(ngModel)]="model.checkboxTest"> Test Checkbox
+                </label>
+            </div>
+
+            <label>Payment Type</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="test-radio" value="radio1" checked> Radio1
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="test-radio" value="radio2"> Radio2
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Select Test</label>
+                <select class="form-control"
+                    name="selectTest"
+                [(ngModel)]="model.primaryLanguage">
+                    <option *ngFor="let testItem of testItems">
+                        {{ testItem }}
+                    </option>
+                </select>
+            </div>-->
+
+
+
+
+            <!-- done testing -->
+            <button type="submit">Submit</button>
         </div>
     </form>
+
+    Model: {{ model | json }}
+    <br>
+    Angular: {{ form.value | json }}
+
  </div>

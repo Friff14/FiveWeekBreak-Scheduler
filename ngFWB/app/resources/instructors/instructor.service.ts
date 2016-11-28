@@ -32,7 +32,7 @@ export class InstructorService {
         console.log('posting instructor: ', instructor);
 
         let body = JSON.stringify(instructor);
-        let headers = new Headers({ 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        let headers = new Headers({ 'Content-type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
         return this._http.post(this._instructorUrl, body, options)
