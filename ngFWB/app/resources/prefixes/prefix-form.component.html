@@ -1,0 +1,17 @@
+<div>
+    <h3>{{pageTitle}}</h3>
+
+    <form #form="ngForm" (submit)='submitForm(form)'>
+        <div class="form-group">
+            <label>Prefix Name</label>
+                <input type="text" class="form-control" required placeholder="Prefix Name" name="prefix_name" [(ngModel)]="model.prefix_name"/>
+                <br/>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    Model: {{ model | json }}
+    <br>
+    Angular: {{ form.value | json }}
+
+ </div>
