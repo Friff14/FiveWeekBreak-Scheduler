@@ -1,5 +1,8 @@
+/**
+ * Created by doebo on 11/27/2016.
+ */
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, Headers} from '@angular/http';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
@@ -7,30 +10,35 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { IRoom } from './room';
-import { Room } from './room.model'
+import { IBuilding } from './building';
+import { Building } from "./building.model";
 
 @Injectable()
-export class RoomService {
-    private _roomUrl = 'http://localhost:8000/room/';
+export class BuildingService {
+    private _buildingUrl = 'http://localhost:8000/building/';
 
     constructor(private _http: Http) { }
 
-    getRooms(): Observable<IRoom[]> {
-        return this._http.get(this._roomUrl)
-            .map((response: Response) => <IRoom[]> response.json())
+    getBuildings(): Observable<IBuilding[]> {
+        return this._http.get(this._buildingUrl)
+            .map((response: Response) => <IBuilding[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    postRoomForm(room: Room): Observable<any> {
-        console.log('posting room: ', room);
+    // getBuilding(id: number): Observable<IBuilding> {
+    //     return this.getBuildings()
+    //         .map((buildings: IBuilding[]) => buildings.find(i => i.building_id === id));
+    // }
 
-        let body = JSON.stringify(room);
+    postBuildingForm(building: Building): Observable<any> {
+        console.log('posting building: ', building);
+
+        let body = JSON.stringify(building);
         let headers = new Headers({ 'Content-type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-        return this._http.post(this._roomUrl, body, options)
+        return this._http.post(this._buildingUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -40,15 +48,10 @@ export class RoomService {
         return body.fields || { };
     }
 
-    // getRoom(id: number): Observable<IRoom> {
-    //     return this.getRooms()
-    //         .map((rooms: IRoom[]) => rooms.find(i => i.room_id === id));
-    // }
-
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
-        console.error(error);
+        console.error('post error: ', error);
         return Observable.throw(error.json().error || 'Server error');
     }
 }
