@@ -1,3 +1,6 @@
+/**
+ * Created by bpalm_000 on 11/28/2016.
+ */
 import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
@@ -7,35 +10,35 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { ISection } from './section';
-import {Section} from "./section.model";
+import { IPrefix } from './prefix';
+import { Prefix } from "./prefix.model";
 
 @Injectable()
-export class SectionService {
-    private _sectionUrl = 'http://localhost:8000/section/';
+export class PrefixService {
+    private _prefixUrl = 'http://localhost:8000/prefix/';
 
     constructor(private _http: Http) { }
 
-    getSections(): Observable<ISection[]> {
-        return this._http.get(this._sectionUrl)
-            .map((response: Response) => <ISection[]> response.json())
+    getPrefixes(): Observable<IPrefix[]> {
+        return this._http.get(this._prefixUrl)
+            .map((response: Response) => <IPrefix[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getSection(id: number): Observable<ISection> {
-        return this.getSections()
-            .map((sections: ISection[]) => sections.find(i => i.section_id === id));
-    }
+    // getPrefix(id: number): Observable<IPrefix> {
+    //     return this.getPrefixes()
+    //         .map((prefixes: IPrefix[]) => prefixes.find(i => i.prefix_id === id));
+    // }
 
-    postSectionForm(section: Section): Observable<any> {
-        console.log('posting section: ', section);
+    postPrefixForm(prefix: Prefix): Observable<any> {
+        console.log('posting prefix: ', prefix);
 
-        let body = JSON.stringify(section);
+        let body = JSON.stringify(prefix);
         let headers = new Headers({ 'Content-type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-        return this._http.post(this._sectionUrl, body, options)
+        return this._http.post(this._prefixUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
