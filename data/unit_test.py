@@ -107,8 +107,7 @@ def http_test():
 
     # prefix
     data = {
-        "prefix_name": "TP",
-        "courses": [1, 2]
+        "prefix_name": "TP"
     }
     r = requests.post(
         "http://localhost:8000/prefix",

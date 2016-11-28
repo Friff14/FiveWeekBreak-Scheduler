@@ -25,9 +25,9 @@ class PrefixController(object):
         inserted_course = Prefix(
             prefix_name=data['prefix_name']
         )
-        if 'courses' in data:
-            q = session.query(Course).filter(Course.course_id.in_(data['courses']))
-            inserted_course.courses = q.all()
+        # if 'courses' in data:
+        #     q = session.query(Course).filter(Course.course_id.in_(data['courses']))
+        #     inserted_course.courses = q.all()
 
         session.add(inserted_course)
 
