@@ -20,28 +20,29 @@ def pretty_print(data):
 def http_test():
     # # POST # #
     # building
-    r = requests.post(
-        'http://localhost:8000/building/',
-        data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
-    )
-    print(r.text)
-
-    # campus
-    data = {
-        "campus_name": "Tanner's House"
-    }
-    r = requests.post(
-        'http://localhost:8000/campus',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
+    # r = requests.post(
+    #     'http://localhost:8000/building/',
+    #     data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
+    # )
+    # print(r.text)
+    #
+    # # campus
+    # data = {
+    #     "campus_name": "Tanner's House"
+    # }
+    # r = requests.post(
+    #     'http://localhost:8000/campus',
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
+    #
     # course
     data = {
         "course_name": 'TEST COURSE',
         "course_credit_hours": 4.0,
         "course_description": "hi",
-        "prefix_id": 1
+        "prefix_id": 1,
+        "instructor_id": 1
     }
     r = requests.post(
         'http://localhost:8000/course',
@@ -49,49 +50,64 @@ def http_test():
     )
     print(r.text)
 
-    # feature
-    data = {
-        "feature_name": 'TEST FEATURE'
-    }
-    r = requests.post(
-        'http://localhost:8000/feature',
-        data=json.dumps(data)
-    )
-    print(r.text)
+    # # feature
+    # data = {
+    #     "feature_name": 'TEST FEATURE'
+    # }
+    # r = requests.post(
+    #     'http://localhost:8000/feature',
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
+    #
+    # # instructor
+    # data = {
+    #     "instructor_first_name": "TEST",
+    #     "instructor_last_name": "INSTRUCTOR",
+    #     "instructor_hours_required": 12,
+    #     "instructor_notes": "my name is doug i have just met you and i love you"
+    # }
+    # r = requests.post(
+    #     "http://localhost:8000/instructor",
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
 
-    # instructor
-    data = {
-        "instructor_first_name": "TEST",
-        "instructor_last_name": "INSTRUCTOR",
-        "instructor_hours_required": 12,
-        "instructor_notes": "my name is doug i have just met you and i love you"
-    }
-    r = requests.post(
-        "http://localhost:8000/instructor",
-        data=json.dumps(data)
-    )
-    print(r.text)
+    # prefix
+    # data = {
+    #     "prefix_name": "TP",
+    #     "courses": [1, 2]
+    # }
+    # r = requests.post(
+    #     "http://localhost:8000/prefix",
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
 
-    # # PUT
-    # building
-    data = {
-        "building_name": "TEST_BUILDING",
-        "building_abbreviation": "TB",
-        "campus_id": 1,
-        "building_id": 1
-    }
-    r = requests.put(
-        'http://localhost:8000/building',
-        data=json.dumps(data)
-    )
-    print(r.text)
+    pass
 
-    # campus
-    r = requests.put(
-        'http://localhost:8000/campus',
-        data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
-    )
-    print(r.text)
+    # # # PUT
+    # # building
+    # data = {
+    #     "building_name": "TEST_BUILDING",
+    #     "building_abbreviation": "TB",
+    #     "campus_id": 1,
+    #     "building_id": 1
+    # }
+    # r = requests.put(
+    #     'http://localhost:8000/building',
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
+    #
+    # # campus
+    # r = requests.put(
+    #     'http://localhost:8000/campus',
+    #     data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
+    # )
+    # print(r.text)
+    #
+    #
 
 
 if __name__ == '__main__':

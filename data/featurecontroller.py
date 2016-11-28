@@ -4,9 +4,11 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
+
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # feature_id = Column(Integer, primary_key=True
@@ -16,6 +18,7 @@ session.begin()
 
 class FeatureController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             feature.feature_name = data['feature_name']
@@ -37,6 +40,7 @@ class FeatureController(object):
         return inserted_feature.to_data()
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
         if x:
             return x.to_data()
@@ -44,6 +48,7 @@ class FeatureController(object):
             return {"error": 'Cannot retrieve; feature does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
         if to_delete:
             session.delete(to_delete)

@@ -4,15 +4,15 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
-
-session.begin()
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 class ReleaseController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
-
             release = session.query(Release).filter(Release.release_id == data['release_id']).first()
             release.release_name = data['release_name']
             release.release_hours = data['release_hours']
@@ -37,6 +37,7 @@ class ReleaseController(object):
         return inserted_release
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Release).filter(Release.release_id == data['release_id']).first()
         if x:
             return x.to_data()
@@ -44,6 +45,7 @@ class ReleaseController(object):
             return {"error": 'Hey, man, that\'s a bad burrito'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Release).filter(Release.release_id == data['release_id']).first()
         if to_delete:
             session.delete(to_delete)

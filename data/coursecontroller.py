@@ -4,9 +4,9 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
+# session = DBSession(autocommit=True)
 
-session.begin()
+# session.begin()
 
 key_error = falcon.HTTPBadRequest(
     'Argument List Incomplete',
@@ -16,6 +16,7 @@ key_error = falcon.HTTPBadRequest(
 
 class CourseController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             course = session.query(Course).filter(Course.course_id == data['course_id']).first()
             course.course_name = data['course_name']
@@ -42,14 +43,28 @@ class CourseController(object):
 
         return inserted_course.to_data()
 
-    def get(self, data):
-        x = session.query(Course).filter(Course.course_id == data['course_id']).first()
-        if x:
-            return x.to_data()
+    def get(self, data, req):
+        session = DBSession()
+        if data:
+            x = session.query(Course).filter(Course.course_id == data['course_id']).first()
+            if x:
+                return x.to_data()
+            else:
+                return {"error": 'Cannot retrieve; course does not exist.'}
         else:
-            return {"error": 'Cannot retrieve; course does not exist.'}
+
+            x = session.query(Course)
+            if 'prefix' in req.params:
+                x.filter(Course.prefix_id.in_(req.params['prefix']))
+
+            ret = []
+            for course in x:
+                ret.append(course.to_data())
+
+            return ret
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Course).filter(Course.course_id == data['course_id']).first()
         if to_delete:
             session.delete(to_delete)
@@ -58,7 +73,7 @@ class CourseController(object):
 
     def on_get(self, req, resp, course_id):
         resp.status = falcon.HTTP_200
-        resp.body = '[' + json.dumps(self.get({"course_id": course_id})) + ']'
+        resp.body = '[' + json.dumps(self.get({"course_id": course_id}, req)) + ']'
         resp.set_header('Access-Control-Allow-Origin', '*')
 
     def on_post(self, req, resp):

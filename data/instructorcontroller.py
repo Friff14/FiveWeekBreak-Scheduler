@@ -6,9 +6,9 @@ from data.tables import *
 from data import middleware
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
-
-session.begin()
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 key_error = falcon.HTTPBadRequest(
     'Argument List Incomplete',
@@ -16,10 +16,9 @@ key_error = falcon.HTTPBadRequest(
 )
 
 
-
-
 class InstructorController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
             instructor.instructor_first_name = data['instructor_first_name']
@@ -45,7 +44,8 @@ class InstructorController(object):
 
         return inserted_instructor.to_data()
 
-    def get(self, data):
+    def get(self, data, req):
+        session = DBSession()
         if data['instructor_id']:
             x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
             if x:
@@ -53,13 +53,20 @@ class InstructorController(object):
             else:
                 return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
-            instructors = session.query(Instructor).all()
+            instructors = session.query(Instructor)
+
+            if req.params:
+                if 'release' in req.params:
+                    instructors.filter_by(release=req.params['release'])
+                if 'section' in req.params:
+                    instructors.filter_by(course=req.params['course'])
             data = []
             for instructor in instructors:
                 data.append(instructor.to_data())
             return data
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
         if to_delete:
             session.delete(to_delete)
@@ -68,7 +75,7 @@ class InstructorController(object):
 
     def on_get(self, req, resp, instructor_id=None):
         resp.status = falcon.HTTP_200
-        resp.body = '[' + json.dumps(self.get({"instructor_id": instructor_id})) + ']'
+        resp.body = '[' + json.dumps(self.get({"instructor_id": instructor_id}, req)) + ']'
         resp.set_header('Access-Control-Allow-Origin', '*')
 
     def on_post(self, req, resp):

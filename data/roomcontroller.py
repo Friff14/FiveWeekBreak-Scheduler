@@ -5,9 +5,9 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
-
-session.begin()
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # room_id = Column(Integer, primary_key=True)
@@ -18,6 +18,7 @@ session.begin()
 
 class RoomController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             room = session.query(Room).filter(room_id=data['room_id']).first()
             room.room_name = data['room_name']
@@ -43,6 +44,7 @@ class RoomController(object):
         return inserted_room.to_data()
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Room).filter(Room.room_id == data['room_id']).first()
         if x:
             return x.to_data()
@@ -50,6 +52,7 @@ class RoomController(object):
             return {"error": 'Cannot retrieve; room does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Room).filter(room_id=data['room_id']).first()
         if to_delete:
             session.delete(to_delete)

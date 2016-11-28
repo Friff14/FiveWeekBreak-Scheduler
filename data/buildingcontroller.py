@@ -5,9 +5,11 @@ from data import middleware
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
+
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # building_id = Column(Integer, primary_key=True)
@@ -18,6 +20,7 @@ session.begin()
 
 class BuildingController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             building = session.query(Building).filter(Building.building_id == data['building_id']).first()
             building.building_name = data['building_name']
@@ -42,6 +45,7 @@ class BuildingController(object):
         return inserted_building.to_data()
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Building).filter(Building.building_id == data['building_id']).first()
         if x:
             return x.to_data()
@@ -49,6 +53,7 @@ class BuildingController(object):
             return {"error": 'Cannot retrieve; building does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Building).filter(Building.building_id == data['building_id']).first()
         if to_delete:
             session.delete(to_delete)
@@ -73,4 +78,3 @@ class BuildingController(object):
         resp.body = json.dumps(
             self.delete(req.passed_parameters)
         )
-

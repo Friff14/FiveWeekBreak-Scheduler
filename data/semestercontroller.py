@@ -5,20 +5,11 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
-
-
-# semester_id = Column(Integer, primary_key=True
-# semester_name = Column(String(64), nullable=False)
-# semester_start_date = Column(DateTime, nullable=False)
-# semester_end_date = Column(DateTime, nullable=False)
-# sections = relationship('Section')
 
 class SemesterController(object):
-
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             semester = session.query(Semester).filter(semester_id=data['semester_id']).first()
             semester.semester_name = data['semester_name']
@@ -44,6 +35,7 @@ class SemesterController(object):
         return inserted_semester
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
         if x:
             return x.to_data()
@@ -51,6 +43,7 @@ class SemesterController(object):
             return {"error": 'Cannot retrieve; semester does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Semester).filter(semester_id=data['semester_id']).first()
         if to_delete:
             session.delete(to_delete)

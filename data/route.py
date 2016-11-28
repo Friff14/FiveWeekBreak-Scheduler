@@ -12,7 +12,6 @@ app = application = falcon.API('application/json',
                                    middleware.JSONDecoding()
                                ])
 
-
 instructor = instructorcontroller.InstructorController()
 semester = semestercontroller.SemesterController()
 section = sectioncontroller.SectionController()

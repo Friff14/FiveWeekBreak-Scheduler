@@ -4,9 +4,11 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
 
-session.begin()
+
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # campus_id = Column(Integer, primary_key=True)
@@ -14,6 +16,7 @@ session.begin()
 
 class CampusController(object):
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             campus = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
             campus.campus_name = data['campus_name']
@@ -34,6 +37,7 @@ class CampusController(object):
         return inserted_campus.to_data()
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
         if x:
             return x.to_data()
@@ -41,6 +45,7 @@ class CampusController(object):
             return {"error": 'Cannot retrieve; campus does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
         if to_delete:
             session.delete(to_delete)
@@ -65,4 +70,3 @@ class CampusController(object):
         resp.body = json.dumps(
             self.delete(req.passed_parameters)
         )
-

@@ -5,9 +5,9 @@ import falcon
 from data.tables import *
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession(autocommit=True)
-
-session.begin()
+# session = DBSession(autocommit=True)
+#
+# session.begin()
 
 
 # section_id = Column(Integer, primary_key=True)
@@ -43,6 +43,7 @@ class SectionController(object):
     pass
 
     def put(self, data):
+        session = DBSession()
         with session.no_autoflush:
             section = session.query(Section).filter(section_id=data['course_id']).first()
             section.section_name = data['section_name']
@@ -76,6 +77,7 @@ class SectionController(object):
         return inserted_section.to_data()
 
     def get(self, data):
+        session = DBSession()
         x = session.query(Section).filter(Section.section_id == data['section_id']).first()
         if x:
             return x.to_data()
@@ -83,6 +85,7 @@ class SectionController(object):
             return {'Error': 'cannot retrieve section; section does not exist.'}
 
     def delete(self, data):
+        session = DBSession()
         to_delete = session.query(Section).filter(section_id=data['section_id']).first()
         if to_delete:
             session.delete(to_delete)
