@@ -1,7 +1,5 @@
 # That darn .idea/ folder
-.idea/workspace.xml
-.idea/FiveWeekBreak-Scheduler.iml
-.idea/misc.xml
+.idea/
 
 # That darn schedule.db
 data/schedule.db
