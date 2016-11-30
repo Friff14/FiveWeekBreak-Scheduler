@@ -7,6 +7,12 @@
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <div class='nav navbar-nav'>
                     <div>
+                        <a [routerLink]="['/home']">Home View</a>
+                    </div>
+                    <div>
+                        <a [routerLink]="['/sectionForm']">Add Sections</a>
+                    </div>
+                    <div>
                         <div class="dropdown">
                             <a href="#" onclick="LoadSubMenu()">Add Resources</a>
                             <div class="dropdown-content">
@@ -18,12 +24,6 @@
                                 <a [routerLink]="['/prefixForm']">Add Prefix</a>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <a [routerLink]="['/sectionForm']">Add Sections</a>
-                    </div>
-                    <div>
-                        <a [routerLink]="['/home']">Home View</a>
                     </div>
                 </div>
             </div>

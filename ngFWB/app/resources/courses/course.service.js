@@ -20,6 +20,12 @@ var CourseService = (function () {
         this._http = _http;
         this._courseUrl = 'http://localhost:8000/course/';
     }
+    CourseService.prototype.getPrefixes = function () {
+        return this._http.get('http://localhost:8000/prefix/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     CourseService.prototype.getCourses = function () {
         return this._http.get(this._courseUrl)
             .map(function (response) { return response.json(); })

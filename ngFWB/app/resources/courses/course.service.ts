@@ -9,12 +9,20 @@ import 'rxjs/Rx';
 
 import { ICourse } from './course';
 import {Course} from "./course.model";
+import {IPrefix} from "../prefixes/prefix";
 
 @Injectable()
 export class CourseService {
     private _courseUrl = 'http://localhost:8000/course/';
 
     constructor(private _http: Http) { }
+
+    getPrefixes(): Observable<IPrefix[]> {
+        return this._http.get('http://localhost:8000/prefix/list')
+            .map((response: Response) => <IPrefix[]> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
 
     getCourses(): Observable<ICourse[]> {
         return this._http.get(this._courseUrl)
