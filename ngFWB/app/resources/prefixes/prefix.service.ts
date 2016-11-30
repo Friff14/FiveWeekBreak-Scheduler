@@ -15,7 +15,7 @@ import { Prefix } from "./prefix.model";
 
 @Injectable()
 export class PrefixService {
-    private _prefixUrl = 'http://localhost:8000/prefix/';
+    private _prefixUrl = 'http://localhost:8000/prefix/0';
 
     constructor(private _http: Http) { }
 

@@ -63,7 +63,10 @@ class PrefixController(object):
 
     def on_get(self, req, resp, prefix_id):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"prefix_id": prefix_id}, req))
+        if prefix_id != '0':
+            resp.body = json.dumps(self.get({"prefix_id": prefix_id}, req))
+        else:
+            resp.body = json.dumps(self.get(None, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(
