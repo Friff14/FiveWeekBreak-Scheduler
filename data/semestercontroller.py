@@ -58,7 +58,7 @@ class SemesterController(object):
         else:
             return {"error": 'Cannot delete; semester does not exist.'}
 
-    def on_get(self, req, resp, semester_id):
+    def on_get(self, req, resp, semester_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"semester_id": semester_id}, req))
 

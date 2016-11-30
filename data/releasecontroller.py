@@ -59,7 +59,7 @@ class ReleaseController(object):
         else:
             return {"error": 'Cannot delete; release does not exist.'}
 
-    def on_get(self, req, resp, release_id):
+    def on_get(self, req, resp, release_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"release_id": release_id}, req))
 

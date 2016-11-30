@@ -69,7 +69,7 @@ class CourseController(object):
         else:
             return {"error": 'Cannot delete; course does not exist.'}
 
-    def on_get(self, req, resp, course_id):
+    def on_get(self, req, resp, course_id=None):
         resp.status = falcon.HTTP_200
         resp.body = '[' + json.dumps(self.get({"course_id": course_id}, req)) + ']'
         resp.set_header('Access-Control-Allow-Origin', '*')

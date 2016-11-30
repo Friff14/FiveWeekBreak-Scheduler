@@ -76,7 +76,7 @@ class SectionController(object):
         else:
             return {'Error': 'cannot delete section; section does not exist.'}
 
-    def on_get(self, req, resp, section_id):
+    def on_get(self, req, resp, section_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"section_id": section_id}, req))
 

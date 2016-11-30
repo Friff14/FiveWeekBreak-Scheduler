@@ -67,7 +67,7 @@ class RoomController(object):
         else:
             return {"error": 'Cannot delete; room does not exist.'}
 
-    def on_get(self, req, resp, room_id):
+    def on_get(self, req, resp, room_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"room_id": room_id}, req))
 
