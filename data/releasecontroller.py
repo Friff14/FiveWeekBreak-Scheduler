@@ -38,7 +38,7 @@ class ReleaseController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['release_id']:
+        if type(data['release_id']) == int:
             x = session.query(Release).filter(Release.release_id == data['release_id']).first()
             if x:
                 return x.to_data()
@@ -46,10 +46,10 @@ class ReleaseController(object):
                 return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
             releases = session.query(Release)
-            data = []
+            ret = []
             for release in releases:
-                data.append(release.to_data())
-            return data
+                ret.append(release.to_data(top_level=(data['release_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

@@ -46,7 +46,7 @@ class BuildingController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['building_id']:
+        if type(data['building_id']) == int:
             x = session.query(Building).filter(Building.building_id == data['building_id']).first()
             if x:
                 return x.to_data()
@@ -56,10 +56,10 @@ class BuildingController(object):
             buildings = session.query(Building)
             if 'campus' in req.params:
                 buildings = buildings.filter_by(campus_id=req.params['campus'])
-            data = []
+            ret = []
             for building in buildings:
-                data.append(building.to_data())
-            return data
+                ret.append(building.to_data(top_level=(data['building_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

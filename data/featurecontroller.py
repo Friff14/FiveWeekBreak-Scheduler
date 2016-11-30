@@ -60,7 +60,7 @@ class FeatureController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['feature_id']:
+        if type(data['feature_id']) == int:
             x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             if x:
                 return x.to_data()
@@ -68,11 +68,11 @@ class FeatureController(object):
                 return {"error": 'Cannot retrieve; feature does not exist.'}
         else:
             features = session.query(Feature)
-            data = []
+            ret = []
 
             for feature in features:
-                data.append(feature.to_data())
-            return data
+                ret.append(feature.to_data(top_level=(data['feature_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

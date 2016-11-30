@@ -45,7 +45,7 @@ class RoomController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['room_id']:
+        if type(data['room_id']) == int:
             x = session.query(Room).filter(Room.room_id == data['room_id']).first()
             if x:
                 return x.to_data()
@@ -53,11 +53,11 @@ class RoomController(object):
                 return {"error": 'Cannot retrieve; room does not exist.'}
         else:
             rooms = session.query(Room)
-            data = []
+            ret = []
             # Filter by building
             for room in rooms:
-                data.append(room.to_data())
-            return data
+                ret.append(room.to_data(top_level=(data['room_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

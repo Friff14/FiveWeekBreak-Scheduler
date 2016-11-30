@@ -134,8 +134,10 @@ class Course(Base):
     __tablename__ = 'course'
     course_id = Column(Integer, primary_key=True)
     course_name = Column(String(64), nullable=False)
+    course_number = Column(String(5), nullable=False)
     course_credit_hours = Column(Float, nullable=False)
     course_description = Column(String(255))
+
     prefix_id = Column(Integer, ForeignKey('prefix.prefix_id'))
     prefix = relationship('Prefix')
 
@@ -242,9 +244,9 @@ class Feature(Base):
     feature_name = Column(String(64), nullable=False)
 
     courses = relationship("Course",
-                            secondary=courseFeature,
-                            back_populates='features'
-                            )
+                           secondary=courseFeature,
+                           back_populates='features'
+                           )
 
     rooms = relationship("Room",
                          secondary=roomFeature,

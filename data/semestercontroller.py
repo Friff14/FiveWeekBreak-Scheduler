@@ -35,9 +35,8 @@ class SemesterController(object):
         return inserted_semester
 
     def get(self, data, req):
-
         session = DBSession()
-        if data['semester_id']:
+        if type(data['semester_id']) == int:
             x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
             if x:
                 return x.to_data()
@@ -45,10 +44,10 @@ class SemesterController(object):
                 return {"error": 'Cannot retrieve; semester does not exist.'}
         else:
             semesters = session.query(Semester)
-            data = []
+            ret = []
             for semester in semesters:
-                data.append(semester.to_data())
-            return data
+                ret.append(semester.to_data(top_level=data['semester_id'] != 'list'))
+            return ret
 
     def delete(self, data):
         session = DBSession()

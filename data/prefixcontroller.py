@@ -40,13 +40,7 @@ class PrefixController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['prefix_id'] == 'list':
-            prefixes = session.query(Prefix)
-            ret = []
-            for prefix in prefixes:
-                ret.append(prefix.to_data(top_level=False))
-            return ret
-        elif data['prefix_id']:
+        if type(data['prefix_id']) == int:
             prefixes = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
             if prefixes:
                 return prefixes.to_data()
@@ -56,7 +50,7 @@ class PrefixController(object):
             prefixes = session.query(Prefix)
             ret = []
             for prefix in prefixes:
-                ret.append(prefix.to_data())
+                ret.append(prefix.to_data(top_level=data['prefix_id'] != 'list'))
             return ret
 
     def delete(self, data):

@@ -32,7 +32,7 @@ class CampusController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['campus_id']:
+        if type(data['campus_id']) == int:
             x = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
             if x:
                 return x.to_data()
@@ -40,10 +40,10 @@ class CampusController(object):
                 return {"error": 'Cannot retrieve; campus does not exist.'}
         else:
             campuses = session.query(Campus)
-            data = []
+            ret = []
             for campus in campuses:
-                data.append(campus.to_data())
-            return data
+                ret.append(campus.to_data(top_level=(data['campus_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

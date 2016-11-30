@@ -46,7 +46,7 @@ class InstructorController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['instructor_id']:
+        if type(data['instructor_id']) == int:
             x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
             if x:
                 return x.to_data()
@@ -60,10 +60,10 @@ class InstructorController(object):
                     instructors.filter_by(release=req.params['release'])
                 if 'section' in req.params:
                     instructors.filter_by(course=req.params['course'])
-            data = []
+            ret = []
             for instructor in instructors:
-                data.append(instructor.to_data())
-            return data
+                ret.append(instructor.to_data(top_level=(data['instructor_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

@@ -46,7 +46,7 @@ class SectionController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['section_id']:
+        if type(data['section_id']) == int:
             x = session.query(Section).filter(Section.section_id == data['section_id']).first()
             if x:
                 return x.to_data()
@@ -63,10 +63,10 @@ class SectionController(object):
             if 'instructor' in req.params:
                 sections.filter_by(instructor_id=req.params['instructor'])
 
-            data = []
+            ret = []
             for section in sections:
-                data.append(section.to_data())
-            return data
+                ret.append(section.to_data(top_level=(data['section_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()

@@ -21,6 +21,7 @@ class CourseController(object):
             course = session.query(Course).filter(Course.course_id == data['course_id']).first()
             course.course_name = data['course_name']
             course.course_credit_hours = data['course_credit_hours']
+            course.course_number = data['course_number']
             course.course_description = data['course_description']
             course.prefix_id = data['prefix_id']
 
@@ -32,7 +33,8 @@ class CourseController(object):
             course_name=data['course_name'],
             course_credit_hours=data['course_credit_hours'],
             course_description=data['course_description'],
-            prefix_id=data['prefix_id']
+            prefix_id=data['prefix_id'],
+            course_number=data['course_number']
         )
         session.add(inserted_course)
 
@@ -45,7 +47,7 @@ class CourseController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data['course_id']:
+        if type(data['course_id']) == int:
             courses = session.query(Course).filter(Course.course_id == data['course_id']).first()
             if courses:
                 return courses.to_data()
@@ -55,11 +57,11 @@ class CourseController(object):
             courses = session.query(Course)
             if 'prefix' in req.params:
                 courses = courses.filter(Course.prefix_id.in_(req.params['prefix']))
-            data = []
+            ret = []
             for course in courses:
-                data.append(course.to_data())
+                ret.append(course.to_data(top_level=(data['course_id'] != 'list')))
 
-            return data
+            return ret
 
     def delete(self, data):
         session = DBSession()
