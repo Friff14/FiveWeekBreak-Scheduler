@@ -3,3 +3,6 @@
 
 # That darn schedule.db
 data/schedule.db
+
+# pycache
+data/__pycache__/
