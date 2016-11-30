@@ -9,17 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var HomeComponent = (function () {
-    function HomeComponent() {
+var CourseViewComponent = (function () {
+    function CourseViewComponent() {
+        this.pageTitle = 'Current Schedule';
     }
-    HomeComponent = __decorate([
+    CourseViewComponent = __decorate([
         core_1.Component({
+            selector: 'course-view-app',
             moduleId: module.id,
-            templateUrl: 'home.component.html'
+            templateUrl: 'course-view.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeComponent);
-    return HomeComponent;
+    ], CourseViewComponent);
+    return CourseViewComponent;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.CourseViewComponent = CourseViewComponent;
+//# sourceMappingURL=course-view.component.js.map

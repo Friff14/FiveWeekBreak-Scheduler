@@ -25,8 +25,9 @@ var section_module_1 = require('./resources/sections/section.module');
 var semester_module_1 = require('./resources/semesters/semester.module');
 var campus_module_1 = require('./resources/campuses/campus.module');
 var prefix_module_1 = require('./resources/prefixes/prefix.module');
+var views_module_1 = require('./views/views.module');
 // Home component
-var home_component_1 = require('./home/home.component');
+var home_view_component_1 = require('./views/home-view.component');
 // The NgModule decorator for metadata.
 var AppModule = (function () {
     function AppModule() {
@@ -38,7 +39,8 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
-                    { path: 'home', component: home_component_1.HomeComponent },
+                    { path: 'home', component: home_view_component_1.HomeViewComponent },
+                    //{ path: 'instrView', component: InstrViewComponent},       
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
                     { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ]),
@@ -48,11 +50,12 @@ var AppModule = (function () {
                 section_module_1.SectionModule,
                 semester_module_1.SemesterModule,
                 campus_module_1.CampusModule,
-                prefix_module_1.PrefixModule
+                prefix_module_1.PrefixModule,
+                views_module_1.ViewsModule
             ],
             declarations: [
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent,
+                home_view_component_1.HomeViewComponent,
             ],
             providers: [
                 {
