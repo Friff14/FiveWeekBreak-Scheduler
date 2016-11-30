@@ -13,12 +13,15 @@ import { CourseModule } from './resources/courses/course.module';
 import { InstructorModule } from './resources/instructors/instructor.module';
 import { RoomModule } from './resources/rooms/room.module';
 import { SectionModule } from './resources/sections/section.module';
+import { SemesterModule } from './resources/semesters/semester.module';
 import { CampusModule } from './resources/campuses/campus.module';
 import { PrefixModule } from './resources/prefixes/prefix.module';
+import { ViewsModule } from './views/views.module';
 
 
 // Home component
-import { HomeComponent } from './home/home.component';
+import { HomeViewComponent } from './views/home-view.component';
+import { InstrViewComponent } from './views/instr-view.component';
 
 import { SectionFormComponent } from './resources/sections/section-form.component';
 
@@ -30,7 +33,8 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
         FormsModule,
         HttpModule, 
         RouterModule.forRoot([
-            { path: 'home', component: HomeComponent },           
+            { path: 'home', component: HomeViewComponent },
+            //{ path: 'instrView', component: InstrViewComponent},       
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ]), 
@@ -38,13 +42,16 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
         InstructorModule,
         RoomModule,
         SectionModule,
+        SemesterModule,
         CampusModule,
-        PrefixModule
+        PrefixModule,
+        ViewsModule
     ],
     declarations: 
     [
          AppComponent, 
-         HomeComponent,
+         HomeViewComponent,
+         //InstrViewComponent
     ],
     providers:
     [

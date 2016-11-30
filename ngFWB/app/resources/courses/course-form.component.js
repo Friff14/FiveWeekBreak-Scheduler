@@ -9,30 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var course_model_1 = require('./course.model');
-var course_service_1 = require("./course.service");
 var CourseFormComponent = (function () {
-    function CourseFormComponent(courseService) {
-        this.courseService = courseService;
+    function CourseFormComponent() {
         this.pageTitle = 'Add Course';
-        this.testItems = ['testItem1', 'testItem2', 'testItem3'];
-        this.model = new course_model_1.Course('Spencer', 'Hilton', 12, 'Sample notes!');
     }
-    CourseFormComponent.prototype.submitForm = function (form) {
-        console.log(this.model);
-        this.courseService.postCourseForm(this.model)
-            .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
-    };
-    CourseFormComponent.prototype.testFunction = function (param) {
-        return 'testFunction worked';
-    };
     CourseFormComponent = __decorate([
         core_1.Component({
             selector: 'course-form',
             moduleId: module.id,
             templateUrl: 'course-form.component.html'
         }), 
-        __metadata('design:paramtypes', [course_service_1.CourseService])
+        __metadata('design:paramtypes', [])
     ], CourseFormComponent);
     return CourseFormComponent;
 }());

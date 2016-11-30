@@ -15,6 +15,10 @@
     visibility: hidden;
 }
 
+.courseItem:hover .buttons {
+    visibility: visible;
+}
+
 .courseItem:hover, .instructorItem:hover .buttons {
     visibility: visible;
 }

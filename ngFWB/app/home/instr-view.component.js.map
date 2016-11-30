@@ -1,0 +1,1 @@
+{"version":3,"file":"instr-view.component.js","sourceRoot":"","sources":["instr-view.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;QACI,cAAS,GAAW,kBAAkB,CAAC;IAC3C,CAAC;IAPD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,gBAAgB;YAC1B,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,WAAW,EAAE,2BAA2B;SAC3C,CAAC;;0BAAA;IAGF,yBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,0BAAkB,qBAE9B,CAAA"}
