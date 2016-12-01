@@ -14,6 +14,7 @@ import { InstructorModule } from './resources/instructors/instructor.module';
 import { RoomModule } from './resources/rooms/room.module';
 import { SectionModule } from './resources/sections/section.module';
 import { SemesterModule } from './resources/semesters/semester.module';
+import { BuildingModule } from './resources/buildings/building.module';
 import { CampusModule } from './resources/campuses/campus.module';
 import { PrefixModule } from './resources/prefixes/prefix.module';
 import { ViewsModule } from './views/views.module';
@@ -43,6 +44,7 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
         RoomModule,
         SectionModule,
         SemesterModule,
+        BuildingModule,
         CampusModule,
         PrefixModule,
         ViewsModule

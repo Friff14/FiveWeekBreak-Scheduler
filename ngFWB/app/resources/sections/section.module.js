@@ -22,14 +22,14 @@ var SectionModule = (function () {
             imports: [
                 common_1.CommonModule,
                 router_1.RouterModule.forChild([
-                    { path: 'courseList', component: section_list_component_1.SectionListComponent },
+                    { path: 'sectionList', component: section_list_component_1.SectionListComponent },
                     // { path: 'product/:id',
                     //  canActivate: [ ProductDetailGuard],
                     // component: ProductDetailComponent
                     //}
                     { path: 'sectionForm', component: section_form_component_1.SectionFormComponent },
-                    { path: 'editCourse', component: section_form_component_1.SectionFormComponent },
-                    { path: 'removeCourse', component: section_list_component_1.SectionListComponent }
+                    { path: 'editSection', component: section_form_component_1.SectionFormComponent },
+                    { path: 'removeSection', component: section_list_component_1.SectionListComponent }
                 ])
             ],
             declarations: [

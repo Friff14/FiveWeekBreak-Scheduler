@@ -1,6 +1,115 @@
-.dropdown {
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+    overflow-x: hidden;
+ }
+
+
+
+
+
+
+
+/**********************************************************************
+/*                                                                    *
+/*  BAD STYLE: heading default margin creates gap at the top of page  *
+/*         If html doesnt start with a heading, it will be a problem  *
+/*                                                                    *
+/*********************************************************************/
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+
+
+
+
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 200px;
+    height: 100%;
+    margin-left: -250px;
+    background: #000;
+    overflow-y: auto;
+}
+
+#page-content-wrapper {
+    width: 100%;
     position: relative;
-    display: inline-block;
+    padding: 20px;
+}
+
+.h3 {
+    margin-top: 0;
+}
+
+/* Sidebar Styles */
+.sidebar-brand {
+    color: #7f56c5;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #000;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+.dropdown {
+    cursor: pointer;
 }
 
 .dropdown-content {
@@ -9,16 +118,5 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.buttons {
-    visibility: hidden;
-}
-
-.courseItem:hover .buttons {
-    visibility: visible;
-}
-
-.instructorItem:hover .buttons {
-    visibility: visible;
+    text-indent: 40px;
 }

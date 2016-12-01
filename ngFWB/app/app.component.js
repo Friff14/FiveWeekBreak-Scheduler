@@ -13,7 +13,7 @@ var core_1 = require('@angular/core');
 // The function decorator that determines the selector directive as well as the template (metadata)
 var AppComponent = (function () {
     function AppComponent() {
-        this.appTitle = 'Five Week Break Scheduler';
+        this.appTitle = 'Weber Scheduler';
     }
     AppComponent = __decorate([
         core_1.Component({

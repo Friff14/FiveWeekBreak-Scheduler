@@ -23,6 +23,7 @@ var instructor_module_1 = require('./resources/instructors/instructor.module');
 var room_module_1 = require('./resources/rooms/room.module');
 var section_module_1 = require('./resources/sections/section.module');
 var semester_module_1 = require('./resources/semesters/semester.module');
+var building_module_1 = require('./resources/buildings/building.module');
 var campus_module_1 = require('./resources/campuses/campus.module');
 var prefix_module_1 = require('./resources/prefixes/prefix.module');
 var views_module_1 = require('./views/views.module');
@@ -49,6 +50,7 @@ var AppModule = (function () {
                 room_module_1.RoomModule,
                 section_module_1.SectionModule,
                 semester_module_1.SemesterModule,
+                building_module_1.BuildingModule,
                 campus_module_1.CampusModule,
                 prefix_module_1.PrefixModule,
                 views_module_1.ViewsModule

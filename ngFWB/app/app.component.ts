@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 })
 // The class itself. Export keyword allows it to be used in other components.
 export class AppComponent { 
-    appTitle: string = 'Five Week Break Scheduler'
+    appTitle: string = 'Weber Scheduler'
 }

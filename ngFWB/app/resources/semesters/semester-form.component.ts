@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     templateUrl: 'semester-form.component.html'
 })
 export class SemesterFormComponent {
-    pageTitle: string = 'Semester List';
+    pageTitle: string = 'Semester Form';
 
 }

@@ -7,5 +7,6 @@ import { ISection } from './section';
     templateUrl: 'section-list.component.html'
 })
 export class SectionListComponent {
+    pageTitle: string = 'Section List';
     sections: ISection[];
 }

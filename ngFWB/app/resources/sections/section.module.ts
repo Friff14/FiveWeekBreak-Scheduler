@@ -12,14 +12,14 @@ import { SectionService } from './section.service';
   [ 
     CommonModule,
     RouterModule.forChild([
-      { path: 'courseList', component: SectionListComponent },
+      { path: 'sectionList', component: SectionListComponent },
      // { path: 'product/:id',
       //  canActivate: [ ProductDetailGuard],
        // component: ProductDetailComponent
       //}
       { path: 'sectionForm', component: SectionFormComponent },
-      { path: 'editCourse', component: SectionFormComponent },
-      { path: 'removeCourse', component: SectionListComponent }
+      { path: 'editSection', component: SectionFormComponent },
+      { path: 'removeSection', component: SectionListComponent }
     ])
   ],
   declarations: 
