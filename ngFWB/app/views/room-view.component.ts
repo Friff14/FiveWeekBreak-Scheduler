@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class RoomViewComponent {
     pageTitle: string = 'Current Schedule';
+    numTimeColumns: number = 129;
 }

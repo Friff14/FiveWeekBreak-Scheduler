@@ -7,6 +7,8 @@ import { InstrViewComponent } from './instr-view.component';
 import { RoomViewComponent } from './room-view.component';
 import { CourseViewComponent } from './course-view.component';
 
+//import { SectionModule } from './section.
+
 import { HomeService } from './home.service';
 
 @NgModule({

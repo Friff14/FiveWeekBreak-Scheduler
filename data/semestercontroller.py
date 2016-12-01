@@ -3,6 +3,8 @@ import json
 import falcon
 
 from data.tables import *
+import datetime
+from dateutil import parser
 
 DBSession = sessionmaker(bind=engine)
 
@@ -22,8 +24,8 @@ class SemesterController(object):
         session = DBSession()
         inserted_semester = Semester(
             semester_name=data['semester_name'],
-            semester_start_date=data['semester_start_date'],
-            semester_end_date=data['semester_end_date']
+            semester_start_date=parser.parse(data['semester_start_date']),
+            semester_end_date=parser.parse(data['semester_end_date'])
         )
         session.add(inserted_semester)
 
@@ -32,12 +34,11 @@ class SemesterController(object):
 
         session.commit()
 
-        return inserted_semester
+        return inserted_semester.to_data()
 
     def get(self, data, req):
-
         session = DBSession()
-        if data['semester_id']:
+        if type(data['semester_id']) == int:
             x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
             if x:
                 return x.to_data()
@@ -45,10 +46,10 @@ class SemesterController(object):
                 return {"error": 'Cannot retrieve; semester does not exist.'}
         else:
             semesters = session.query(Semester)
-            data = []
+            ret = []
             for semester in semesters:
-                data.append(semester.to_data())
-            return data
+                ret.append(semester.to_data(top_level=data['semester_id'] != 'list'))
+            return ret
 
     def delete(self, data):
         session = DBSession()
@@ -58,7 +59,7 @@ class SemesterController(object):
         else:
             return {"error": 'Cannot delete; semester does not exist.'}
 
-    def on_get(self, req, resp, semester_id):
+    def on_get(self, req, resp, semester_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"semester_id": semester_id}, req))
 

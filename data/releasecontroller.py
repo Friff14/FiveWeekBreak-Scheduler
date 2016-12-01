@@ -34,11 +34,11 @@ class ReleaseController(object):
 
         session.commit()
 
-        return inserted_release
+        return inserted_release.to_data()
 
     def get(self, data, req):
         session = DBSession()
-        if data['release_id']:
+        if type(data['release_id']) == int:
             x = session.query(Release).filter(Release.release_id == data['release_id']).first()
             if x:
                 return x.to_data()
@@ -46,10 +46,10 @@ class ReleaseController(object):
                 return {"error": 'Hey, man, that\'s a bad burrito'}
         else:
             releases = session.query(Release)
-            data = []
+            ret = []
             for release in releases:
-                data.append(release.to_data())
-            return data
+                ret.append(release.to_data(top_level=(data['release_id'] != 'list')))
+            return ret
 
     def delete(self, data):
         session = DBSession()
@@ -59,7 +59,7 @@ class ReleaseController(object):
         else:
             return {"error": 'Cannot delete; release does not exist.'}
 
-    def on_get(self, req, resp, release_id):
+    def on_get(self, req, resp, release_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"release_id": release_id}, req))
 

@@ -15,6 +15,7 @@ var common_1 = require('@angular/common');
 var instr_view_component_1 = require('./instr-view.component');
 var room_view_component_1 = require('./room-view.component');
 var course_view_component_1 = require('./course-view.component');
+//import { SectionModule } from './section.
 var home_service_1 = require('./home.service');
 var ViewsModule = (function () {
     function ViewsModule() {

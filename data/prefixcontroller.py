@@ -40,7 +40,7 @@ class PrefixController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if data:
+        if type(data['prefix_id']) == int:
             prefixes = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
             if prefixes:
                 return prefixes.to_data()
@@ -50,7 +50,7 @@ class PrefixController(object):
             prefixes = session.query(Prefix)
             ret = []
             for prefix in prefixes:
-                ret.append(prefix.to_data())
+                ret.append(prefix.to_data(top_level=data['prefix_id'] != 'list'))
             return ret
 
     def delete(self, data):
@@ -61,7 +61,7 @@ class PrefixController(object):
         else:
             return {"error": 'Cannot delete; instructor does not exist.'}
 
-    def on_get(self, req, resp, prefix_id):
+    def on_get(self, req, resp, prefix_id=None):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(self.get({"prefix_id": prefix_id}, req))
 

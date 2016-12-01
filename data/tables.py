@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, class_mapper
 from sqlalchemy import Table
+from datetime import datetime
 
 Base = declarative_base()
 
@@ -70,7 +71,13 @@ class Semester(Base):
     sections = relationship('Section', back_populates='semester')
 
     def to_data(self, top_level=True):
-        returned_data = row2dict(self)
+        # returned_data = row2dict(self)
+        returned_data={
+            "semester_id": self.semester_id,
+            "semester_name": self.semester_name,
+            "semester_start_date": datetime.strftime(self.semester_start_date, "%d %B %Y"),
+            "semester_end_date": datetime.strftime(self.semester_end_date, "%d %B %Y")
+        }
         if top_level:
             returned_data['sections'] = []
             for section in self.sections:
@@ -134,8 +141,10 @@ class Course(Base):
     __tablename__ = 'course'
     course_id = Column(Integer, primary_key=True)
     course_name = Column(String(64), nullable=False)
+    course_number = Column(String(5), nullable=False)
     course_credit_hours = Column(Float, nullable=False)
     course_description = Column(String(255))
+
     prefix_id = Column(Integer, ForeignKey('prefix.prefix_id'))
     prefix = relationship('Prefix')
 
@@ -242,9 +251,9 @@ class Feature(Base):
     feature_name = Column(String(64), nullable=False)
 
     courses = relationship("Course",
-                            secondary=courseFeature,
-                            back_populates='features'
-                            )
+                           secondary=courseFeature,
+                           back_populates='features'
+                           )
 
     rooms = relationship("Room",
                          secondary=roomFeature,
