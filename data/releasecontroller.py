@@ -34,7 +34,7 @@ class ReleaseController(object):
 
         session.commit()
 
-        return inserted_release
+        return inserted_release.to_data()
 
     def get(self, data, req):
         session = DBSession()

@@ -41,6 +41,7 @@ def http_test():
     # course
     data = {
         "course_name": 'TEST COURSE',
+        "course_number": '1010',
         "course_credit_hours": 4.0,
         "course_description": "hi",
         "prefix_id": 1,
@@ -111,6 +112,66 @@ def http_test():
     }
     r = requests.post(
         "http://localhost:8000/prefix",
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # release
+
+    data = {
+        "release_name": "Student Advisor",
+        "release_hours": 4,
+        "instructor_id": 1
+    }
+    r = requests.post(
+        "http://localhost:8000/release",
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # room
+
+    data = {
+        "room_name": "A301",
+        "room_capacity": 30,
+        "building_id": 1
+    }
+    r = requests.post(
+        "http://localhost:8000/room",
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # semester
+
+    data = {
+        "semester_name": 'Fall 2016',
+        "semester_start_date": '2016-08-25',
+        "semester_end_date": '2016-12-14'
+    }
+    r = requests.post(
+        'http://localhost:8000/semester',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    data = {
+        "section_name": "Test Section 1",
+        "section_crn": None,
+        "section_capacity": 25,
+        "course_id": 1,
+        "instructor_id": 1,
+        "semester_id": 1,
+        "room_id": 1
+    }
+    r = requests.post(
+        'http://localhost:8000/section',
+        data=json.dumps(data)
+    )
+    print(r.text)
+    data['section_name'] = 'Test Section 2'
+    r = requests.post(
+        'http://localhost:8000/section',
         data=json.dumps(data)
     )
     print(r.text)

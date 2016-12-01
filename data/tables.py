@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, class_mapper
 from sqlalchemy import Table
+from datetime import datetime
 
 Base = declarative_base()
 
@@ -70,7 +71,13 @@ class Semester(Base):
     sections = relationship('Section', back_populates='semester')
 
     def to_data(self, top_level=True):
-        returned_data = row2dict(self)
+        # returned_data = row2dict(self)
+        returned_data={
+            "semester_id": self.semester_id,
+            "semester_name": self.semester_name,
+            "semester_start_date": datetime.strftime(self.semester_start_date, "%d %B %Y"),
+            "semester_end_date": datetime.strftime(self.semester_end_date, "%d %B %Y")
+        }
         if top_level:
             returned_data['sections'] = []
             for section in self.sections:

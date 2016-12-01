@@ -28,7 +28,7 @@ class SectionController(object):
         session = DBSession()
         inserted_section = Section(
             section_name=data['section_name'],
-            seection_crn=data['section_crn'],
+            section_crn=data['section_crn'],
             section_capacity=data['section_capacity'],
             course_id=data['course_id'],
             instructor_id=data['instructor_id'],

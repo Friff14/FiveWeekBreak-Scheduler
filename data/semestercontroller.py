@@ -3,6 +3,8 @@ import json
 import falcon
 
 from data.tables import *
+import datetime
+from dateutil import parser
 
 DBSession = sessionmaker(bind=engine)
 
@@ -22,8 +24,8 @@ class SemesterController(object):
         session = DBSession()
         inserted_semester = Semester(
             semester_name=data['semester_name'],
-            semester_start_date=data['semester_start_date'],
-            semester_end_date=data['semester_end_date']
+            semester_start_date=parser.parse(data['semester_start_date']),
+            semester_end_date=parser.parse(data['semester_end_date'])
         )
         session.add(inserted_semester)
 
@@ -32,7 +34,7 @@ class SemesterController(object):
 
         session.commit()
 
-        return inserted_semester
+        return inserted_semester.to_data()
 
     def get(self, data, req):
         session = DBSession()
