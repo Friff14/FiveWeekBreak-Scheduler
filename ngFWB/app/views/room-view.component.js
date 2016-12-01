@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var RoomViewComponent = (function () {
     function RoomViewComponent() {
         this.pageTitle = 'Current Schedule';
+        this.numTimeColumns = 129;
     }
     RoomViewComponent = __decorate([
         core_1.Component({

@@ -5,7 +5,7 @@
         <a [routerLink]="['/roomView']">By Room</a>
         <a [routerLink]="['/courseView']">By Course</a>
     </nav>
-        <table>
+        <table border="1">
             <!--
             <tr>
                 <th *ngFor='let value in section'>value</th>
@@ -13,20 +13,59 @@
             -->
             <!-- This is hardcoded dummy data. The real implementation is above. -->
             <tr>
-                <th>Instructors</th>
-                <th>Course</th>
-                <th>CRN</th>
-                <th>Hours</th>
-                <th>Days</th>
                 <th>Room</th>
-                <th>Max</th>
-                <th>Hrs</th>
-                <th>Campus</th>
-                <th>Pay</th>
-                <th>Load/Ovld</th>
-                <th>Hrs Req</th>
+                <th>Day</th>
+                <th colspan="29">Time</th>
             </tr>
             <tr>
+                <td></td>
+                <td></td>
+                <td>7:30 AM</td>
+                <td>8:00 AM</td>
+                <td>8:30 AM</td>
+                <td>9:00 AM</td>
+                <td>9:30 AM</td>
+                <td>10:00 AM</td>
+                <td>10:30 AM</td>
+                <td>11:00 AM</td>
+                <td>11:30 AM</td>
+                <td>12:00 PM</td>
+                <td>12:30 PM</td>
+                <td>1:00 PM</td>
+                <td>1:30 PM</td>
+                <td>2:00 PM</td>
+                <td>2:30 PM</td>
+                <td>3:00 PM</td>
+                <td>3:30 PM</td>
+                <td>4:00 PM</td>
+                <td>4:30 PM</td>
+                <td>5:00 PM</td>
+                <td>5:30 PM</td>
+                <td>6:00 PM</td>
+                <td>6:30 PM</td>
+                <td>7:00 PM</td>
+                <td>7:30 PM</td>
+                <td>8:00 PM</td>
+                <td>8:30 PM</td>
+                <td>9:00 PM</td>
+                <td>9:30 PM</td>
             </tr>
+            <tr>
+                <td rowspan="3">104</td>
+            </tr>
+            <tr>
+                <td>MW</td>
+                <td colspan="4"></td>
+                <td colspan="4">CS 2705</td>
+                <td colspan="2">CS 4790</td>
+                <td [attr.colSpan]='numTimeColumns'></td>
+            </tr>
+            <tr>
+                <td>TTH</td>
+                <td colspan="2"></td>
+                <td colspan="4">CS 2250</td>
+                <td colspan="2"></td>
+                <td colspan="2">CS 4640</td>
+                <td [attr.colSpan]='numTimeColumns'></td>
         </table>
 </div>
