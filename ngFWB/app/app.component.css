@@ -19,6 +19,6 @@
     visibility: visible;
 }
 
-.courseItem:hover, .instructorItem:hover .buttons {
+.instructorItem:hover .buttons {
     visibility: visible;
 }
