@@ -55,9 +55,9 @@ class SectionController(object):
 
             times = session.query(ScheduleTime) \
                 .filter(Section.semester_id == data['semester_id']) \
-                .filter(Section.instructor_id == data['instructor_id'] or
-                        Section.room_id == data['room_id'] or
-                        Section.course_id == data['course_id']) \
+                .filter(or_(or_(Section.instructor_id == data['instructor_id'],
+                                Section.room_id == data['room_id']),
+                            Section.course_id == data['course_id'])) \
                 .filter(or_(and_(start_time <= ScheduleTime.schedule_time_end_time,
                                  start_time >= ScheduleTime.schedule_time_start_time),
                             and_(end_time <= ScheduleTime.schedule_time_end_time,
