@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
+import { Location } from '@angular/common';
 import { Instructor } from './instructor.model'
 import {InstructorService} from "./instructor.service";
 
@@ -13,7 +14,9 @@ export class InstructorFormComponent {
     testItems = ['testItem1', 'testItem2', 'testItem3'];
     model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
 
-    constructor(private instructorService: InstructorService) {
+    constructor(
+        private instructorService: InstructorService,
+        private location: Location) {
     }
 
     submitForm(form: NgForm) {
@@ -29,4 +32,7 @@ export class InstructorFormComponent {
         return 'testFunction worked';
     }
 
+    goBack(): void {
+        this.location.back();
+    }
 }

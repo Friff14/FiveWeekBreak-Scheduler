@@ -3,6 +3,7 @@
  */
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
+import { Location } from '@angular/common';
 import { Prefix } from './prefix.model'
 import {PrefixService} from "./prefix.service";
 
@@ -15,7 +16,9 @@ export class PrefixFormComponent {
     pageTitle: string = 'Add Prefix';
     model = new Prefix('CS');
 
-    constructor(private prefixService: PrefixService) {
+    constructor(
+        private prefixService: PrefixService,
+        private location: Location) {
     }
 
     submitForm(form: NgForm) {
@@ -25,6 +28,10 @@ export class PrefixFormComponent {
                 data => console.log('success: ', data),
                 err => console.log('error: ', err)
             )
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 
 }

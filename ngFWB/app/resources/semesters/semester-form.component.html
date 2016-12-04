@@ -12,6 +12,7 @@
             <label>Semester End Date</label>
                 <input type="text" class="form-control" required placeholder="MM/DD/YYYY" name="semester_end_date" [(ngModel)]="model.semester_end_date"/>
                 <br/>
+            <button (click)="goBack()">Cancel</button>
             <button type="submit">Submit</button>
         </div>
     </form>

@@ -5,15 +5,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var core_1 = require('@angular/core');
 var course_model_1 = require('./course.model');
-var course_service_1 = require("./course.service");
 var CourseFormComponent = (function () {
-    function CourseFormComponent(courseService) {
+    function CourseFormComponent(courseService, location) {
         this.courseService = courseService;
+        this.location = location;
         this.pageTitle = 'Add Course';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
         this.model = new course_model_1.Course('9999', 'It\'s a course!', 4, this.prefix);
@@ -32,13 +29,15 @@ var CourseFormComponent = (function () {
     CourseFormComponent.prototype.testFunction = function (param) {
         return 'testFunction worked';
     };
+    CourseFormComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     CourseFormComponent = __decorate([
         core_1.Component({
             selector: 'course-form',
             moduleId: module.id,
             templateUrl: 'course-form.component.html'
-        }), 
-        __metadata('design:paramtypes', [course_service_1.CourseService])
+        })
     ], CourseFormComponent);
     return CourseFormComponent;
 }());
