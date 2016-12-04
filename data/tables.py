@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Float, DateTime
+from sqlalchemy import Time
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -321,14 +322,13 @@ class ScheduleTime(Base):
     __tablename__ = 'schedule_time'
     schedule_time_id = Column(Integer, primary_key=True)
     schedule_time_day_of_week = Column(String(2), nullable=False)
-    schedule_time_start_time = Column(DateTime, nullable=False)
-    schedule_time_end_time = Column(DateTime, nullable=False)
+    schedule_time_start_time = Column(Time, nullable=False)
+    schedule_time_end_time = Column(Time, nullable=False)
 
     section_id = Column(Integer, ForeignKey('section.section_id'))
     section = relationship('Section')
 
     def calc_length(self):
-        # TODO: Make this function work
         return self.schedule_time_id
 
     def to_data(self, top_level=True):

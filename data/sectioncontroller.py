@@ -1,6 +1,13 @@
 import json
 
+import dateutil
+from sqlalchemy import Time
 import falcon
+from dateutil import parser
+from datetime import datetime
+
+from sqlalchemy import and_
+from sqlalchemy import or_
 
 from data.tables import *
 
@@ -22,10 +29,44 @@ class SectionController(object):
             section.semester_id = data['semester_id']
             section.room_id = data['room_id']
 
-            return section.to_data()
+            # for schedule_time in data['schedule_times']:
+            #     inserted_time = ScheduleTime(
+            #         schedule_time_day_of_week=schedule_time['schedule_time_day_of_week'],
+            #         schedule_time_start_time=datetime.strptime(schedule_time['schedule_time_start_time'], '%H:%M').time(),
+            #         schedule_time_end_time=datetime.strptime(schedule_time['schedule_time_end_time'], '%H:%M').time(),
+            #         section_id=section.section_id
+            #     )
+            #     session.add(inserted_time)
+            #     session.flush()
+            #     session.refresh(inserted_time)
+            #     session.commit()
+            #
+            #     return section.to_data()
 
     def post(self, data):
         session = DBSession()
+
+        if 'schedule_times' not in data:
+            return {"error": "No scheduled times!"}
+
+        for schedule_time in data['schedule_times']:
+            start_time = datetime.time(dateutil.parser.parse(schedule_time['schedule_time_start_time']))
+            end_time = datetime.time(dateutil.parser.parse(schedule_time['schedule_time_end_time']))
+
+            times = session.query(ScheduleTime) \
+                .filter(Section.semester_id == data['semester_id']) \
+                .filter(Section.instructor_id == data['instructor_id'] or
+                        Section.room_id == data['room_id'] or
+                        Section.course_id == data['course_id']) \
+                .filter(or_(and_(start_time <= ScheduleTime.schedule_time_end_time,
+                                 start_time >= ScheduleTime.schedule_time_start_time),
+                            and_(end_time <= ScheduleTime.schedule_time_end_time,
+                                 end_time >= ScheduleTime.schedule_time_start_time)))
+
+            if times.count() > 0:
+                print(times.first().schedule_time_start_time)
+                return {"error": "Conflict!"}
+
         inserted_section = Section(
             section_name=data['section_name'],
             section_crn=data['section_crn'],
@@ -35,12 +76,28 @@ class SectionController(object):
             semester_id=data['semester_id'],
             room_id=data['room_id']
         )
+
         session.add(inserted_section)
 
         session.flush()
         session.refresh(inserted_section)
 
         session.commit()
+
+        for schedule_time in data['schedule_times']:
+            inserted_time = ScheduleTime(
+                schedule_time_day_of_week=schedule_time['schedule_time_day_of_week'],
+                schedule_time_start_time=datetime.strptime(schedule_time['schedule_time_start_time'], '%H:%M').time(),
+                schedule_time_end_time=datetime.strptime(schedule_time['schedule_time_end_time'], '%H:%M').time(),
+                section_id=inserted_section.section_id
+            )
+            session.add(inserted_time)
+            session.flush()
+            session.refresh(inserted_time)
+            session.commit()
+
+        # session.refresh(inserted_section)
+        # session.commit()
 
         return inserted_section.to_data()
 
@@ -81,9 +138,10 @@ class SectionController(object):
         resp.body = json.dumps(self.get({"section_id": section_id}, req))
 
     def on_post(self, req, resp):
-        resp.body = json.dumps(
-            self.post(req.passed_parameters)
-        )
+        data = self.post(req.passed_parameters)
+        if "error" in data:
+            resp.status = falcon.HTTP_409
+        resp.body = json.dumps(data)
 
     def on_put(self, req, resp):
         pass
