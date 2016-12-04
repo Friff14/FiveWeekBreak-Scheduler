@@ -5,11 +5,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /**
  * Created by doebo on 11/28/2016.
  */
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var building_model_1 = require('./building.model');
+var building_service_1 = require("./building.service");
 var BuildingFormComponent = (function () {
     function BuildingFormComponent(buildingService, location) {
         this.buildingService = buildingService;
@@ -30,7 +35,8 @@ var BuildingFormComponent = (function () {
             selector: 'building-form',
             moduleId: module.id,
             templateUrl: 'building-form.component.html'
-        })
+        }), 
+        __metadata('design:paramtypes', [building_service_1.BuildingService, common_1.Location])
     ], BuildingFormComponent);
     return BuildingFormComponent;
 }());
