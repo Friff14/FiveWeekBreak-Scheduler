@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { IRoom } from './room';
+import { RoomService } from './room.service';
 
 @Component({
     moduleId: module.id,
@@ -8,5 +10,12 @@ import { IRoom } from './room';
 })
 export class RoomFormComponent {
     pageTitle: string = 'Add Form';
-    
+    constructor(
+        private roomService: RoomService,
+        private location: Location
+    ) {}
+
+    goBack(): void {
+        this.location.back();
+    }
 }

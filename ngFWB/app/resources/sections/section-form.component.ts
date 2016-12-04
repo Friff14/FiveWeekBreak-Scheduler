@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
+import { Location } from '@angular/common';
 import { Section } from './section.model'
 import {SectionService} from "./section.service";
 
@@ -14,7 +15,9 @@ export class SectionFormComponent {
     testItems = ['testItem1', 'testItem2', 'testItem3'];
     model = new Section('Spencer', 'Hilton', 12, 'Sample notes!');
 
-    constructor(private sectionService: SectionService) {
+    constructor(
+        private sectionService: SectionService,
+        private location: Location) {
     }
 
     submitForm(form: NgForm) {
@@ -29,5 +32,10 @@ export class SectionFormComponent {
     testFunction(param: string) {
         return 'testFunction worked';
     }
+
+    goBack(): void {
+        this.location.back();
+    }
     */
+    
 }

@@ -12,11 +12,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by doebo on 11/28/2016.
  */
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var building_model_1 = require('./building.model');
 var building_service_1 = require("./building.service");
 var BuildingFormComponent = (function () {
-    function BuildingFormComponent(buildingService) {
+    function BuildingFormComponent(buildingService, location) {
         this.buildingService = buildingService;
+        this.location = location;
         this.pageTitle = 'Add Building';
         this.model = new building_model_1.Building('Building 3', 'D3', 1);
     }
@@ -25,13 +27,16 @@ var BuildingFormComponent = (function () {
         this.buildingService.postBuildingForm(this.model)
             .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
     };
+    BuildingFormComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     BuildingFormComponent = __decorate([
         core_1.Component({
             selector: 'building-form',
             moduleId: module.id,
             templateUrl: 'building-form.component.html'
         }), 
-        __metadata('design:paramtypes', [building_service_1.BuildingService])
+        __metadata('design:paramtypes', [building_service_1.BuildingService, common_1.Location])
     ], BuildingFormComponent);
     return BuildingFormComponent;
 }());

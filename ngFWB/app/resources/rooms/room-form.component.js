@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var room_service_1 = require('./room.service');
 var RoomFormComponent = (function () {
-    function RoomFormComponent() {
+    function RoomFormComponent(roomService, location) {
+        this.roomService = roomService;
+        this.location = location;
         this.pageTitle = 'Add Form';
     }
+    RoomFormComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     RoomFormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'room-form.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [room_service_1.RoomService, common_1.Location])
     ], RoomFormComponent);
     return RoomFormComponent;
 }());

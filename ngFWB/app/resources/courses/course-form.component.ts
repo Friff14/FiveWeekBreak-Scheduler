@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
+import { Location } from '@angular/common';
 import { Course } from './course.model'
 import {CourseService} from "./course.service";
 import {IPrefix} from "../prefixes/prefix";
@@ -18,7 +19,9 @@ export class CourseFormComponent {
     prefixes: IPrefix[];
 
 
-    constructor(private courseService: CourseService) {
+    constructor(
+        private courseService: CourseService,
+        private location: Location) {
     }
 
     submitForm(form: NgForm) {
@@ -41,4 +44,7 @@ export class CourseFormComponent {
        return 'testFunction worked';
     }
 
+    goBack(): void {
+        this.location.back();
+    }
 }

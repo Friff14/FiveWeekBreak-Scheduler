@@ -2,6 +2,9 @@
  * Created by Tanner_2 on 11/27/2016.
  */
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
+import { SemesterService } from './semester.service';
 
 @Component({
     selector: 'semester-form',
@@ -10,5 +13,12 @@ import { Component } from '@angular/core';
 })
 export class SemesterFormComponent {
     pageTitle: string = 'Semester Form';
+    constructor(
+        private semesterService: SemesterService,
+        private location: Location
+    ){}
 
+    goBack(): void {
+        this.location.back();
+    }
 }

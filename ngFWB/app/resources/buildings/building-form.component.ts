@@ -3,6 +3,7 @@
  */
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
+import { Location } from '@angular/common';
 import { Building } from './building.model'
 import {BuildingService} from "./building.service";
 
@@ -15,7 +16,9 @@ export class BuildingFormComponent {
     pageTitle: string = 'Add Building';
     model = new Building('Building 3', 'D3', 1);
 
-    constructor(private buildingService: BuildingService) {
+    constructor(
+        private buildingService: BuildingService,
+        private location: Location) {
     }
 
     submitForm(form: NgForm) {
@@ -25,5 +28,9 @@ export class BuildingFormComponent {
                 data => console.log('success: ', data),
                 err => console.log('error: ', err)
             )
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var instructor_model_1 = require('./instructor.model');
 var instructor_service_1 = require("./instructor.service");
 var InstructorFormComponent = (function () {
-    function InstructorFormComponent(instructorService) {
+    function InstructorFormComponent(instructorService, location) {
         this.instructorService = instructorService;
+        this.location = location;
         this.pageTitle = 'Add Instructor';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
         this.model = new instructor_model_1.Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
@@ -26,13 +28,16 @@ var InstructorFormComponent = (function () {
     InstructorFormComponent.prototype.testFunction = function (param) {
         return 'testFunction worked';
     };
+    InstructorFormComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     InstructorFormComponent = __decorate([
         core_1.Component({
             selector: 'instructor-form',
             moduleId: module.id,
             templateUrl: 'instructor-form.component.html'
         }), 
-        __metadata('design:paramtypes', [instructor_service_1.InstructorService])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService, common_1.Location])
     ], InstructorFormComponent);
     return InstructorFormComponent;
 }());

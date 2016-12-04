@@ -12,17 +12,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by Tanner_2 on 11/27/2016.
  */
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var semester_service_1 = require('./semester.service');
 var SemesterFormComponent = (function () {
-    function SemesterFormComponent() {
+    function SemesterFormComponent(semesterService, location) {
+        this.semesterService = semesterService;
+        this.location = location;
         this.pageTitle = 'Semester Form';
     }
+    SemesterFormComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     SemesterFormComponent = __decorate([
         core_1.Component({
             selector: 'semester-form',
             moduleId: module.id,
             templateUrl: 'semester-form.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [semester_service_1.SemesterService, common_1.Location])
     ], SemesterFormComponent);
     return SemesterFormComponent;
 }());
