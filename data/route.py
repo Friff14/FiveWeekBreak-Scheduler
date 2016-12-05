@@ -4,7 +4,7 @@ import falcon
 
 from data import buildingcontroller, campuscontroller, coursecontroller, featurecontroller
 from data import instructorcontroller, semestercontroller, sectioncontroller, roomcontroller, prefixcontroller
-from data import middleware, releasecontroller
+from data import middleware, releasecontroller, csv_creation
 
 app = application = falcon.API('application/json',
                                middleware=[
@@ -22,6 +22,7 @@ campus = campuscontroller.CampusController()
 course = coursecontroller.CourseController()
 feature = featurecontroller.FeatureController()
 release = releasecontroller.ReleaseController()
+xlsx = csv_creation.xlsx_creation()
 
 app.add_route('/instructor/{instructor_id}', instructor)
 app.add_route('/instructor/', instructor)
@@ -43,6 +44,7 @@ app.add_route('/feature/{feature_id}', feature)
 app.add_route('/feature/', feature)
 app.add_route('/release/{release_id}', release)
 app.add_route('/release/', release)
+app.add_route('/xlsx/{semester}', xlsx)
 
 if __name__ == '__main__':
     httpd = simple_server.make_server('localhost', 8000, app)
