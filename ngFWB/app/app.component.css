@@ -8,31 +8,8 @@
     overflow-x: hidden;
  }
 
-
-
-
-
-
-
-/**********************************************************************
-/*                                                                    *
-/*  BAD STYLE: heading default margin creates gap at the top of page  *
-/*         If html doesnt start with a heading, it will be a problem  *
-/*                                                                    *
-/*********************************************************************/
-h1, h2, h3 {
-    margin-top: 0;
-}
-
-
-
-
-
-
-/* Toggle Styles */
-
 #wrapper {
-    padding-left: 250px;
+    padding-left: 200px;
 }
 
 #sidebar-wrapper {
@@ -47,13 +24,16 @@ h1, h2, h3 {
 }
 
 #page-content-wrapper {
-    width: 100%;
     position: relative;
     padding: 20px;
 }
 
-.h3 {
-    margin-top: 0;
+.header {
+    padding-bottom: 25px;
+}
+
+.list-content, .form-content {
+    padding-left: 25px;
 }
 
 /* Sidebar Styles */

@@ -1,5 +1,5 @@
-<div>
-    <h2>{{pageTitle}}</h2>
+<div id="view-wrapper">
+    <h3 class="header">{{pageTitle}}</h3>
     <nav>
         <a [routerLink]="['/instrView']">By instructor</a> 
         <a [routerLink]="['/roomView']">By Room</a>
@@ -21,38 +21,38 @@
                 <th>Load/Ovld</th>
                 <th>Hrs Req</th>
             </tr>
-            <tr>
-                <td rowspan="3">
-                    Brinkerhoff, Delroy
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td rowspan="3">12</td>
-            </tr>
-            <tr>
-                <td>CS</td>
-                <td>1410</td>
-                <td>30575</td>
-                <td>9:30 AM</td>
-                <td>11:20 PM</td>
-                <td>TR</td>
-                <td>103D</td>
-                <td>30</td>
-                <td>4.0</td>
-                <td>WSU</td>
-                <td>Reg</td>
-                <td>FL</td>
-            </tr>
+                <tr>
+                    <td rowspan="3">
+                        Brinkerhoff, Delroy
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="3">12</td>
+                </tr>
+                <tr>
+                    <td>CS</td>
+                    <td>1410</td>
+                    <td>30575</td>
+                    <td>9:30 AM</td>
+                    <td>11:20 PM</td>
+                    <td>TR</td>
+                    <td>103D</td>
+                    <td>30</td>
+                    <td>4.0</td>
+                    <td>WSU</td>
+                    <td>Reg</td>
+                    <td>FL</td>
+                </tr>
             <tr>
                 <td>CS</td>
                 <td>1410</td>
@@ -131,7 +131,7 @@
             
 
             <!--
-            <tr>
+            <tr> <!-- This is the row for 
                 <td rowspan={{number of sections taught by instructor + 1}}>
                 <td *ngFor='let'
             </tr>

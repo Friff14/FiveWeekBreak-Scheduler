@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var instructor_service_1 = require('./instructor.service');
 var InstructorListComponent = (function () {
-    function InstructorListComponent() {
+    //instructors: Instructor[];
+    function InstructorListComponent(_instructorService) {
+        this._instructorService = _instructorService;
         this.pageTitle = 'Instructor List';
     }
+    InstructorListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._instructorService.getInstructors()
+            .subscribe(function (instructors) { return _this.instructors = instructors; }, function (error) { return console.log('get error: ', error); });
+    };
     InstructorListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'instructor-list.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService])
     ], InstructorListComponent);
     return InstructorListComponent;
 }());

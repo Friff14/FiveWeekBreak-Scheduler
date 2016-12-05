@@ -17,17 +17,26 @@ export class InstructorService {
 
     constructor(private _http: Http) { }
 
-    getInstructors(): Observable<IInstructor[]> {
-        return this._http.get(this._instructorUrl)
-            .map((response: Response) => <IInstructor[]> response.json())
-            .do(data => console.log(JSON.stringify(data)))
-            .catch(this.handleError);
+
+   getInstructors(): Observable<IInstructor[]> {
+      return this._http.get(this._instructorUrl)
+        .map((response: Response) => <IInstructor[]> response.json())
+        .do(data => console.log(JSON.stringify(data)))
+        .catch(this.handleError);
     }
+
+    //getInstructors(): Observable<Instructor[]> {
+    //    return this._http.get(this._instructorUrl)
+    //        .map((response: Response) => <Instructor[]> response.json())
+    //        .do(data => console.log(JSON.stringify(data)))
+    //        .catch(this.handleError);
+    //}
 
     getInstructor(id: number): Observable<IInstructor> {
         return this.getInstructors()
             .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
     }
+
 
     postInstructorForm(instructor: Instructor): Observable<any> {
         console.log('posting instructor: ', instructor);

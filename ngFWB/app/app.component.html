@@ -10,16 +10,16 @@
                 <a [routerLink]="['/home']">Home View</a>
             </li>
             <li>
-                <a [routerLink]="['/sectionList']">Add Section</a>
+                <a [routerLink]="['/sectionForm']">Add Section</a>
             </li>
             <li>
                 <div class="dropdown">
-                    <a onclick="LoadSubMenu()">Add Resource</a>
+                    <a onclick="LoadSubMenu()">Resources</a>
                     <div class="dropdown-content">
+                        <a [routerLink]="['/semesterList']">Semester</a>
+                        <a [routerLink]="['/instructorList']">Instructor</a>
                         <a [routerLink]="['/courseList']">Course</a>
                         <a [routerLink]="['/prefixForm']">Prefix</a>
-                        <a [routerLink]="['/instructorList']">Instructor</a>
-                        <a [routerLink]="['/semesterList']">Semester</a>
                         <a [routerLink]="['/roomList']">Room</a>
                         <a [routerLink]="['/buildingForm']">Building</a>
                         <a [routerLink]="['/campusForm']">Campus</a>
@@ -31,7 +31,7 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id='#page-content-wrapper'>
+    <div id="page-content-wrapper">
         <router-outlet></router-outlet>
     </div>
     <!-- /#page-content-wrapper -->

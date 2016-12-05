@@ -1,5 +1,5 @@
-<div>
-    <h2>{{pageTitle}}</h2>
+<div id="view-wrapper">
+    <h3 class="header">{{pageTitle}}</h3>
     <nav>
         <a [routerLink]="['/instrView']">By instructor</a> 
         <a [routerLink]="['/roomView']">By Room</a>
@@ -67,5 +67,6 @@
                 <td colspan="2"></td>
                 <td colspan="2">CS 4640</td>
                 <td [attr.colSpan]='numTimeColumns'></td>
+            </tr>
         </table>
 </div>

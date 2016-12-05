@@ -1,68 +1,70 @@
-<div>
-    <h3>{{pageTitle}}</h3>
+<div id="form-wrapper">
+    <h3 class="header">{{pageTitle}}</h3>
 
-    <form #form="ngForm" (submit)='submitForm(form)'>
-        <div class="form-group">
-            <label>First Name</label>
-                <input type="text" class="form-control" required placeholder="First Name" name="instructor_first_name" [(ngModel)]="model.instructor_first_name"/>
-                <br/>
-            <label>Last Name</label>
-                <input type="text" class="form-control" required placeholder="Last Name" name="instructor_last_name" [(ngModel)]="model.instructor_last_name"/>
-                <br/>
-            <label>Hours Required</label>
-                <input type="text" class="form-control" required placeholder="##" name="instructor_hours_required" [(ngModel)]="model.instructor_hours_required"/>
-                <br/>
-            <label>Notes</label>
-                <input type="text" class="form-control" required placeholder="Notes" name="instructor_notes" [(ngModel)]="model.instructor_notes"/>
-                <br/>
-            <label>Release Hours</label>
-                <br/>
-            <label>Courses</label>
-                <br/>
-            <label>Notes</label>
-                <br/>
-
-            <!-- Testing input types from Angular Forms tutorial
-            <div class ="checkbox">
-                <label>
-                    <input type="checkbox" name="test-checkbox" [(ngModel)]="model.checkboxTest"> Test Checkbox
-                </label>
-            </div>
-
-            <label>Payment Type</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="test-radio" value="radio1" checked> Radio1
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="test-radio" value="radio2"> Radio2
-                </label>
-            </div>
-
+    <div class="form-content">
+        <form #form="ngForm" (submit)='submitForm(form)'>
             <div class="form-group">
-                <label>Select Test</label>
-                <select class="form-control"
-                    name="selectTest"
-                [(ngModel)]="model.primaryLanguage">
-                    <option *ngFor="let testItem of testItems">
-                        {{ testItem }}
-                    </option>
-                </select>
-            </div>-->
+                <label>First Name</label>
+                    <input type="text" class="form-control" required placeholder="First Name" name="instructor_first_name" [(ngModel)]="model.instructor_first_name"/>
+                    <br/>
+                <label>Last Name</label>
+                    <input type="text" class="form-control" required placeholder="Last Name" name="instructor_last_name" [(ngModel)]="model.instructor_last_name"/>
+                    <br/>
+                <label>Hours Required</label>
+                    <input type="text" class="form-control" required placeholder="##" name="instructor_hours_required" [(ngModel)]="model.instructor_hours_required"/>
+                    <br/>
+                <label>Notes</label>
+                    <input type="text" class="form-control" required placeholder="Notes" name="instructor_notes" [(ngModel)]="model.instructor_notes"/>
+                    <br/>
+                <label>Release Hours</label>
+                    <br/>
+                <label>Courses</label>
+                    <br/>
+                <label>Notes</label>
+                    <br/>
+
+                <!-- Testing input types from Angular Forms tutorial
+                <div class ="checkbox">
+                    <label>
+                        <input type="checkbox" name="test-checkbox" [(ngModel)]="model.checkboxTest"> Test Checkbox
+                    </label>
+                </div>
+
+                <label>Payment Type</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="test-radio" value="radio1" checked> Radio1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="test-radio" value="radio2"> Radio2
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Test</label>
+                    <select class="form-control"
+                        name="selectTest"
+                    [(ngModel)]="model.primaryLanguage">
+                        <option *ngFor="let testItem of testItems">
+                            {{ testItem }}
+                        </option>
+                    </select>
+                </div>-->
 
 
 
 
-            <!-- done testing -->
-            <button (click)="goBack()">Cancel</button>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
+                <!-- done testing -->
+                <button (click)="goBack()">Cancel</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
 
     Model: {{ model | json }}
     <br>
     Angular: {{ form.value | json }}
 
+    </div>
  </div>
