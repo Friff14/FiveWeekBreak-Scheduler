@@ -143,5 +143,16 @@
             -->
             <!-- This is hardcoded dummy data. The real implementation is above. -->
         </table>
-
+        <table border="1">
+            <tr *ngFor='let section of sections'>
+                <td>{{section.instructor.instructor_last_name}}, {{section.instructor.instructor_first_name}}</td>
+                <table>
+                    <tr *ngFor='let otherSection of sections'>
+                        <template [ngIf]='section.instructor.instructor_id === otherSection.instructor.instructor_id'>
+                            <td>{{otherSection.course.course_id}}</td>
+                            <td>{{otherSection.course.course_crn}}</td>
+                        </template>
+                    </tr>
+                </table>
+        </table>
 </div>
