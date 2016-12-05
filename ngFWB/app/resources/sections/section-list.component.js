@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var section_service_1 = require('./section.service');
 var SectionListComponent = (function () {
-    function SectionListComponent() {
+    function SectionListComponent(_sectionService) {
+        this._sectionService = _sectionService;
         this.pageTitle = 'Section List';
     }
+    SectionListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._sectionService.getSections()
+            .subscribe(function (sections) { return _this.sections = sections; }, function (error) { return console.log('get error: ', error); });
+    };
     SectionListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'section-list.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [section_service_1.SectionService])
     ], SectionListComponent);
     return SectionListComponent;
 }());

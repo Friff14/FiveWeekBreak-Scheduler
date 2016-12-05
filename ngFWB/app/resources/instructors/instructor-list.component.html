@@ -30,6 +30,7 @@
     <p>Note: The following is only sample data to show off the buttons and routing, and will be erased once actual data is inserted</p>
     <ul class="list">
         <!-- Some sample data -->
+        <!--
         <li>
             <div class="instructorItem">Spencer Hilton
                 <span class="buttons">
@@ -46,9 +47,10 @@
                 </span>
             </div>
         </li>
+        -->
         <!-- End sample data -->
-        <li *ngFor='let instructor of instructors'> <!-- *ngFor for the element to be repeated?-->
-            <div class="instructorItem">{{ instructor.instructor_name }}
+        <li *ngFor="let instructor of instructors; let i = index"> <!-- *ngFor for the element to be repeated?-->
+            <div class="instructorItem">{{i}} {{ instructor.instructor_first_name }} {{instructor.instructor_last_name }}
                 <span class="buttons">
                     <a [routerLink]="['/instructorForm']">Edit</a>
                     <a href="#">Remove</a>

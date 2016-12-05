@@ -9,18 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-//import { SectionListComponent } from './section-list.component';
+var section_service_1 = require('../resources/sections/section.service');
 var InstrViewComponent = (function () {
-    function InstrViewComponent() {
+    function InstrViewComponent(_sectionService) {
+        this._sectionService = _sectionService;
         this.pageTitle = 'Current Schedule';
     }
+    InstrViewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._sectionService.getSections()
+            .subscribe(function (sections) { return _this.sections = sections; });
+    };
     InstrViewComponent = __decorate([
         core_1.Component({
             selector: 'instr-view-app',
             moduleId: module.id,
             templateUrl: 'instr-view.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [section_service_1.SectionService])
     ], InstrViewComponent);
     return InstrViewComponent;
 }());

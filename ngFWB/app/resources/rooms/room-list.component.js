@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var room_service_1 = require('./room.service');
 var RoomListComponent = (function () {
-    function RoomListComponent() {
+    function RoomListComponent(_roomService) {
+        this._roomService = _roomService;
         this.pageTitle = 'Room List';
     }
+    RoomListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._roomService.getRooms()
+            .subscribe(function (rooms) { return _this.rooms = rooms; }, function (error) { return console.log('get error: ', error); });
+    };
     RoomListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'room-list.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [room_service_1.RoomService])
     ], RoomListComponent);
     return RoomListComponent;
 }());

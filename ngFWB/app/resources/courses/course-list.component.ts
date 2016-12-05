@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ICourse } from './course';
+import { Course } from './course.model';
 import { CourseService } from './course.service';
 
 @Component({
@@ -20,7 +22,6 @@ export class CourseListComponent implements OnInit{
     // The actual list of courses to use in the app.
     // Will interact with the database.
     courses: ICourse[];
-
     
     constructor(private _courseService: CourseService) {}
 
