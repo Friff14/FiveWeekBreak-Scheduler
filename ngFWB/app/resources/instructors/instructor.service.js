@@ -26,6 +26,12 @@ var InstructorService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
+    //getInstructors(): Observable<Instructor[]> {
+    //    return this._http.get(this._instructorUrl)
+    //        .map((response: Response) => <Instructor[]> response.json())
+    //        .do(data => console.log(JSON.stringify(data)))
+    //        .catch(this.handleError);
+    //}
     InstructorService.prototype.getInstructor = function (id) {
         return this.getInstructors()
             .map(function (instructors) { return instructors.find(function (i) { return i.instructor_id === id; }); });

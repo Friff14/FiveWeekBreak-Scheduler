@@ -20,6 +20,17 @@ var SectionService = (function () {
         this._http = _http;
         this._sectionUrl = 'http://localhost:8000/section/';
     }
+    // For the section list component
+    // getSections(): Observable<ISection[]> {
+    //   return this._http.get(this._sectionUrl)
+    //     .map((response: Response) => <ISection[]> response.json())
+    //   .do(data => console.log(JSON.stringify(data)))
+    // .catch(this.handleError);
+    // }
+    //getSection(id: number): Observable<ISection> {
+    //  return this.getSections()
+    //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
+    //}
     SectionService.prototype.getSections = function () {
         return this._http.get(this._sectionUrl)
             .map(function (response) { return response.json(); })

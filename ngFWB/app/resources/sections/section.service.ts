@@ -16,16 +16,29 @@ export class SectionService {
 
     constructor(private _http: Http) { }
 
-    getSections(): Observable<ISection[]> {
+    // For the section list component
+   // getSections(): Observable<ISection[]> {
+     //   return this._http.get(this._sectionUrl)
+       //     .map((response: Response) => <ISection[]> response.json())
+         //   .do(data => console.log(JSON.stringify(data)))
+           // .catch(this.handleError);
+   // }
+
+    //getSection(id: number): Observable<ISection> {
+      //  return this.getSections()
+        //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
+    //}
+
+    getSections(): Observable<Section[]> {
         return this._http.get(this._sectionUrl)
-            .map((response: Response) => <ISection[]> response.json())
+            .map((response: Response) => <Section[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getSection(id: number): Observable<ISection> {
+    getSection(id: number): Observable<Section> {
         return this.getSections()
-            .map((sections: ISection[]) => sections.find(i => i.section_id === id));
+            .map((sections: Section[]) => sections.find(i => i.section_id === id));
     }
 
     postSectionForm(section: Section): Observable<any> {
