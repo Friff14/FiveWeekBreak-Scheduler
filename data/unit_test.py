@@ -155,58 +155,65 @@ def http_test():
     # )
     # print(r.text)
 
-    data = {
-        "section_name": "Test Section 1",
-        "section_crn": None,
-        "section_capacity": 25,
-        "course_id": 1,
-        "instructor_id": 1,
-        "semester_id": 1,
-        "room_id": 1,
-        "schedule_times": [
-            {
-                "schedule_time_day_of_week": "Tu",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            },
-            {
-                "schedule_time_day_of_week": "Th",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            }
-        ]
-    }
-    r = requests.post(
-        'http://localhost:8000/section',
-        data=json.dumps(data)
-    )
+    # data = {
+    #     "section_name": "Test Section 1",
+    #     "section_crn": None,
+    #     "section_capacity": 25,
+    #     "course_id": 1,
+    #     "instructor_id": 1,
+    #     "semester_id": 1,
+    #     "room_id": 1,
+    #     "schedule_times": [
+    #         {
+    #             "schedule_time_day_of_week": "Tu",
+    #             "schedule_time_start_time": "09:30",
+    #             "schedule_time_end_time": "11:20"
+    #         },
+    #         {
+    #             "schedule_time_day_of_week": "Th",
+    #             "schedule_time_start_time": "09:30",
+    #             "schedule_time_end_time": "11:20"
+    #         }
+    #     ]
+    # }
+    # r = requests.post(
+    #     'http://localhost:8000/section',
+    #     data=json.dumps(data)
+    # )
+    #
+    # print(r.text)
+    # data = {
+    #     "section_name": "Test Section 1",
+    #     "section_crn": None,
+    #     "section_capacity": 25,
+    #     "course_id": 1,
+    #     "instructor_id": 1,
+    #     "semester_id": 1,
+    #     "room_id": 1,
+    #     "schedule_times": [
+    #         {
+    #             "schedule_time_day_of_week": "Mo",
+    #             "schedule_time_start_time": "09:30",
+    #             "schedule_time_end_time": "11:20"
+    #         },
+    #         {
+    #             "schedule_time_day_of_week": "We",
+    #             "schedule_time_start_time": "09:30",
+    #             "schedule_time_end_time": "11:20"
+    #         }
+    #     ]
+    # }
 
-    print(r.text)
-    data = {
-        "section_name": "Test Section 1",
-        "section_crn": None,
-        "section_capacity": 25,
-        "course_id": 1,
-        "instructor_id": 1,
-        "semester_id": 1,
-        "room_id": 1,
-        "schedule_times": [
-            {
-                "schedule_time_day_of_week": "Mo",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            },
-            {
-                "schedule_time_day_of_week": "We",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            }
-        ]
-    }
 
-    r = requests.post(
-        'http://localhost:8000/section',
-        data=json.dumps(data)
+
+    # r = requests.post(
+    #     'http://localhost:8000/section',
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
+
+    r = requests.get(
+        'http://localhost:8000/xlsx/1'
     )
     print(r.text)
 
