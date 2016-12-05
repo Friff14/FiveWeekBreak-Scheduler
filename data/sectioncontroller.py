@@ -50,18 +50,22 @@ class SectionController(object):
             return {"error": "No scheduled times!"}
 
         for schedule_time in data['schedule_times']:
-            start_time = datetime.time(dateutil.parser.parse(schedule_time['schedule_time_start_time']))
-            end_time = datetime.time(dateutil.parser.parse(schedule_time['schedule_time_end_time']))
+            start_time = datetime.datetime.time(dateutil.parser.parse(schedule_time['schedule_time_start_time']))
+            end_time = datetime.datetime.time(dateutil.parser.parse(schedule_time['schedule_time_end_time']))
 
             times = session.query(ScheduleTime) \
                 .filter(Section.semester_id == data['semester_id']) \
                 .filter(or_(or_(Section.instructor_id == data['instructor_id'],
                                 Section.room_id == data['room_id']),
                             Section.course_id == data['course_id'])) \
-                .filter(or_(and_(start_time <= ScheduleTime.schedule_time_end_time,
-                                 start_time >= ScheduleTime.schedule_time_start_time),
-                            and_(end_time <= ScheduleTime.schedule_time_end_time,
-                                 end_time >= ScheduleTime.schedule_time_start_time)))
+                .filter(or_(and_(
+                                ScheduleTime.schedule_time_day_of_week == schedule_time['schedule_time_day_of_week'],
+                                and_(start_time <= ScheduleTime.schedule_time_end_time,
+                                     start_time >= ScheduleTime.schedule_time_start_time)),
+                            and_(
+                                ScheduleTime.schedule_time_day_of_week == schedule_time['schedule_time_day_of_week'],
+                                and_(end_time <= ScheduleTime.schedule_time_end_time,
+                                     end_time >= ScheduleTime.schedule_time_start_time))))
 
             if times.count() > 0:
                 print(times.first().schedule_time_start_time)
@@ -87,8 +91,8 @@ class SectionController(object):
         for schedule_time in data['schedule_times']:
             inserted_time = ScheduleTime(
                 schedule_time_day_of_week=schedule_time['schedule_time_day_of_week'],
-                schedule_time_start_time=datetime.strptime(schedule_time['schedule_time_start_time'], '%H:%M').time(),
-                schedule_time_end_time=datetime.strptime(schedule_time['schedule_time_end_time'], '%H:%M').time(),
+                schedule_time_start_time=datetime.datetime.strptime(schedule_time['schedule_time_start_time'], '%H:%M').time(),
+                schedule_time_end_time=datetime.datetime.strptime(schedule_time['schedule_time_end_time'], '%H:%M').time(),
                 section_id=inserted_section.section_id
             )
             session.add(inserted_time)

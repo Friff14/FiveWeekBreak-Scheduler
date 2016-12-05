@@ -1,3 +1,4 @@
+import math
 from sqlalchemy import Column, ForeignKey, Integer, String, Float, DateTime
 from sqlalchemy import Time
 from sqlalchemy.ext.declarative import declarative_base
@@ -5,7 +6,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, class_mapper
 from sqlalchemy import Table
-from datetime import datetime
+import datetime
+from time import mktime
 
 Base = declarative_base()
 
@@ -76,8 +78,8 @@ class Semester(Base):
         returned_data={
             "semester_id": self.semester_id,
             "semester_name": self.semester_name,
-            "semester_start_date": datetime.strftime(self.semester_start_date, "%d %B %Y"),
-            "semester_end_date": datetime.strftime(self.semester_end_date, "%d %B %Y")
+            "semester_start_date": datetime.datetime.strftime(self.semester_start_date, "%d %B %Y"),
+            "semester_end_date": datetime.datetime.strftime(self.semester_end_date, "%d %B %Y")
         }
         if top_level:
             returned_data['sections'] = []
@@ -329,7 +331,9 @@ class ScheduleTime(Base):
     section = relationship('Section')
 
     def calc_length(self):
-        return self.schedule_time_id
+        m1 = self.schedule_time_end_time.hour * 60 + self.schedule_time_end_time.minute
+        m2 = self.schedule_time_start_time.hour * 60 + self.schedule_time_start_time.minute
+        return math.ceil((m1 - m2)/60)
 
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
