@@ -10,7 +10,7 @@ import {SectionService} from "./section.service";
     templateUrl: 'section-form.component.html'
 })
 export class SectionFormComponent {
-    pageTitle: string = 'Section List';
+    pageTitle: string = 'Section Form';
     /*
     testItems = ['testItem1', 'testItem2', 'testItem3'];
     model = new Section('Spencer', 'Hilton', 12, 'Sample notes!');
