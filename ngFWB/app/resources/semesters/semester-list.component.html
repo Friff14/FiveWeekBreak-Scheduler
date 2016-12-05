@@ -7,26 +7,30 @@
             adding, editing, or removing semesters.
         </p>
 
-        <table border='1'>
-            <tr>
-                <th>Semester ID</th>
-                <th>Semester Name</th>
-                <th>Semester Start Date</th>
-                <th>Semester End Date</th>
-            </tr>
-            <tbody>
-                <tr *ngFor='let semester of semesters'>
-                    <td>{{ semester.semester_id }}</td>
-                    <td>{{ semester.semester_name }}</td>
-                    <td>{{ semester.semester_start_date }}</td>
-                    <td>{{ semester.semester_end_date }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <button [routerLink]="['/semesterForm']">Add Semester</button>
 
-        <li><a [routerLink]="['/semesterForm']">Add Semester</a></li>
-        <li><a [routerLink]="['/edit']">Edit Semester</a></li>
-        <li><a [routerLink]="['/remove']">Remove Semester</a></li>
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th>Semester ID</th>
+                    <th>Semester Name</th>
+                    <th>Semester Start Date</th>
+                    <th>Semester End Date</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let semester of semesters'>
+                        <td>{{ semester.semester_id }}</td>
+                        <td>{{ semester.semester_name }}</td>
+                        <td>{{ semester.semester_start_date }}</td>
+                        <td>{{ semester.semester_end_date }}</td>
+
+                        <td><a [routerLink]="['/edit']">Edit Semester</a></td>
+                        <td><a [routerLink]="['/remove']">Remove Semester</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </div>

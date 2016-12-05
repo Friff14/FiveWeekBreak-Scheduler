@@ -7,26 +7,29 @@
             adding, editing, or removing courses.
         </p>
 
-        <table border='1'>
-            <tr>
-                <th>Room ID</th>
-                <th>Room Name</th>
-                <th>Room Description</th>
-                <th>Room Capacity</th>
-            </tr>
-            <tbody>
-                <tr *ngFor='let room of rooms'>
-                    <td>{{ room.room_id }}</td>
-                    <td>{{ room.room_name }}</td>
-                    <td>{{ room.room_capacity }}</td>
-                    <td>{{ room.room_building_id }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <button [routerLink]="['/roomForm']">Add Room</button>
 
-        <li><a [routerLink]="['/roomForm']">Add Room</a></li>
-        <li><a [routerLink]="['/edit']">Edit Room</a></li>
-        <li><a [routerLink]="['/remove']">Remove Room</a></li>
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th>Room ID</th>
+                    <th>Room Name</th>
+                    <th>Room Description</th>
+                    <th>Room Capacity</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let room of rooms'>
+                        <td>{{ room.room_id }}</td>
+                        <td>{{ room.room_name }}</td>
+                        <td>{{ room.room_capacity }}</td>
+                        <td>{{ room.room_building_id }}</td>
+
+                        <td><a [routerLink]="['/edit']">Edit Room</a></td>
+                        <td><a [routerLink]="['/remove']">Remove Room</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
