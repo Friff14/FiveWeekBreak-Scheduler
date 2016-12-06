@@ -19,9 +19,16 @@ var InstructorService = (function () {
     function InstructorService(_http) {
         this._http = _http;
         this._instructorUrl = 'http://localhost:8000/instructor/';
+        this._otherInstructorUrl = 'mockapi/mock-instructors.json';
     }
+    //    getInstructors(): Observable<IInstructor[]> {
+    //       return this._http.get(this._instructorUrl)
+    //         .map((response: Response) => <IInstructor[]> response.json())
+    //         .do(data => console.log(JSON.stringify(data)))
+    //         .catch(this.handleError);
+    //     }
     InstructorService.prototype.getInstructors = function () {
-        return this._http.get(this._instructorUrl)
+        return this._http.get(this._otherInstructorUrl)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);

@@ -14,16 +14,25 @@ import {Instructor} from "./instructor.model";
 @Injectable()
 export class InstructorService {
     private _instructorUrl = 'http://localhost:8000/instructor/';
+    private _otherInstructorUrl = 'mockapi/mock-instructors.json';
 
     constructor(private _http: Http) { }
 
 
-   getInstructors(): Observable<IInstructor[]> {
-      return this._http.get(this._instructorUrl)
+//    getInstructors(): Observable<IInstructor[]> {
+//       return this._http.get(this._instructorUrl)
+//         .map((response: Response) => <IInstructor[]> response.json())
+//         .do(data => console.log(JSON.stringify(data)))
+//         .catch(this.handleError);
+//     }
+    
+    getInstructors(): Observable<IInstructor[]> {
+      return this._http.get(this._otherInstructorUrl)
         .map((response: Response) => <IInstructor[]> response.json())
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);
     }
+    
 
     //getInstructors(): Observable<Instructor[]> {
     //    return this._http.get(this._instructorUrl)

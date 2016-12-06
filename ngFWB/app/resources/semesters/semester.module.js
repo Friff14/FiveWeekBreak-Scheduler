@@ -27,8 +27,10 @@ var SemesterModule = (function () {
                 common_1.CommonModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
-                    { path: 'semesterList', component: semester_list_component_1.SemesterListComponent },
-                    { path: 'semesterForm', component: semester_form_component_1.SemesterFormComponent }
+                    //{ path: 'semesterList', component: SemesterListComponent },
+                    { path: 'semesterForm', component: semester_form_component_1.SemesterFormComponent },
+                    { path: 'editSemester', component: semester_form_component_1.SemesterFormComponent },
+                    { path: 'remove', component: semester_form_component_1.SemesterFormComponent }
                 ])
             ],
             declarations: [
