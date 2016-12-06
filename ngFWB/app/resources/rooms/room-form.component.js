@@ -15,7 +15,7 @@ var RoomFormComponent = (function () {
     function RoomFormComponent(roomService, location) {
         this.roomService = roomService;
         this.location = location;
-        this.pageTitle = 'Add Form';
+        this.pageTitle = 'Add Room';
     }
     RoomFormComponent.prototype.goBack = function () {
         this.location.back();
