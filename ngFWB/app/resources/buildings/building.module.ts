@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { BuildingFormComponent } from './building-form.component';
+import { BuildingListComponent } from './building-list.component';
 
 import { BuildingService } from './building.service';
 
@@ -16,21 +17,19 @@ import { BuildingService } from './building.service';
       CommonModule,
       FormsModule,
       RouterModule.forChild([
-          { path: 'buildingForm', component: BuildingFormComponent }
-
-        // { path: 'product/:id',
-        //  canActivate: [ ProductDetailGuard],
-        // component: ProductDetailComponent
-        //}
+          { path: 'buildingForm', component: BuildingFormComponent },
+          { path: 'buildingList', component: BuildingListComponent }
         ])
   ],
   declarations:
   [
-    BuildingFormComponent
+      BuildingFormComponent,
+      BuildingListComponent
   ],
   exports:
   [
-      BuildingFormComponent
+      BuildingFormComponent,
+      BuildingListComponent
   ],
   providers:
   [

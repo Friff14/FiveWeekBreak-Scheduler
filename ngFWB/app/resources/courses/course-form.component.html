@@ -1,6 +1,7 @@
 <div id="form-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+    <h2 class="header">{{pageTitle}}</h2>
+
+    <hr class="header-line">
     <div class="form-content">
         <form>
             <div class="form-group">
@@ -30,8 +31,10 @@
                     <option>Some other credits</option>
                 </select>
                             <br/>
-                <button (click)="goBack()">Cancel</button>
+
                 <button type="submit">Accept</button>
+                <button (click)="goBack()">Cancel</button>
+
             </div>
         </form>
     </div>

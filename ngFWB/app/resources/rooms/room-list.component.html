@@ -1,31 +1,37 @@
 <div id="list-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
     <div class="list-content">
+        <!--
         <p>This page will show the current list of rooms as well as links for
             adding, editing, or removing courses.
         </p>
+        -->
 
-        <table border='1'>
-            <tr>
-                <th>Room ID</th>
-                <th>Room Name</th>
-                <th>Room Description</th>
-                <th>Room Capacity</th>
-            </tr>
-            <tbody>
-                <tr *ngFor='let room of rooms'>
-                    <td>{{ room.room_id }}</td>
-                    <td>{{ room.room_name }}</td>
-                    <td>{{ room.room_capacity }}</td>
-                    <td>{{ room.room_building_id }}</td>
+        <button [routerLink]="['/roomForm']">Add Room</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th class="id-column">Room ID</th>
+                    <th class="name-column">Name</th>
+                    <th class="cap-column">Capacity</th>
+                    <th class="name-column">Building</th>
                 </tr>
-            </tbody>
-        </table>
+                <tbody>
+                    <tr *ngFor='let room of rooms'>
+                        <td class="id-column">{{ room.room_id }}</td>
+                        <td class="name-column">{{ room.room_name }}</td>
+                        <td class="cap-column">{{ room.room_capacity }}</td>
+                        <td class="name-column">{{ room.building }}</td>
 
-        <li><a [routerLink]="['/roomForm']">Add Room</a></li>
-        <li><a [routerLink]="['/edit']">Edit Room</a></li>
-        <li><a [routerLink]="['/remove']">Remove Room</a></li>
+                        <td class="edit-column"><a [routerLink]="['/edit']">Edit</a></td>
+                        <td class="remove-column"><a [routerLink]="['/remove']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 

@@ -16,6 +16,7 @@ var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var campus_form_component_1 = require('./campus-form.component');
+var campus_list_component_1 = require('./campus-list.component');
 var campus_service_1 = require('./campus.service');
 var CampusModule = (function () {
     function CampusModule() {
@@ -26,14 +27,17 @@ var CampusModule = (function () {
                 common_1.CommonModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
-                    { path: 'campusForm', component: campus_form_component_1.CampusFormComponent }
+                    { path: 'campusForm', component: campus_form_component_1.CampusFormComponent },
+                    { path: 'campusList', component: campus_list_component_1.CampusListComponent }
                 ])
             ],
             declarations: [
-                campus_form_component_1.CampusFormComponent
+                campus_form_component_1.CampusFormComponent,
+                campus_list_component_1.CampusListComponent
             ],
             exports: [
-                campus_form_component_1.CampusFormComponent
+                campus_form_component_1.CampusFormComponent,
+                campus_list_component_1.CampusListComponent
             ],
             providers: [
                 campus_service_1.CampusService

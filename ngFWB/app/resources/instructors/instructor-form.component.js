@@ -10,13 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var instructor_model_1 = require('./instructor.model');
 var instructor_service_1 = require("./instructor.service");
 var InstructorFormComponent = (function () {
-    function InstructorFormComponent(instructorService, location) {
+    //model: Instructor;
+    function InstructorFormComponent(instructorService, 
+        //private model: Instructor,
+        //private model: IInstructor,
+        location) {
         this.instructorService = instructorService;
         this.location = location;
         this.pageTitle = 'Add Instructor';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
+        this.model = new instructor_model_1.Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
     }
     InstructorFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);

@@ -1,31 +1,40 @@
-<div id="#list-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+<div id="list-wrapper">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
     <div class="list-content">
+        <!--
         <p>This page will show the current list of semesters as well as links for
             adding, editing, or removing semesters.
         </p>
+        -->
 
-        <table border='1'>
-            <tr>
-                <th>Semester ID</th>
-                <th>Semester Name</th>
-                <th>Semester Start Date</th>
-                <th>Semester End Date</th>
-            </tr>
-            <tbody>
-                <tr *ngFor='let semester of semesters'>
-                    <td>{{ semester.semester_id }}</td>
-                    <td>{{ semester.semester_name }}</td>
-                    <td>{{ semester.semester_start_date }}</td>
-                    <td>{{ semester.semester_end_date }}</td>
+        <button [routerLink]="['/semesterForm']">Add Semester</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th class="id-column">Semester ID</th>
+                    <th class="name-column">Name</th>
+                    <th class="date-column">Start Date</th>
+                    <th class="date-column">End Date</th>
+                    <th class="name-column">Section</th>
                 </tr>
-            </tbody>
-        </table>
+                <tbody>
+                    <tr *ngFor='let semester of semesters'>
+                        <td class="id-column">{{ semester.semester_id }}</td>
+                        <td class="name-column">{{ semester.semester_name }}</td>
+                        <td class="date-column">{{ semester.semester_start_date }}</td>
+                        <td class="date-column">{{ semester.semester_end_date }}</td>
+                        <td class="name-column">{{ semester.section }}</td>
 
-        <li><a [routerLink]="['/semesterForm']">Add Semester</a></li>
-        <li><a [routerLink]="['/edit']">Edit Semester</a></li>
-        <li><a [routerLink]="['/remove']">Remove Semester</a></li>
+                        <td class="edit-column"><a [routerLink]="['/editSemester']">Edit</a></td>
+                        <td class="remove-column"><a [routerLink]="['/removeSemester']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </div>

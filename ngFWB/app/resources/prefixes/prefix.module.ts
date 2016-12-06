@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { PrefixFormComponent } from './prefix-form.component';
+import { PrefixListComponent } from './prefix-list.component';
 
 import { PrefixService } from './prefix.service';
 
@@ -16,20 +17,20 @@ import { PrefixService } from './prefix.service';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: 'prefixForm', component: PrefixFormComponent }
-    // { path: 'product/:id',
-    //  canActivate: [ ProductDetailGuard],
-      // component: ProductDetailComponent
-    //}
+        { path: 'prefixForm', component: PrefixFormComponent },
+        { path: 'prefixForm/edit/:id', component: PrefixFormComponent},
+        { path: 'prefixList', component: PrefixListComponent }
     ])
   ],
   declarations:
   [
-    PrefixFormComponent
+    PrefixFormComponent,
+    PrefixListComponent
   ],
   exports:
   [
-    PrefixFormComponent
+    PrefixFormComponent,
+    PrefixListComponent
   ],
   providers:
   [

@@ -9,7 +9,7 @@ import { RoomService } from './room.service';
     templateUrl: 'room-form.component.html'
 })
 export class RoomFormComponent {
-    pageTitle: string = 'Add Form';
+    pageTitle: string = 'Add Room';
     constructor(
         private roomService: RoomService,
         private location: Location

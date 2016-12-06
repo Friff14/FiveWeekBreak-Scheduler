@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { CampusFormComponent } from './campus-form.component';
+import { CampusListComponent } from './campus-list.component';
 
 import { CampusService } from './campus.service';
 
@@ -16,24 +17,23 @@ import { CampusService } from './campus.service';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: 'campusForm', component: CampusFormComponent }
-    // { path: 'product/:id',
-    //  canActivate: [ ProductDetailGuard],
-      // component: ProductDetailComponent
-    //}
+        { path: 'campusForm', component: CampusFormComponent },
+        { path: 'campusList', component: CampusListComponent }
     ])
   ],
   declarations:
   [
-    CampusFormComponent
+      CampusFormComponent,
+      CampusListComponent
   ],
   exports:
   [
-    CampusFormComponent
+      CampusFormComponent,
+      CampusListComponent
   ],
   providers:
   [
-    CampusService
+      CampusService
   ]
 })
 export class CampusModule {}

@@ -8,26 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * Created by Tanner_2 on 12/5/2016.
+ */
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var room_service_1 = require('./room.service');
-var RoomFormComponent = (function () {
-    function RoomFormComponent(roomService, location) {
-        this.roomService = roomService;
-        this.location = location;
-        this.pageTitle = 'Add Room';
+var BuildingListComponent = (function () {
+    function BuildingListComponent() {
+        this.pageTitle = 'Building List';
     }
-    RoomFormComponent.prototype.goBack = function () {
-        this.location.back();
-    };
-    RoomFormComponent = __decorate([
+    BuildingListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'room-form.component.html'
+            templateUrl: 'building-list.component.html'
         }), 
-        __metadata('design:paramtypes', [room_service_1.RoomService, common_1.Location])
-    ], RoomFormComponent);
-    return RoomFormComponent;
+        __metadata('design:paramtypes', [])
+    ], BuildingListComponent);
+    return BuildingListComponent;
 }());
-exports.RoomFormComponent = RoomFormComponent;
-//# sourceMappingURL=room-form.component.js.map
+exports.BuildingListComponent = BuildingListComponent;
+//# sourceMappingURL=building-list.component.js.map

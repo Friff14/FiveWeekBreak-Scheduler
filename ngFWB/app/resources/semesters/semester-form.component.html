@@ -1,6 +1,7 @@
 <div id="form-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
     <div class="form-content">
         <form #form="ngForm" (submit)='submitForm(form)'>
             <div class="form-group">
@@ -13,8 +14,10 @@
                 <label>Semester End Date</label>
                     <input type="text" class="form-control" required placeholder="MM/DD/YYYY" name="semester_end_date" [(ngModel)]="model.semester_end_date"/>
                     <br/>
-                <button (click)="goBack()">Cancel</button>
+
                 <button type="submit">Submit</button>
+                <button (click)="goBack()">Cancel</button>
+
             </div>
         </form>
 

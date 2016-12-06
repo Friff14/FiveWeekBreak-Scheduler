@@ -1,0 +1,38 @@
+<div id="list-wrapper">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
+    <div class="list-content">
+        <!--
+        <p>This page will show the current list of buildings as well as links for
+            adding, editing, or removing buildings.
+        </p>
+        -->
+
+        <button [routerLink]="['/buildingForm']">Add Building</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th class="id-column">Building ID</th>
+                    <th class="name-column">Name</th>
+                    <th class="abb-column">Abbreviation</th>
+                    <th class="campus-column">Campus</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let building of buildings'>
+                        <td class="id-column">{{ building.building_id }}</td>
+                        <td class="name-column">{{ building.building_name }}</td>
+                        <td class="abb-column">{{ building.abbreviation }}</td>
+                        <td class="campus-column">{{ building.campus_id }}</td>
+
+                        <td class="edit-column"><a [routerLink]="['/editBuilding']">Edit</a></td>
+                        <td class="remove-column"><a [routerLink]="['/removeBuilding']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

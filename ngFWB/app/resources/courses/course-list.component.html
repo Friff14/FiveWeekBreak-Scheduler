@@ -1,46 +1,40 @@
 <div id="list-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
     <div class="list-content">
+        <!--
         <p>This page will show the current list of courses as well as links for
             adding, editing, or removing courses.
         </p>
+        -->
 
-        <p>Note: The following is only sample data to show off the buttons and routing, and will be erased once actual data is inserted</p>
+        <button [routerLink]="['/courseForm']">Add Course</button>
 
-        <div id="list">
-            <ul class="list">
-                <!-- Some sample data -->
-                <li>
-                    <div class="courseItem">Advanced Internet Programming
-                        <span class="buttons">
-                            <a [routerLink]="['/courseForm']">Edit</a>
-                            <a href="#">Remove</a>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="courseItem">Adv. Software Engineering Methods
-                        <span class="buttons">
-                            <a [routerLink]="['/courseForm']">Edit</a>
-                            <a href="#">Remove</a>
-                        </span>
-                    </div>
-                </li>
-                <!-- End sample data -->
-                <li *ngFor='let course of courses'> <!-- *ngFor for the element to be repeated?-->
-                    <div class="courseItem">{{ course.course_name }}
-                        <span class="buttons">
-                            <a [routerLink]="['/courseForm']">Edit</a>
-                            <a href="#">Remove</a>
-                        </span>
-                    </div>
-                </li>
-            </ul>
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th class="id-column">Course ID</th>
+                    <th class="name-column">Name</th>
+                    <th class="desc-column">Description</th>
+                    <th class="credit-column">Credit Hours</th>
+                    <th class="name-column">Prefix</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let course of courses'>
+                        <td class="id-column">{{ course.course_id }}</td>
+                        <td class="name-column">{{ course.course_name }}</td>
+                        <td class="desc-column">{{ course.course_description }}</td>
+                        <td class="credit-column">{{ course.course_credit_hours }}</td>
+                        <td class="name-column">{{ course.prefix_name }}</td>
+
+                        <td class="edit-column"><a [routerLink]="['/editCourse']">Edit</a></td>
+                        <td class="remove-column"><a [routerLink]="['/removeCourse']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <li><a [routerLink]="['/courseForm']">Add Course</a></li>
-        <li><a [routerLink]="['/editCourse']">Edit Course</a></li>
-        <li><a [routerLink]="['/removeCourse']">Remove Course</a></li>
     </div>
+
 </div>

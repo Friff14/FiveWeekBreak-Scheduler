@@ -8,26 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * Created by Tanner_2 on 12/5/2016.
+ */
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var room_service_1 = require('./room.service');
-var RoomFormComponent = (function () {
-    function RoomFormComponent(roomService, location) {
-        this.roomService = roomService;
-        this.location = location;
-        this.pageTitle = 'Add Room';
+var prefix_service_1 = require("./prefix.service");
+var PrefixListComponent = (function () {
+    function PrefixListComponent(_prefixService) {
+        this._prefixService = _prefixService;
+        this.pageTitle = 'Prefix List';
     }
-    RoomFormComponent.prototype.goBack = function () {
-        this.location.back();
+    PrefixListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._prefixService.getPrefixes()
+            .subscribe(function (prefixes) { return _this.prefixes = prefixes; }, function (error) { return console.log('get error: ', error); });
     };
-    RoomFormComponent = __decorate([
+    PrefixListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'room-form.component.html'
+            templateUrl: 'prefix-list.component.html'
         }), 
-        __metadata('design:paramtypes', [room_service_1.RoomService, common_1.Location])
-    ], RoomFormComponent);
-    return RoomFormComponent;
+        __metadata('design:paramtypes', [prefix_service_1.PrefixService])
+    ], PrefixListComponent);
+    return PrefixListComponent;
 }());
-exports.RoomFormComponent = RoomFormComponent;
-//# sourceMappingURL=room-form.component.js.map
+exports.PrefixListComponent = PrefixListComponent;
+//# sourceMappingURL=prefix-list.component.js.map

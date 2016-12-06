@@ -28,8 +28,67 @@
     padding: 20px;
 }
 
-.header-line {
-    padding-bottom: 25px;
+/* Table */
+
+#list-wrapper table {
+    border: 0;
+    margin-top: 20px;
+}
+
+#list-wrapper tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+#list-wrapper th {
+    border-bottom: 1px solid #555;
+}
+
+#list-wrapper th, td {
+    padding-left: 5px;
+    height: 30px;
+}
+
+.id-column, .campus-column, .date-column, .cap-column, .crn-column{
+    width: 110px;
+}
+
+.name-column, .hour-column {
+    width: 150px;
+}
+
+.abb-column, .credit-column {
+    width: 120px;
+}
+
+.note-column, .desc-column {
+    width: 200px;
+}
+
+.edit-column, .remove-column {
+    padding-left: 10px;
+}
+
+/* Button */
+
+button {
+    background-color: #555; /* Black */
+    border: 2px solid #555;
+    color: white;
+    padding: 8px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 4px;
+    margin: 13px 8px;
+}
+
+button:hover {
+    background-color: #999; /* Black */
+    color: white;
+    border: 2px solid #000;
 }
 
 .list-content, .form-content {
@@ -56,7 +115,7 @@
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li a{
     display: block;
     text-decoration: none;
     color: #999999;

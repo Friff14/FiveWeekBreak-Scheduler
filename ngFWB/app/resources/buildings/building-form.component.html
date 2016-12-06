@@ -1,6 +1,7 @@
 <div id="form-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
-    <hr class="line1">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
     <div class="form-content">
         <form #form="ngForm" (submit)='submitForm(form)'>
             <div class="form-group">
@@ -13,8 +14,10 @@
                 <label>Campus ID</label>
                     <input type="text" class="form-control" required placeholder="Campus ID" name="campus_id" [(ngModel)]="model.campus_id"/>
                     <br/>
-                <button (click)="goBack()">Cancel</button>
+
                 <button type="submit">Submit</button>
+                <button (click)="goBack()">Cancel</button>
+
             </div>
         </form>
 

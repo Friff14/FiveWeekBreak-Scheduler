@@ -32,11 +32,15 @@ export class InstructorService {
     //        .catch(this.handleError);
     //}
 
-    getInstructor(id: number): Observable<IInstructor> {
-        return this.getInstructors()
-            .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
-    }
+    // getInstructor(id: number): Observable<IInstructor> {
+    //     return this.getInstructors()
+    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
+    // }
 
+    // getInstructor(id: number): Observable<IInstructor> {
+    //     return this.getInstructors()
+    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
+    // }
 
     postInstructorForm(instructor: Instructor): Observable<any> {
         console.log('posting instructor: ', instructor);

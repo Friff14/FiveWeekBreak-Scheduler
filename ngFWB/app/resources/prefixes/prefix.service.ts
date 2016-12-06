@@ -26,10 +26,25 @@ export class PrefixService {
             .catch(this.handleError);
     }
 
-    // getPrefix(id: number): Observable<IPrefix> {
-    //     return this.getPrefixes()
-    //         .map((prefixes: IPrefix[]) => prefixes.find(i => i.prefix_id === id));
-    // }
+    getPrefix(id: number): Observable<IPrefix> {
+        console.log(this._prefixUrl + String(id));
+        return this._http.get(this._prefixUrl + String(id))
+            .map((response: Response) => <IPrefix> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    putPrefixForm(prefix: Prefix): Observable<any> {
+        console.log('putting prefix: ', prefix);
+
+        let body = JSON.stringify(prefix);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._prefixUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     postPrefixForm(prefix: Prefix): Observable<any> {
         console.log('posting prefix: ', prefix);
