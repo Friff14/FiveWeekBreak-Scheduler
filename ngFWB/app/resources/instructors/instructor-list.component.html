@@ -21,7 +21,7 @@
                     <th class="note-column">Notes</th>
                 </tr>
                 <tbody>
-                    <tr *ngFor='let instructor of instructors | async'>
+                    <tr *ngFor='let instructor of instructors'>
                         <td class="id-column">{{ instructor.instructor_id }}</td>
                         <td class="name-column">{{ instructor.instructor_first_name }}</td>
                         <td class="name-column">{{ instructor.instructor_last_name }}</td>

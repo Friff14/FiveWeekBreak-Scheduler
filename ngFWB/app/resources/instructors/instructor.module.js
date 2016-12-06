@@ -15,6 +15,7 @@ var common_1 = require('@angular/common');
 var instructor_list_component_1 = require('./instructor-list.component');
 var instructor_form_component_1 = require('./instructor-form.component');
 var instructor_service_1 = require('./instructor.service');
+var instructor_service2_1 = require('./instructor.service2');
 var InstructorModule = (function () {
     function InstructorModule() {
     }
@@ -37,7 +38,8 @@ var InstructorModule = (function () {
                 instructor_form_component_1.InstructorFormComponent
             ],
             providers: [
-                instructor_service_1.InstructorService
+                instructor_service_1.InstructorService,
+                instructor_service2_1.InstructorService2
             ]
         }), 
         __metadata('design:paramtypes', [])

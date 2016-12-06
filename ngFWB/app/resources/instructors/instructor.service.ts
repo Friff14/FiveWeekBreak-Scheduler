@@ -19,12 +19,12 @@ export class InstructorService {
     constructor(private _http: Http, private jsonp: Jsonp) { }
 
 
-//    getInstructors(): Observable<IInstructor[]> {
-//       return this._http.get(this._instructorUrl)
-//         .map((response: Response) => <IInstructor[]> response.json())
-//         .do(data => console.log(JSON.stringify(data)))
-//         .catch(this.handleError);
-//     }
+   getInstructors(): Observable<IInstructor[]> {
+      return this._http.get(this._instructorUrl)
+        .map((response: Response) => <IInstructor[]> response.json())
+        .do(data => console.log(JSON.stringify(data)))
+        .catch(this.handleError);
+    }
 
     // getInstructors(): Observable<IInstructor[]> {
     //   return this._http.get(this._otherInstructorUrl)
@@ -41,12 +41,12 @@ export class InstructorService {
             .catch(this.handleError);
     }
 
-    getInstructors(): Observable<IInstructor[]> {
-        return this.jsonp.get(this._instructorUrl)
-                    .map((response: Response) => <IInstructor[]> response.json())
-                    .do(data => console.log(JSON.stringify(data)))
-                    .catch(this.handleError);
-    }
+    // getInstructors(): Observable<IInstructor[]> {
+    //     return this.jsonp.get(this._instructorUrl)
+    //                 .map((response: Response) => <IInstructor[]> response.json())
+    //                 .do(data => console.log(JSON.stringify(data)))
+    //                 .catch(this.handleError);
+    // }
     
     // getInstructors(): Observable<IInstructor[]> {
     //   return this._http.get(this._otherInstructorUrl)

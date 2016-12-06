@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var instructor_service_1 = require('./instructor.service');
+var instructor_service2_1 = require('./instructor.service2');
 var InstructorListComponent = (function () {
     //instructors: Instructor[];
-    function InstructorListComponent(_instructorService) {
+    function InstructorListComponent(_instructorService, _instructorService2) {
         this._instructorService = _instructorService;
+        this._instructorService2 = _instructorService2;
         this.pageTitle = 'Instructor List';
     }
     InstructorListComponent.prototype.getInstructors = function () {
@@ -22,6 +24,13 @@ var InstructorListComponent = (function () {
             .subscribe(function (instructors) { return _this.instructors = instructors; }, function (error) { return console.log('get error: ', error); });
         console.log(this.instructors);
     };
+    // getInstructors() {
+    //     this._instructorService2.getInstructors()
+    //         .subscribe(
+    //             instructors => this.instructors = instructors,
+    //             error => console.log('get error: ', error)
+    //         );
+    // }
     InstructorListComponent.prototype.ngOnInit = function () {
         this.getInstructors();
     };
@@ -30,7 +39,7 @@ var InstructorListComponent = (function () {
             moduleId: module.id,
             templateUrl: 'instructor-list.component.html'
         }), 
-        __metadata('design:paramtypes', [instructor_service_1.InstructorService])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService, instructor_service2_1.InstructorService2])
     ], InstructorListComponent);
     return InstructorListComponent;
 }());

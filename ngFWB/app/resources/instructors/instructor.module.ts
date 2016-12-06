@@ -7,6 +7,7 @@ import { InstructorListComponent } from './instructor-list.component';
 import { InstructorFormComponent } from './instructor-form.component';
 
 import { InstructorService } from './instructor.service';
+import { InstructorService2 } from './instructor.service2';
 
 @NgModule({
   imports:
@@ -34,7 +35,8 @@ import { InstructorService } from './instructor.service';
   ],
   providers: 
   [
-    InstructorService
+    InstructorService,
+    InstructorService2
   ]
 })
 export class InstructorModule {}
