@@ -1,0 +1,44 @@
+[
+    {
+        "instructor_id": 1,
+        "instructor_first_name": "Spencer",
+        "instructor_last_name": "Hilton",
+        "instructor_hours_required": 12,
+        "instructor_notes": "Some notes"
+    },
+    {
+        "instructor_id": 2,
+        "instructor_first_name": "Rob",
+        "instructor_last_name": "Hilton",
+        "instructor_hours_required": 12,
+        "instructor_notes": "Some more notes"
+    },
+    {
+        "instructor_id": 3,
+        "instructor_first_name": "Alison",
+        "instructor_last_name": "Sunderland",
+        "instructor_hours_required": 12,
+        "instructor_notes": "Even more notes"
+    },
+    {
+        "instructor_id": 4,
+        "instructor_first_name": "Drew",
+        "instructor_last_name": "Weidman",
+        "instructor_hours_required": 12,
+        "instructor_notes": "Still more notes"
+    },
+    {
+        "instructor_id": 5,
+        "instructor_first_name": "Rich",
+        "instructor_last_name": "Fry",
+        "instructor_hours_required": 12,
+        "instructor_notes": "More and more notes"
+    },
+    {
+        "instructor_id": 6,
+        "instructor_first_name": "Yong",
+        "instructor_last_name": "Zhang",
+        "instructor_hours_required": 12,
+        "instructor_notes": "Btw, notes"
+    }
+]

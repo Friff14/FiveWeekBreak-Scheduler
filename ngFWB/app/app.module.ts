@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // Angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -32,7 +32,8 @@ import { SectionFormComponent } from './resources/sections/section-form.componen
     [ 
         BrowserModule,
         FormsModule,
-        HttpModule, 
+        HttpModule,
+        JsonpModule, 
         RouterModule.forRoot([
             { path: 'home', component: HomeViewComponent },
             //{ path: 'instrView', component: InstrViewComponent},       
