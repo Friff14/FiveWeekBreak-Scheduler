@@ -14,10 +14,11 @@ export class InstructorFormComponent {
     pageTitle: string = 'Add Instructor';
     testItems = ['testItem1', 'testItem2', 'testItem3'];
     //model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
-    model: Instructor;
+    //model: Instructor;
 
     constructor(
         private instructorService: InstructorService,
+        private model: Instructor,
         private location: Location) {
     }
 
