@@ -17,8 +17,10 @@ import { SemesterService } from './semester.service';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-        { path: 'semesterList', component: SemesterListComponent },
-        { path: 'semesterForm', component: SemesterFormComponent }
+        //{ path: 'semesterList', component: SemesterListComponent },
+        { path: 'semesterForm', component: SemesterFormComponent },
+        { path: 'editSemester', component: SemesterFormComponent },
+        { path: 'remove', component: SemesterFormComponent }
     ])
   ],
   declarations:
