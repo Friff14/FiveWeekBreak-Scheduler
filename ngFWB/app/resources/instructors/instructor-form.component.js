@@ -10,10 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var instructor_model_1 = require('./instructor.model');
 var instructor_service_1 = require("./instructor.service");
 var InstructorFormComponent = (function () {
-    function InstructorFormComponent(instructorService, location) {
+    //model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
+    //model: Instructor;
+    function InstructorFormComponent(instructorService, model, location) {
         this.instructorService = instructorService;
+        this.model = model;
         this.location = location;
         this.pageTitle = 'Add Instructor';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
@@ -35,7 +39,7 @@ var InstructorFormComponent = (function () {
             moduleId: module.id,
             templateUrl: 'instructor-form.component.html'
         }), 
-        __metadata('design:paramtypes', [instructor_service_1.InstructorService, common_1.Location])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService, instructor_model_1.Instructor, common_1.Location])
     ], InstructorFormComponent);
     return InstructorFormComponent;
 }());
