@@ -32,10 +32,14 @@ var InstructorService = (function () {
     //        .do(data => console.log(JSON.stringify(data)))
     //        .catch(this.handleError);
     //}
-    InstructorService.prototype.getInstructor = function (id) {
-        return this.getInstructors()
-            .map(function (instructors) { return instructors.find(function (i) { return i.instructor_id === id; }); });
-    };
+    // getInstructor(id: number): Observable<IInstructor> {
+    //     return this.getInstructors()
+    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
+    // }
+    // getInstructor(id: number): Observable<IInstructor> {
+    //     return this.getInstructors()
+    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
+    // }
     InstructorService.prototype.postInstructorForm = function (instructor) {
         console.log('posting instructor: ', instructor);
         var body = JSON.stringify(instructor);

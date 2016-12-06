@@ -4,6 +4,8 @@ import { IInstructor } from './instructor';
 import { Instructor } from './instructor.model';
 import { InstructorService } from './instructor.service';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'instructor-list.component.html'
@@ -15,7 +17,7 @@ export class InstructorListComponent implements OnInit {
 
     constructor(
         private _instructorService: InstructorService,
-        //private instructorz: Instructor[]
+        //private instructors: IInstructor[]
     ){}
 
     ngOnInit(): void {

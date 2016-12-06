@@ -3,6 +3,7 @@
  */
 export class Instructor {
     constructor(
+        //public instructor_id: number,
         public instructor_first_name: string,
         public instructor_last_name: string,
         public instructor_hours_required: number,

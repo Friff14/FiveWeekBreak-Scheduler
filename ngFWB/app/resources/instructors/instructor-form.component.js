@@ -13,14 +13,16 @@ var common_1 = require('@angular/common');
 var instructor_model_1 = require('./instructor.model');
 var instructor_service_1 = require("./instructor.service");
 var InstructorFormComponent = (function () {
-    //model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
     //model: Instructor;
-    function InstructorFormComponent(instructorService, model, location) {
+    function InstructorFormComponent(instructorService, 
+        //private model: Instructor,
+        //private model: IInstructor,
+        location) {
         this.instructorService = instructorService;
-        this.model = model;
         this.location = location;
         this.pageTitle = 'Add Instructor';
         this.testItems = ['testItem1', 'testItem2', 'testItem3'];
+        this.model = new instructor_model_1.Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
     }
     InstructorFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
@@ -39,7 +41,7 @@ var InstructorFormComponent = (function () {
             moduleId: module.id,
             templateUrl: 'instructor-form.component.html'
         }), 
-        __metadata('design:paramtypes', [instructor_service_1.InstructorService, instructor_model_1.Instructor, common_1.Location])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService, common_1.Location])
     ], InstructorFormComponent);
     return InstructorFormComponent;
 }());
