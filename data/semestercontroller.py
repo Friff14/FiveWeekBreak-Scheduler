@@ -38,12 +38,30 @@ class SemesterController(object):
 
     def get(self, data, req):
         session = DBSession()
+
+        if data['full'] == 'all':
+            ret = {'instructors': []}
+            instructors = session.query(Instructor).filter(Section.semester_id == data['semester_id']) \
+                .order_by(Instructor.instructor_last_name)
+            count = 0
+            for instructor in instructors:
+                ret['instructors'].append(instructor.to_data())
+                ins = ret['instructors'][count]
+                sections = []
+                for section in instructor.sections:
+                    sections.append(section.to_data())
+                ins['sections'] = sections
+                count += 1
+
+            return ret
+
         if type(data['semester_id']) == int:
             x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
             if x:
                 return x.to_data()
             else:
                 return {"error": 'Cannot retrieve; semester does not exist.'}
+
         else:
             semesters = session.query(Semester)
             ret = []
@@ -59,9 +77,9 @@ class SemesterController(object):
         else:
             return {"error": 'Cannot delete; semester does not exist.'}
 
-    def on_get(self, req, resp, semester_id=None):
+    def on_get(self, req, resp, semester_id=None, full=None):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.get({"semester_id": semester_id}, req))
+        resp.body = json.dumps(self.get({"semester_id": semester_id, 'full': full}, req))
 
     def on_post(self, req, resp):
         resp.body = json.dumps(

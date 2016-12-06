@@ -28,9 +28,11 @@
     padding: 20px;
 }
 
+/* Table */
+
 #list-wrapper table {
-    width: 60%;
     border: 0;
+    margin-top: 20px;
 }
 
 #list-wrapper tr:nth-child(even) {
@@ -41,9 +43,32 @@
     border-bottom: 1px solid #555;
 }
 
-#list-wrapper table {
-    margin-top: 20px;
+#list-wrapper th, td {
+    padding-left: 5px;
+    height: 30px;
 }
+
+.id-column, .campus-column, .date-column, .cap-column, .crn-column{
+    width: 110px;
+}
+
+.name-column, .hour-column {
+    width: 150px;
+}
+
+.abb-column, .credit-column {
+    width: 120px;
+}
+
+.note-column, .desc-column {
+    width: 200px;
+}
+
+.edit-column, .remove-column {
+    padding-left: 10px;
+}
+
+/* Button */
 
 button {
     background-color: #555; /* Black */
@@ -90,7 +115,7 @@ button:hover {
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li a{
     display: block;
     text-decoration: none;
     color: #999999;
