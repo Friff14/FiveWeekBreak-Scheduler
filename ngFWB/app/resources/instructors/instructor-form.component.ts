@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
 
+import { IInstructor } from './instructor';
 import { Instructor } from './instructor.model'
 import {InstructorService} from "./instructor.service";
 
@@ -13,12 +14,13 @@ import {InstructorService} from "./instructor.service";
 export class InstructorFormComponent {
     pageTitle: string = 'Add Instructor';
     testItems = ['testItem1', 'testItem2', 'testItem3'];
-    //model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
+    model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
     //model: Instructor;
 
     constructor(
         private instructorService: InstructorService,
-        private model: Instructor,
+        //private model: Instructor,
+        //private model: IInstructor,
         private location: Location) {
     }
 
