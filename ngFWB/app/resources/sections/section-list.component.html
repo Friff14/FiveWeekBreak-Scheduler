@@ -1,42 +1,46 @@
 <div id="list-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
 
     <div class="list-content">
+        <!--
         <p>This page will show the current list of sections as well as links for
             adding, editing, or removing sections.
         </p>
+        -->
 
-        <!-- <table border='1'>
-            <tr>
-                <th>Course ID</th>
-                <th>Course Name</th>
-                <th>Course Desc</th>
-                <th>Credit Hours</th>
-                <th>Prefix ID</th>
-            </tr>
-            <tbody>
-                <tr *ngFor='let section of sections'>
-                    <td>{{ section.section_id }}</td>
-                    <td>{{ course.course_name }}</td>
-                    <td>{{ course.course_description }}</td>
-                    <td>{{ course.course_credit_hours }}</td>
-                    <td>{{ course.prefix_id }}</td>
+        <button [routerLink]="['/sectionForm']">Add Section</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th>Section ID</th>
+                    <th>Name</th>
+                    <th>CRN</th>
+                    <th>Capacity</th>
+                    <th>Course</th>
+                    <th>Instructor</th>
+                    <th>Semester</th>
+                    <th>Room</th>
                 </tr>
-            </tbody>
-        </table> -->
+                <tbody>
+                    <tr *ngFor='let section of sections'>
+                        <td>{{ section.section_id }}</td>
+                        <td>{{ section.section_name }}</td>
+                        <td>{{ section.section_crn }}</td>
+                        <td>{{ section.section_capacity }}</td>
+                        <td>{{ section.course }}</td>
+                        <td>{{ section.instructor }}</td>
+                        <td>{{ section.semester }}</td>
+                        <td>{{ section.room }}</td>
 
-        <ul class="list">
-            <li *ngFor='let section of sections'> <!-- *ngFor for the element to be repeated?-->
-                <div>{{ section.section_name }}
-                    <a [routerLink]="['/sectionForm']">Edit</a>
-                    <a >Remove</a>
-                </div>
-            </li>
-        </ul>
-
-        <li><a [routerLink]="['/addSection']">Add Section</a></li>
-        <li><a [routerLink]="['/editSection']">Edit Section</a></li>
-        <li><a [routerLink]="['/removeSection']">Remove Section</a></li>
+                        <td><a [routerLink]="['/editSection']">Edit</a></td>
+                        <td><a [routerLink]="['/removeSection']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
+
 </div>

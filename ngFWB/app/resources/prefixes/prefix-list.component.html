@@ -1,0 +1,34 @@
+<div id="list-wrapper">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
+    <div class="list-content">
+        <!--
+        <p>This page will show the current list of prefixes as well as links for
+            adding, editing, or removing prefixes.
+        </p>
+        -->
+
+        <button [routerLink]="['/prefixForm']">Add Prefix</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th>Prefix ID</th>
+                    <th>Name</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let prefix of prefixs'>
+                        <td>{{ prefix.prefix_id }}</td>
+                        <td>{{ prefix.prefix_name }}</td>
+
+                        <td><a [routerLink]="['/editPrefix']">Edit</a></td>
+                        <td><a [routerLink]="['/removePrefix']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

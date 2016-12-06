@@ -16,6 +16,7 @@ var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var prefix_form_component_1 = require('./prefix-form.component');
+var prefix_list_component_1 = require('./prefix-list.component');
 var prefix_service_1 = require('./prefix.service');
 var PrefixModule = (function () {
     function PrefixModule() {
@@ -26,14 +27,17 @@ var PrefixModule = (function () {
                 common_1.CommonModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
-                    { path: 'prefixForm', component: prefix_form_component_1.PrefixFormComponent }
+                    { path: 'prefixForm', component: prefix_form_component_1.PrefixFormComponent },
+                    { path: 'prefixList', component: prefix_list_component_1.PrefixListComponent }
                 ])
             ],
             declarations: [
-                prefix_form_component_1.PrefixFormComponent
+                prefix_form_component_1.PrefixFormComponent,
+                prefix_list_component_1.PrefixListComponent
             ],
             exports: [
-                prefix_form_component_1.PrefixFormComponent
+                prefix_form_component_1.PrefixFormComponent,
+                prefix_list_component_1.PrefixListComponent
             ],
             providers: [
                 prefix_service_1.PrefixService

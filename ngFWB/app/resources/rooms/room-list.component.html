@@ -1,11 +1,13 @@
 <div id="list-wrapper">
-    <h3 class="header">{{pageTitle}}</h3>
+    <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
 
     <div class="list-content">
+        <!--
         <p>This page will show the current list of rooms as well as links for
             adding, editing, or removing courses.
         </p>
+        -->
 
         <button [routerLink]="['/roomForm']">Add Room</button>
 
@@ -13,19 +15,19 @@
             <table>
                 <tr>
                     <th>Room ID</th>
-                    <th>Room Name</th>
-                    <th>Room Description</th>
-                    <th>Room Capacity</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Capacity</th>
                 </tr>
                 <tbody>
                     <tr *ngFor='let room of rooms'>
                         <td>{{ room.room_id }}</td>
                         <td>{{ room.room_name }}</td>
                         <td>{{ room.room_capacity }}</td>
-                        <td>{{ room.room_building_id }}</td>
+                        <td>{{ room.building }}</td>
 
-                        <td><a [routerLink]="['/edit']">Edit Room</a></td>
-                        <td><a [routerLink]="['/remove']">Remove Room</a></td>
+                        <td><a [routerLink]="['/edit']">Edit</a></td>
+                        <td><a [routerLink]="['/remove']">Remove</a></td>
                     </tr>
                 </tbody>
             </table>

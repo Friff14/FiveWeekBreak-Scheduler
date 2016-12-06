@@ -3,6 +3,5 @@
  */
 export interface ICampus {
     campus_id: number,
-    campus_name: string,
-    campus_address: string
+    campus_name: string
 }

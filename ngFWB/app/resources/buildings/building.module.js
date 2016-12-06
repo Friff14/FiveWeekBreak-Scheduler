@@ -16,6 +16,7 @@ var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var building_form_component_1 = require('./building-form.component');
+var building_list_component_1 = require('./building-list.component');
 var building_service_1 = require('./building.service');
 var BuildingModule = (function () {
     function BuildingModule() {
@@ -26,14 +27,17 @@ var BuildingModule = (function () {
                 common_1.CommonModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
-                    { path: 'buildingForm', component: building_form_component_1.BuildingFormComponent }
+                    { path: 'buildingForm', component: building_form_component_1.BuildingFormComponent },
+                    { path: 'buildingList', component: building_list_component_1.BuildingListComponent }
                 ])
             ],
             declarations: [
-                building_form_component_1.BuildingFormComponent
+                building_form_component_1.BuildingFormComponent,
+                building_list_component_1.BuildingListComponent
             ],
             exports: [
-                building_form_component_1.BuildingFormComponent
+                building_form_component_1.BuildingFormComponent,
+                building_list_component_1.BuildingListComponent
             ],
             providers: [
                 building_service_1.BuildingService

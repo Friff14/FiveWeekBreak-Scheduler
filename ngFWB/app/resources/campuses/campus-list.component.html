@@ -1,0 +1,34 @@
+<div id="list-wrapper">
+    <h2 class="header">{{pageTitle}}</h2>
+    <hr class="header-line">
+
+    <div class="list-content">
+        <!--
+        <p>This page will show the current list of campuses as well as links for
+            adding, editing, or removing campuses.
+        </p>
+        -->
+
+        <button [routerLink]="['/campusForm']">Add Campus</button>
+
+        <div style="overflow-x:auto">
+            <table>
+                <tr>
+                    <th>Campus ID</th>
+                    <th>Name</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor='let campus of campuss'>
+                        <td>{{ campus.campus_id }}</td>
+                        <td>{{ campus.campus_name }}</td>
+
+                        <td><a [routerLink]="['/editCampus']">Edit</a></td>
+                        <td><a [routerLink]="['/removeCampus']">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
