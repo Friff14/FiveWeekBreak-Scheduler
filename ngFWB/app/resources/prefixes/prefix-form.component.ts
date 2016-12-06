@@ -28,7 +28,7 @@ export class PrefixFormComponent implements OnInit{
         private location: Location,
         private _route: ActivatedRoute) {
         }
-//TODO: DO A PUT IF THE ID IS NOT THERE
+//TODO: DO A PUT IF THE ID IS NOT THERE.
     submitForm(form: NgForm) {
         console.log(this.model);
         this.prefixService.postPrefixForm(this.model)

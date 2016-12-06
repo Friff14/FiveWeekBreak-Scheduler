@@ -24,7 +24,7 @@ var PrefixFormComponent = (function () {
         this.pageTitle = 'Add Prefix';
         this.model = new prefix_model_1.Prefix('~~~');
     }
-    //TODO: DO A PUT IF THE ID IS NOT THERE
+    //TODO: DO A PUT IF THE ID IS NOT THERE.
     PrefixFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
         this.prefixService.postPrefixForm(this.model)
