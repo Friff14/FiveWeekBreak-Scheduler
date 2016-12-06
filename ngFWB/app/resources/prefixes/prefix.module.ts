@@ -18,6 +18,7 @@ import { PrefixService } from './prefix.service';
     FormsModule,
     RouterModule.forChild([
         { path: 'prefixForm', component: PrefixFormComponent },
+        { path: 'prefixForm/edit/:id', component: PrefixFormComponent},
         { path: 'prefixList', component: PrefixListComponent }
     ])
   ],

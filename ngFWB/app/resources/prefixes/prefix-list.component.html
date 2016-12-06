@@ -18,11 +18,11 @@
                     <th>Name</th>
                 </tr>
                 <tbody>
-                    <tr *ngFor='let prefix of prefixs'>
+                    <tr *ngFor='let prefix of prefixes'>
                         <td>{{ prefix.prefix_id }}</td>
                         <td>{{ prefix.prefix_name }}</td>
 
-                        <td><a [routerLink]="['/editPrefix']">Edit</a></td>
+                        <td><a [routerLink]="['/prefixForm/edit/', prefix.prefix_id]">Edit</a></td>
                         <td><a [routerLink]="['/removePrefix']">Remove</a></td>
                     </tr>
                 </tbody>

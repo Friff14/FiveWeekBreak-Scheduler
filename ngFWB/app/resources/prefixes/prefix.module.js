@@ -28,6 +28,7 @@ var PrefixModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
                     { path: 'prefixForm', component: prefix_form_component_1.PrefixFormComponent },
+                    { path: 'prefixForm/edit/:id', component: prefix_form_component_1.PrefixFormComponent },
                     { path: 'prefixList', component: prefix_list_component_1.PrefixListComponent }
                 ])
             ],

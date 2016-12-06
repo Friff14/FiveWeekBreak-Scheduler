@@ -7,6 +7,7 @@
             <div class="form-group">
                 <label>Prefix Name</label>
                     <input type="text" class="form-control" required placeholder="Prefix Name" name="prefix_name" [(ngModel)]="model.prefix_name"/>
+
                     <br/>
 
                 <button type="submit">Submit</button>
@@ -14,6 +15,9 @@
 
             </div>
         </form>
+
+        prefix name: {{model.prefix_name}}
+        <br/>
 
         Model: {{ model | json }}
         <br>

@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 
 import { IPrefix } from './prefix';
+import {PrefixService} from "./prefix.service";
 
 @Component({
     moduleId: module.id,
@@ -12,4 +13,14 @@ import { IPrefix } from './prefix';
 export class PrefixListComponent {
     prefixes: IPrefix[];
     pageTitle: string = 'Prefix List';
+
+    constructor(
+        private _prefixService: PrefixService
+    ){}
+
+    ngOnInit(): void {
+            this._prefixService.getPrefixes()
+                .subscribe(prefixes => this.prefixes = prefixes,
+                error => console.log('get error: ', error));
+    }
 }

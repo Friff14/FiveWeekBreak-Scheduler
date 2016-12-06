@@ -29,10 +29,13 @@ var PrefixService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    // getPrefix(id: number): Observable<IPrefix> {
-    //     return this.getPrefixes()
-    //         .map((prefixes: IPrefix[]) => prefixes.find(i => i.prefix_id === id));
-    // }
+    PrefixService.prototype.getPrefix = function (id) {
+        console.log(this._prefixUrl + String(id));
+        return this._http.get(this._prefixUrl + String(id))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     PrefixService.prototype.postPrefixForm = function (prefix) {
         console.log('posting prefix: ', prefix);
         var body = JSON.stringify(prefix);
