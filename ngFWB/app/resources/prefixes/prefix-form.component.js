@@ -27,6 +27,10 @@ var PrefixFormComponent = (function () {
     //TODO: DO A PUT IF THE ID IS NOT THERE.
     PrefixFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
+        if (this.id) {
+            this.prefixService.putPrefixForm(this.model)
+                .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        }
         this.prefixService.postPrefixForm(this.model)
             .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
     };

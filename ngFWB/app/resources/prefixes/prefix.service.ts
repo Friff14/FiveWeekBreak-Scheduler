@@ -34,6 +34,18 @@ export class PrefixService {
             .catch(this.handleError);
     }
 
+    putPrefixForm(prefix: Prefix): Observable<any> {
+        console.log('putting prefix: ', prefix);
+
+        let body = JSON.stringify(prefix);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._prefixUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     postPrefixForm(prefix: Prefix): Observable<any> {
         console.log('posting prefix: ', prefix);
 

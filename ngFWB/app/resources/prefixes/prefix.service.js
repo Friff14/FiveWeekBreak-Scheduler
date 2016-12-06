@@ -36,6 +36,15 @@ var PrefixService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
+    PrefixService.prototype.putPrefixForm = function (prefix) {
+        console.log('putting prefix: ', prefix);
+        var body = JSON.stringify(prefix);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._prefixUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     PrefixService.prototype.postPrefixForm = function (prefix) {
         console.log('posting prefix: ', prefix);
         var body = JSON.stringify(prefix);

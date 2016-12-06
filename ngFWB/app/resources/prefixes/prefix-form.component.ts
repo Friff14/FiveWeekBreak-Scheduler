@@ -31,6 +31,14 @@ export class PrefixFormComponent implements OnInit{
 //TODO: DO A PUT IF THE ID IS NOT THERE.
     submitForm(form: NgForm) {
         console.log(this.model);
+        if(this.id) {
+            this.prefixService.putPrefixForm(this.model)
+                .subscribe(
+                    data => console.log('success: ', data),
+                    err => console.log ('error: ', err)
+                )
+        }
+
         this.prefixService.postPrefixForm(this.model)
             .subscribe(
                 data => console.log('success: ', data),
