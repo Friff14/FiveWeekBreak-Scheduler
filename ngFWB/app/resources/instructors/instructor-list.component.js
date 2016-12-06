@@ -16,10 +16,14 @@ var InstructorListComponent = (function () {
         this._instructorService = _instructorService;
         this.pageTitle = 'Instructor List';
     }
-    InstructorListComponent.prototype.ngOnInit = function () {
+    InstructorListComponent.prototype.getInstructors = function () {
         var _this = this;
         this._instructorService.getInstructors()
             .subscribe(function (instructors) { return _this.instructors = instructors; }, function (error) { return console.log('get error: ', error); });
+        console.log(this.instructors);
+    };
+    InstructorListComponent.prototype.ngOnInit = function () {
+        this.getInstructors();
     };
     InstructorListComponent = __decorate([
         core_1.Component({
