@@ -38,7 +38,7 @@ class ReleaseController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['release_id']) == int:
+        if is_int(data['release_id']):
             x = session.query(Release).filter(Release.release_id == data['release_id']).first()
             if x:
                 return x.to_data()

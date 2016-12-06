@@ -32,7 +32,7 @@ class CampusController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['campus_id']) == int:
+        if is_int(data['campus_id']):
             x = session.query(Campus).filter(Campus.campus_id == data['campus_id']).first()
             if x:
                 return x.to_data()

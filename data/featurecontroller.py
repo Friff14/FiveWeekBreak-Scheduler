@@ -60,7 +60,7 @@ class FeatureController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['feature_id']) == int:
+        if is_int(data['feature_id']):
             x = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             if x:
                 return x.to_data()

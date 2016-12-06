@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker, class_mapper
 from sqlalchemy import Table
 import datetime
 from time import mktime
+from data.helpful_functions import *
 
 Base = declarative_base()
 

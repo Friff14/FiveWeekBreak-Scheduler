@@ -47,7 +47,7 @@ class CourseController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['course_id']) == int:
+        if is_int(data['course_id']):
             courses = session.query(Course).filter(Course.course_id == data['course_id']).first()
             if courses:
                 return courses.to_data()

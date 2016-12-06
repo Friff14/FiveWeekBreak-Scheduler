@@ -107,7 +107,7 @@ class SectionController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['section_id']) == int:
+        if is_int(data['section_id']):
             x = session.query(Section).filter(Section.section_id == data['section_id']).first()
             if x:
                 return x.to_data()

@@ -45,7 +45,7 @@ class RoomController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['room_id']) == int:
+        if is_int(data['room_id']):
             x = session.query(Room).filter(Room.room_id == data['room_id']).first()
             if x:
                 return x.to_data()

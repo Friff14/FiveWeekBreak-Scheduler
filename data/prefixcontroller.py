@@ -40,7 +40,8 @@ class PrefixController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['prefix_id']) == int:
+
+        if is_int(data['prefix_id']):
             prefixes = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
             if prefixes:
                 return prefixes.to_data()

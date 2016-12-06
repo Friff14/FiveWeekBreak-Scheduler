@@ -55,7 +55,7 @@ class SemesterController(object):
 
             return ret
 
-        if type(data['semester_id']) == int:
+        if is_int(data['semester_id']):
             x = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
             if x:
                 return x.to_data()

@@ -46,7 +46,7 @@ class BuildingController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['building_id']) == int:
+        if is_int(data['building_id']):
             x = session.query(Building).filter(Building.building_id == data['building_id']).first()
             if x:
                 return x.to_data()

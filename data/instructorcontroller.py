@@ -46,7 +46,7 @@ class InstructorController(object):
 
     def get(self, data, req):
         session = DBSession()
-        if type(data['instructor_id']) == int:
+        if is_int(data['instructor_id']):
             x = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
             if x:
                 return x.to_data()
