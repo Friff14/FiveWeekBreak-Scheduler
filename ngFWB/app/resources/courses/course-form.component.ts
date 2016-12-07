@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Course } from './course.model'
 import { CourseService } from "./course.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICourse } from "./course";
 import { IPrefix } from "../prefixes/prefix";
 import { Prefix } from "../prefixes/prefix.model";
@@ -24,7 +24,8 @@ export class CourseFormComponent implements OnInit {
     constructor(
         private courseService: CourseService,
         private location: Location,
-        private _route: ActivatedRoute) {
+        private _route: ActivatedRoute,
+        private _router: Router) {
     }
 
     submitForm(form: NgForm) {
@@ -65,7 +66,7 @@ export class CourseFormComponent implements OnInit {
     }
 
     goBack(): void {
-        //this.location.
+        //this._router.navigate(['/courseList']);
         this.location.back();
     }
 }

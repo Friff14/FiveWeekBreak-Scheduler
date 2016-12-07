@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { IInstructor } from './instructor';
 import { Instructor } from './instructor.model'
@@ -22,7 +22,8 @@ export class InstructorFormComponent implements OnInit {
     constructor(
         private instructorService: InstructorService,
         private location: Location,
-        private _route: ActivatedRoute) {
+        private _route: ActivatedRoute,
+        private _router: Router) {
     }
 
     submitForm(form: NgForm) {
@@ -61,5 +62,7 @@ export class InstructorFormComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+        //window.location.reload();
+        //this._router.navigate(['/instructorList']);
     }
 }
