@@ -42,6 +42,8 @@ var RoomFormComponent = (function () {
         this.id = +this._route.snapshot.params['id'];
         if (this.id) {
             this.pageTitle = "Edit Prefix: " + this.id;
+            this.roomService.getRoom(this.id)
+                .subscribe(function (room) { return _this.model = room; }, function (error) { return console.log('get error: ', error); });
         }
     };
     RoomFormComponent.prototype.goBack = function () {
