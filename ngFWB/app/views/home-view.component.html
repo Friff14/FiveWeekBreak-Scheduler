@@ -1,15 +1,57 @@
 <div id="view-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
-    <nav>
-        <a [routerLink]="['/instrView']">By Instructor</a>
-        <a [routerLink]="['/roomView']">By Room</a>
-        <a [routerLink]="['/courseView']">By Course</a>
-    </nav>
+
+    <!-- <button onClick="downloadURI('http://localhost:8000/xlsx/1/output.xlsx', 'output.xlsx') -->
+    <button onClick="var link = document.createElement('a');
+        link.download = 'output.xlsx';
+        link.href = 'http://localhost:8000/xlsx/1/output.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);">
+        Export
+    </button>
 
     <div>
-        
+        <table border="1">
+            <tr>
+                <th>Instructors</th>
+                <th colspan="2">Course</th>
+                <th>CRN</th>
+                <th colspan="2">Time</th>
+                <th>Days</th>
+                <th>Room</th>
+                <th>Max</th>
+                <th>Hrs</th>
+                <th>Campus</th>
+                <th>Pay</th>
+                <th>Load/Ovld</th>
+                <th>Hrs Req</th>
+            </tr>
+            <tr *ngFor='let section of sections'>
+                <td>{{ section.instructor_first_name + ' ' + section.instructor.instructor_last_name}}</td>
+                <td>{{ section.prefix_name }}</td>
+                <td>{{ section.course_name}}</td>
+                <td>{{ section.section_crn }}</td>
+                <td>{{ sectiontime.schedule_time_start_time}}</td>
+                <td>{{ sectiontime.schedule_time_end_time}}</td>
+                <td>{{ sectiontime.schedule_time_day_of_week}}</td>
+                <td>{{ section.room_name }}</td>
+                <td>{{ section.section_capacity }}</td>
+                <td>{{ section.course_credit_hours }}</td>
+                <td>{{ section.room_name }}</td>
+                <td></td>
+                <td></td>
+                <td>{{ section.instructor_hours_required }}</td>
+            </tr>
+        </table>
     </div>
 
+    <br/>
+    <p>
+        *** If we are happy with this table we can delete instr/room/course views ***<br/>
+        *** Try playing around in 'app.component.css' to see if the list table format looks good ***<br/>
+        *** Also, don't forget to delete these notes! (home-view.component.html) ***<br/>
+    </p>
 
 </div>

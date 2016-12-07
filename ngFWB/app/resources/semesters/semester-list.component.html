@@ -18,7 +18,6 @@
                     <th class="name-column">Name</th>
                     <th class="date-column">Start Date</th>
                     <th class="date-column">End Date</th>
-                    <th class="name-column">Section</th>
                 </tr>
                 <tbody>
                     <tr *ngFor='let semester of semesters'>
@@ -26,7 +25,6 @@
                         <td class="name-column">{{ semester.semester_name }}</td>
                         <td class="date-column">{{ semester.semester_start_date }}</td>
                         <td class="date-column">{{ semester.semester_end_date }}</td>
-                        <td class="name-column">{{ semester.section }}</td>
 
                         <td class="edit-column"><a [routerLink]="['/semesterForm/edit', semester.semester_id]">Edit</a></td>
                         <td class="remove-column"><a [routerLink]="['/removeSemester']">Remove</a></td>

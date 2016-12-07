@@ -30,20 +30,20 @@
 
 /* Table */
 
-#list-wrapper table {
+#list-wrapper/*, #view-wrapper*/ table {
     border: 0;
     margin-top: 20px;
 }
 
-#list-wrapper tr:nth-child(even) {
+#list-wrapper/*, #view-wrapper*/ tr:nth-child(even) {
     background-color: #f2f2f2
 }
 
-#list-wrapper th {
+#list-wrapper/*, #view-wrapper*/ th {
     border-bottom: 1px solid #555;
 }
 
-#list-wrapper th, td {
+#list-wrapper/*, #view-wrapper*/ th, td {
     padding-left: 5px;
     height: 30px;
 }

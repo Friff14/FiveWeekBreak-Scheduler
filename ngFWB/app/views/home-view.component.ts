@@ -8,7 +8,15 @@ import { Component } from '@angular/core';
 export class HomeViewComponent {
     pageTitle: string = 'Current Schedule';
 
-    // Move to another page.
-
+    /*
+    downloadURI(uri, name) {
+        var link = document.createElement("a");
+        link.download = name;
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    */
 }
 
