@@ -1,3 +1,6 @@
+import mimetypes
+import os
+
 import falcon
 import json
 
@@ -31,7 +34,13 @@ class xlsx_creation:
 
     def on_get(self, req, resp, semester=None):
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(self.make_xlsx_file(semester))
+        resp.set_header('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        resp.location = '/exports/' + str(semester)
+        self.make_xlsx_file(semester)
+        name = 'output_' + str(semester) + '.xlsx'
+        # image_path = os.path.join(self.storage_path, name)
+        resp.stream = open(name, 'rb')
+        resp.stream_len = os.path.getsize(name)
 
     def make_xlsx_file(self, semester):
         session = DBSession()
@@ -77,7 +86,7 @@ class xlsx_creation:
                     loadovld = 'FL'
                 else:
                     ovld = total_hours - hrs_req
-                    loadovld = 'FL-' + str(int(hrs - ovld)) + '/FO-' + str(int(ovld))
+                    loadovld = 'FL-' + str(max(0, int(hrs - ovld))) + '/FO-' + str(int(ovld))
                 ws.append([instructor.instructor_first_name + ' ' + instructor.instructor_last_name if first else '',
                            section.course.prefix.prefix_name,
                            section.course.course_number,

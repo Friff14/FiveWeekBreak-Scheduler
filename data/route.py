@@ -45,7 +45,7 @@ app.add_route('/feature/{feature_id}', feature)
 app.add_route('/feature/', feature)
 app.add_route('/release/{release_id}', release)
 app.add_route('/release/', release)
-app.add_route('/xlsx/{semester}', xlsx)
+app.add_route('/xlsx/{semester}/output.xlsx', xlsx)
 
 if __name__ == '__main__':
     httpd = simple_server.make_server('localhost', 8000, app)
