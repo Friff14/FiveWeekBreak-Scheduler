@@ -154,6 +154,9 @@ class Course(Base):
 
     sections = relationship('Section', back_populates='course')
 
+    def get_full_name(self):
+        return self.prefix.prefix_name + ' ' + self.course_number
+
     # Feature
     features = relationship("Feature",
                             secondary="courseFeature",
@@ -162,6 +165,7 @@ class Course(Base):
 
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
+        returned_data['full_course_name'] = self.get_full_name()
         if top_level:
             if self.prefix:
                 returned_data['prefix'] = self.prefix.to_data(top_level=False)
