@@ -15,8 +15,7 @@ import {InstructorService} from "./instructor.service";
 export class InstructorFormComponent implements OnInit {
     pageTitle: string = 'Add Instructor';
     testItems = ['testItem1', 'testItem2', 'testItem3'];
-    model = new Instructor('Spencer', 'Hilton', 12, 'Sample notes!');
-    //model: Instructor;
+    model = new Instructor('', '', 0, '');
     instructors: IInstructor[];
     id: number;
 
@@ -25,15 +24,6 @@ export class InstructorFormComponent implements OnInit {
         private location: Location,
         private _route: ActivatedRoute) {
     }
-
-    // submitForm(form: NgForm) {
-    //     console.log(this.model);
-    //     this.instructorService.postInstructorForm(this.model)
-    //         .subscribe(
-    //             data => console.log('success: ', data),
-    //             err => console.log('error: ', err)
-    //         )
-    // }
 
     submitForm(form: NgForm) {
         console.log(this.model);
