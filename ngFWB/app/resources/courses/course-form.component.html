@@ -1,36 +1,33 @@
 <div id="form-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
-
     <hr class="header-line">
+
     <div class="form-content">
-        <form>
+        <form #form="ngForm" (submit)='submitForm(form)'>
             <div class="form-group">
                 <label>Prefix</label>
-                <select>
-                    <option>Just to see at least one option</option>
-                    <option *ngFor='let prefix of prefixes'>
+                <select name="prefix_id" [(ngModel)]="model.prefix_id">
+                    <option *ngFor='let prefix of prefixes' id="prefix" value='{{prefix.prefix_id}}' name="prefix_id"  ngDefaultControl >
                         {{ prefix.prefix_name }}
                     </option>
                 </select>
                 <br/>
+
                 <label>Course #</label>
-                    <input type="text" class="form-control" required placeholder="####"/>
-                                <br/>
-                <label>CRN</label>
-                    <input type="text" class="form-control" required placeholder="#####"/>
-                                <br/>
-                <label>Pay</label>
-                <select>
-                    <option>Some pay</option>
-                    <option>Some other pay</option>
-                </select>
-                            <br/>
-                <label>Credits</label>
-                <select>
-                    <option>Some credits</option>
-                    <option>Some other credits</option>
-                </select>
-                            <br/>
+                <input type="text" class="form-control" name="course_number" required placeholder="####" [(ngModel)]="model.course_number"/>
+                <br/>
+
+                <label>Name</label>
+                <input type="text" class="form-control" name="course_name" required placeholder="####" [(ngModel)]="model.course_name"/>
+                <br/>
+
+                <label>Credit Hours</label>
+                <input type="text" class="form-control" name="course_credit_hours" required placeholder="####" [(ngModel)]="model.course_credit_hours"/>
+                <br/>
+
+                <label>Description</label>
+                <input type="text" class="form-control" name="course_description" required placeholder="####" [(ngModel)]="model.course_description"/>
+                <br/>
 
                 <button type="submit">Accept</button>
                 <button (click)="goBack()">Cancel</button>
