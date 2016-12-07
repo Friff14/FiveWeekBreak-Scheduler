@@ -1,1 +1,1 @@
-{"version":3,"file":"campus.model.js","sourceRoot":"","sources":["campus.model.ts"],"names":[],"mappings":";AAAA;;GAEG;AACH;IACI;QACI,2BAA2B;QACpB,WAAmB,EACnB,cAAsB;QADtB,gBAAW,GAAX,WAAW,CAAQ;QACnB,mBAAc,GAAd,cAAc,CAAQ;IAGjC,CAAC;IACL,aAAC;AAAD,CAAC,AARD,IAQC;AARY,cAAM,SAQlB,CAAA"}
+{"version":3,"file":"campus.model.js","sourceRoot":"","sources":["campus.model.ts"],"names":[],"mappings":";AAAA;;GAEG;AACH;IACI;QACI,2BAA2B;QACpB,WAAmB;QAAnB,gBAAW,GAAX,WAAW,CAAQ;IAG9B,CAAC;IACL,aAAC;AAAD,CAAC,AAPD,IAOC;AAPY,cAAM,SAOlB,CAAA"}
