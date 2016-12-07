@@ -6,3 +6,7 @@ data/schedule.db
 
 # pycache
 data/__pycache__/
+
+# .js and .js.map
+*.js
+*.js.map
