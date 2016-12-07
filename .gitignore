@@ -8,5 +8,13 @@ data/schedule.db
 data/__pycache__/
 
 # .js and .js.map
-**/*.js
-**/*.js.map
+*.component.js
+*.component.js.map
+*.service.js
+*.service.js.map
+*.module.js
+*.module.js.map
+*.model.js
+*.model.js.map
+*.js
+*.js.map
