@@ -14,7 +14,9 @@ import {IBuilding} from "../buildings/building";
 
 @Injectable()
 export class RoomService {
-    private _roomUrl = 'http://localhost:8000/room/';
+    //private _roomUrl = 'http://localhost:8000/room/';
+    private _roomUrl = 'http://friff14.pythonanywhere.com/room/';
+    private _roomBuildingUrl = 'http://friff14.pythonanywhere.com/building/list';
 
     constructor(private _http: Http) { }
 
@@ -26,7 +28,8 @@ export class RoomService {
     // }
 
     getBuildings(): Observable<IBuilding[]> {
-        return this._http.get('http://localhost:8000/building/list')
+        //return this._http.get('http://localhost:8000/building/list')
+        return this._http.get(this._roomBuildingUrl)
             .map((response: Response) => <IBuilding[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);

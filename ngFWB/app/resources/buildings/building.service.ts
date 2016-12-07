@@ -15,8 +15,9 @@ import { Building } from "./building.model";
 
 @Injectable()
 export class BuildingService {
-    private _buildingUrl = 'http://localhost:8000/building/';
-
+   // private _buildingUrl = 'http://localhost:8000/building/';
+    private _buildingUrl = 'http://friff14.pythonanywhere.com/building/';
+    
     constructor(private _http: Http) { }
 
     getBuildings(): Observable<IBuilding[]> {

@@ -15,12 +15,15 @@ import { Semester } from "./semester.model";
 
 @Injectable()
 export class SemesterService {
-    private _semesterUrl = 'http://localhost:8000/semester/';
+    //private _semesterUrl = 'http://localhost:8000/semester/';
+    private _semesterUrl = 'http://friff14.pythonanywhere.com/semester/';
+    private _semesterListUrl = 'http://friff14.pythonanywhere.com/semester/list';
 
     constructor(private _http: Http) { }
 
     getSemesters(): Observable<ISemester[]> {
-        return this._http.get('http://localhost:8000/semester/list')
+        //return this._http.get('http://localhost:8000/semester/list')
+        return this._http.get(this._semesterListUrl)
             .map((response: Response) => <ISemester[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);

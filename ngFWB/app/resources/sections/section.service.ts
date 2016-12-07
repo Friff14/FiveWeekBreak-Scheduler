@@ -16,33 +16,42 @@ import {IRoom} from "../rooms/room";
 
 @Injectable()
 export class SectionService {
-    private _sectionUrl = 'http://localhost:8000/section/';
+    //private _sectionUrl = 'http://localhost:8000/section/';
+    private _sectionUrl = 'http://friff14.pythonanywhere.com/section/';
+    private _sectionCourseUrl = 'http://friff14.pythonanywhere.com/course/list';
+    private _sectionInstrUrl = 'http://friff14.pythonanywhere.com/instructor/list';
+    private _sectionSemUrl = 'http://friff14.pythonanywhere.com/semester/list';
+    private _sectionRoomUrl = 'http://friff14.pythonanywhere.com/room/list';
 
     constructor(private _http: Http) { }
 
     getCourses(): Observable<ICourse[]> {
-        return this._http.get('http://localhost:8000/course/list')
+        //return this._http.get('http://localhost:8000/course/list')
+        return this._http.get(this._sectionCourseUrl)
             .map((response: Response) => <ICourse[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     getInstructors(): Observable<IInstructor[]> {
-      return this._http.get('http://localhost:8000/instructor/list')
+      //return this._http.get('http://localhost:8000/instructor/list')
+      return this._http.get(this._sectionInstrUrl)
         .map((response: Response) => <IInstructor[]> response.json())
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);
     }
 
     getSemesters(): Observable<ISemester[]> {
-      return this._http.get('http://localhost:8000/semester/list')
+      //return this._http.get('http://localhost:8000/semester/list')
+      return this._http.get(this._sectionSemUrl)
         .map((response: Response) => <ISemester[]> response.json())
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);
     }
 
     getRooms(): Observable<IRoom[]> {
-      return this._http.get('http://localhost:8000/room/list')
+      //return this._http.get('http://localhost:8000/room/list')
+      return this._http.get(this._sectionRoomUrl)
         .map((response: Response) => <IRoom[]> response.json())
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);

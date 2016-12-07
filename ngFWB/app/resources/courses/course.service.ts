@@ -13,12 +13,15 @@ import { IPrefix } from "../prefixes/prefix";
 
 @Injectable()
 export class CourseService {
-    private _courseUrl = 'http://localhost:8000/course/';
+    //private _courseUrl = 'http://localhost:8000/course/';
+    private _courseUrl = 'http://friff14.pythonanywhere.com/course/';
+    private _coursePrefixUrl = 'http://friff14.pythonanywhere.com/prefix/list';
 
     constructor(private _http: Http) { }
 
     getPrefixes(): Observable<IPrefix[]> {
-        return this._http.get('http://localhost:8000/prefix/list')
+        //return this._http.get('http://localhost:8000/prefix/list')
+        return this._http.get(this._coursePrefixUrl)
             .map((response: Response) => <IPrefix[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);

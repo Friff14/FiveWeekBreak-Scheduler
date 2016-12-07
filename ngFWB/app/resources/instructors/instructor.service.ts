@@ -13,8 +13,9 @@ import {Instructor} from "./instructor.model";
 
 @Injectable()
 export class InstructorService {
-    private _instructorUrl = 'http://localhost:8000/instructor/';
-    private _otherInstructorUrl = 'mockapi/mock-instructors.json';
+    //private _instructorUrl = 'http://localhost:8000/instructor/';
+    //private _otherInstructorUrl = 'mockapi/mock-instructors.json';
+    private _instructorUrl = 'http://friff14.pythonanywhere.com/instructor/';
 
     constructor(private _http: Http, private jsonp: Jsonp) { }
 
@@ -34,8 +35,8 @@ export class InstructorService {
     // }
 
     getInstructor(id: number): Observable<IInstructor> {
-        console.log(this._otherInstructorUrl + String(id));
-        return this._http.get(this._otherInstructorUrl + String(id))
+        console.log(this._instructorUrl + String(id));
+        return this._http.get(this._instructorUrl + String(id))
             .map((response: Response) => <IInstructor> response.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);

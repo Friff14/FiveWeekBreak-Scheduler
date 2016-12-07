@@ -14,12 +14,15 @@ import {ISemester} from "../resources/semesters/semester";
 
 @Injectable()
 export class HomeService {
-    private _homeUrl = 'http://localhost:8000/home/';
+    //private _homeUrl = 'http://localhost:8000/home/';
+    private _homeUrl = 'http://friff14.pythonanywhere.com/home';
+    private _homeSemUrl = 'http://friff14.pythonanywhere.com/semester/list';
     constructor(private _http: Http) { }
 
     getSemesters(): Observable<ISemester[]> {
         console.log('Getting semesters from home service');
-      return this._http.get('http://localhost:8000/semester/list')
+      //return this._http.get('http://localhost:8000/semester/list')
+      return this._http.get(this._homeSemUrl)
         .map((response: Response) => <ISemester[]> response.json())
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);

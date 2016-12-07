@@ -13,14 +13,16 @@ export class HomeViewComponent {
     pageTitle: string = 'Current Schedule';
     semesters: ISemester[];
     model = new Semester(null, null, null);
-    download_url = `http://localhost:8000/xlsx/1/output.xlsx`;
+    //download_url = `http://localhost:8000/xlsx/1/output.xlsx`;
+    download_url = `http://friff14.pythonanywhere.com/xlsx/1/output.xlsx`;
      constructor(
         private homeService: HomeService,
         private router: Router) {
     }
 
     change_download_url(event): void{
-         this.download_url = `http://localhost:8000/xlsx/` + String(event) + '/output.xlsx'
+         //this.download_url = `http://localhost:8000/xlsx/` + String(event) + '/output.xlsx'
+         this.download_url = `http://friff14.pythonanywhere.com/xlsx/${String(event)}/output.xlsx`;
     }
 
     ngOnInit(): void {

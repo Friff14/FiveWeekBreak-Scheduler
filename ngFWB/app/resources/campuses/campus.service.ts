@@ -15,7 +15,8 @@ import { Campus } from "./campus.model";
 
 @Injectable()
 export class CampusService {
-    private _campusUrl = 'http://localhost:8000/campus/';
+    //private _campusUrl = 'http://localhost:8000/campus/';
+    private _campusUrl = 'http://friff14.pythonanywhere.com/campus/';
 
     constructor(private _http: Http) { }
 
