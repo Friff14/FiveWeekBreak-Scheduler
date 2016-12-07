@@ -30,8 +30,10 @@ var BuildingFormComponent = (function () {
             this.buildingService.putBuildingForm(this.model)
                 .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
         }
-        this.buildingService.postBuildingForm(this.model)
-            .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        else {
+            this.buildingService.postBuildingForm(this.model)
+                .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        }
     };
     BuildingFormComponent.prototype.ngOnInit = function () {
         var _this = this;

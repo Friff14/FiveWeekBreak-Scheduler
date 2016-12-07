@@ -34,7 +34,7 @@ export class SectionFormComponent {
         private location: Location,
         private _route: ActivatedRoute) {
     }
-
+//TODO: EDIT SECTION POPULATE FORM
     submitForm(form: NgForm) {
         this.model.schedule_times = [];
         console.log(this.model.schedule_times);
@@ -43,8 +43,7 @@ export class SectionFormComponent {
                 this.model.schedule_times.push(new SectionTime(this.starttime, this.endtime, this.day_strings[i]))
             }
         }
-        console.log(this.model);
-        this.sectionService.postSectionForm(this.model)
+        console.log(this.model); this.sectionService.postSectionForm(this.model)
             .subscribe(
                 data => console.log('success: ', data),
                 err => console.log('error: ', err)

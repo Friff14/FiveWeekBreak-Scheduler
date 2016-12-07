@@ -25,6 +25,7 @@ var SectionFormComponent = (function () {
         this.days = [false, false, false, false, false, false];
         this.day_strings = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     }
+    //TODO: EDIT SECTION POPULATE FORM
     SectionFormComponent.prototype.submitForm = function (form) {
         this.model.schedule_times = [];
         console.log(this.model.schedule_times);

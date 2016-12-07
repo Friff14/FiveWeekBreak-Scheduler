@@ -20,17 +20,6 @@ var SectionService = (function () {
         this._http = _http;
         this._sectionUrl = 'http://localhost:8000/section/';
     }
-    // For the section list component
-    // getSections(): Observable<ISection[]> {
-    //   return this._http.get(this._sectionUrl)
-    //     .map((response: Response) => <ISection[]> response.json())
-    //   .do(data => console.log(JSON.stringify(data)))
-    // .catch(this.handleError);
-    // }
-    //getSection(id: number): Observable<ISection> {
-    //  return this.getSections()
-    //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
-    //}
     SectionService.prototype.getCourses = function () {
         return this._http.get('http://localhost:8000/course/list')
             .map(function (response) { return response.json(); })
@@ -81,6 +70,7 @@ var SectionService = (function () {
     SectionService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
+        alert("You have a scheduling conflict!");
         console.error('post error: ', error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };

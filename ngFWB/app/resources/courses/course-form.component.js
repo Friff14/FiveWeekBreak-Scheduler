@@ -12,27 +12,37 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var course_model_1 = require('./course.model');
 var course_service_1 = require("./course.service");
+var router_1 = require('@angular/router');
 var CourseFormComponent = (function () {
-    function CourseFormComponent(courseService, location) {
+    function CourseFormComponent(courseService, location, _route) {
         this.courseService = courseService;
         this.location = location;
+        this._route = _route;
         this.pageTitle = 'Add Course';
-        this.testItems = ['testItem1', 'testItem2', 'testItem3'];
-        this.model = new course_model_1.Course('9999', 'It\'s a course!', 4, this.prefix);
+        this.model = new course_model_1.Course(null, '', '', '', null, null);
     }
     CourseFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
-        this.courseService.postCourseForm(this.model)
-            .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        if (this.id) {
+            this.courseService.putCourseForm(this.model)
+                .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        }
+        else {
+            this.courseService.postCourseForm(this.model)
+                .subscribe(function (data) { return console.log('success: ', data); }, function (err) { return console.log('error: ', err); });
+        }
     };
     CourseFormComponent.prototype.ngOnInit = function () {
+        // this.courseService.getCampuses()
+        //     .subscribe(campuses => this.campuses = campuses,
+        //         error => console.log('get error: ', error));
         var _this = this;
         this.courseService.getPrefixes()
             .subscribe(function (prefixes) { return _this.prefixes = prefixes; }, function (error) { return console.log('get error: ', error); });
-        //console.log("HI2");
-    };
-    CourseFormComponent.prototype.testFunction = function (param) {
-        return 'testFunction worked';
+        this.id = +this._route.snapshot.params['id'];
+        if (this.id) {
+            this.pageTitle = "Edit Prefix: " + this.id;
+        }
     };
     CourseFormComponent.prototype.goBack = function () {
         this.location.back();
@@ -43,7 +53,7 @@ var CourseFormComponent = (function () {
             moduleId: module.id,
             templateUrl: 'course-form.component.html'
         }), 
-        __metadata('design:paramtypes', [course_service_1.CourseService, common_1.Location])
+        __metadata('design:paramtypes', [course_service_1.CourseService, common_1.Location, router_1.ActivatedRoute])
     ], CourseFormComponent);
     return CourseFormComponent;
 }());

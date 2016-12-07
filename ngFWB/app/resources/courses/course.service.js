@@ -33,8 +33,20 @@ var CourseService = (function () {
             .catch(this.handleError);
     };
     CourseService.prototype.getCourse = function (id) {
-        return this.getCourses()
-            .map(function (courses) { return courses.find(function (i) { return i.course_id === id; }); });
+        console.log(this._courseUrl + String(id));
+        return this._http.get(this._courseUrl + String(id))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    CourseService.prototype.putCourseForm = function (course) {
+        console.log('posting course: ', course);
+        var body = JSON.stringify(course);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._courseUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
     CourseService.prototype.postCourseForm = function (course) {
         console.log('posting course: ', course);

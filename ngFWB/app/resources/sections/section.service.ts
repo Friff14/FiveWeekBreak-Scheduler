@@ -20,19 +20,6 @@ export class SectionService {
 
     constructor(private _http: Http) { }
 
-    // For the section list component
-   // getSections(): Observable<ISection[]> {
-     //   return this._http.get(this._sectionUrl)
-       //     .map((response: Response) => <ISection[]> response.json())
-         //   .do(data => console.log(JSON.stringify(data)))
-           // .catch(this.handleError);
-   // }
-
-    //getSection(id: number): Observable<ISection> {
-      //  return this.getSections()
-        //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
-    //}
-
     getCourses(): Observable<ICourse[]> {
         return this._http.get('http://localhost:8000/course/list')
             .map((response: Response) => <ICourse[]> response.json())
@@ -93,6 +80,7 @@ export class SectionService {
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
+        alert("You have a scheduling conflict!");
         console.error('post error: ', error);
         return Observable.throw(error.json().error || 'Server error');
     }
