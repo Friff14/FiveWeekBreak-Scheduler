@@ -21,6 +21,13 @@ var HomeService = (function () {
         this._http = _http;
         this._homeUrl = 'http://localhost:8000/home/';
     }
+    HomeService.prototype.getSemesters = function () {
+        console.log('Getting semesters from home service');
+        return this._http.get('http://localhost:8000/semester/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     HomeService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
