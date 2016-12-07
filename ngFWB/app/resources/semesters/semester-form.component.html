@@ -1,3 +1,4 @@
+<script src="../semesters/semester-form.component.ts"></script>
 <div id="form-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
@@ -15,7 +16,7 @@
                     <input type="date" class="form-control" required placeholder="MM/DD/YYYY" name="semester_end_date" [(ngModel)]="model.semester_end_date"/>
                     <br/>
 
-                <button type="submit">Submit</button>
+                <button (click)="goBack()" type="submit">Submit</button>
                 <button (click)="goBack()">Cancel</button>
 
             </div>

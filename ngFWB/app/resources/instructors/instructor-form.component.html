@@ -1,3 +1,4 @@
+<script src="../instructors/instructor-form.component.ts"></script>
 <div id="form-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
@@ -60,7 +61,7 @@
 
 
                 <!-- done testing -->
-                <button type="submit">Submit</button>
+                <button (click)="goBack()" type="submit">Accept</button>
                 <button (click)="goBack()">Cancel</button>
 
             </div>

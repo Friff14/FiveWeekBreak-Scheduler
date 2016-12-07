@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
+
 import { Course } from './course.model'
 import { CourseService } from "./course.service";
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +14,7 @@ import { Prefix } from "../prefixes/prefix.model";
     moduleId: module.id,
     templateUrl: 'course-form.component.html'
 })
-export class CourseFormComponent{
+export class CourseFormComponent implements OnInit {
     pageTitle: string = 'Add Course';
     model = new Course(null, '', '', '', null, null);
     prefix: IPrefix;
@@ -57,11 +58,14 @@ export class CourseFormComponent{
         if (this.id) {
             this.pageTitle = `Edit Prefix: ${this.id}`;
 
-
+        this.courseService.getCourse(this.id)
+            .subscribe(course => this.model = course,
+            error => console.log('get error: ', error));
         }
     }
 
     goBack(): void {
+        //this.location.
         this.location.back();
     }
 }

@@ -6,6 +6,6 @@ export interface ICourse {//extends IResource {
     course_number: string;
     course_description: string;
     course_credit_hours: number;
-    prefix: IPrefix;
+    prefix_id: number;
 }
 

@@ -16,7 +16,7 @@ import { CourseService } from './course.service';
     RouterModule.forChild([
       { path: 'courseList', component: CourseListComponent },
       { path: 'courseForm', component: CourseFormComponent },
-      { path: 'courseFrom/edit/:id', component: CourseFormComponent }
+      { path: 'courseForm/edit/:id', component: CourseFormComponent }
     ])
   ],
   declarations: 

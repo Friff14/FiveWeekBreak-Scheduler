@@ -1,3 +1,4 @@
+<script src="../campuses/campus-form.component.ts"></script>
 <div id="form-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
@@ -9,7 +10,7 @@
                     <input type="text" class="form-control" required placeholder="Campus Name" name="campus_name" [(ngModel)]="model.campus_name"/>
                     <br/>
 
-                <button type="submit">Submit</button>
+                <button (click)="goBack()" type="submit">Submit</button>
                 <button (click)="goBack()">Cancel</button>
 
             </div>
