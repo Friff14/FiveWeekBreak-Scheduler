@@ -3,15 +3,16 @@
     <hr class="header-line">
 
     <!-- <button onClick="downloadURI('http://localhost:8000/xlsx/1/output.xlsx', 'output.xlsx') -->
-    <button onClick="var link = document.createElement('a');
-        link.download = 'output.xlsx';
-        link.href = 'http://localhost:8000/xlsx/1/output.xlsx';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);">
-        Export
-    </button>
+    <label>Semester</label>
+    <select name="semester_id" [(ngModel)]="model.semester_id" (ngModelChange)="change_download_url($event)">
+        <option *ngFor='let semester of semesters' id="semester" value='{{semester.semester_id}}' name="semester_id"  ngDefaultControl >
+            {{ semester.semester_name}}
+        </option>
+    </select>
+    <br/>
+    <a href="{{download_url}}" >Download</a>
 
+<!--
     <div>
         <table border="1">
             <tr>
@@ -53,5 +54,6 @@
         *** Try playing around in 'app.component.css' to see if the list table format looks good ***<br/>
         *** Also, don't forget to delete these notes! (home-view.component.html) ***<br/>
     </p>
+-->
 
 </div>
