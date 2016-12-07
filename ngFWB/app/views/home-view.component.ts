@@ -4,6 +4,8 @@ import {HomeService} from "./home.service";
 import {Semester} from "../resources/semesters/semester.model";
 import {Router} from "@angular/router";
 
+import { SemesterService } from '../resources/semesters/semester.service';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'home-view.component.html',
@@ -17,6 +19,7 @@ export class HomeViewComponent {
     download_url = `http://friff14.pythonanywhere.com/xlsx/1/output.xlsx`;
      constructor(
         private homeService: HomeService,
+        private semesterService: SemesterService,
         private router: Router) {
     }
 
@@ -26,8 +29,10 @@ export class HomeViewComponent {
     }
 
     ngOnInit(): void {
-        console.log(this.homeService);
-        this.homeService.getSemesters()
+        //console.log(this.homeService);
+        //this.homeService.getSemesters()
+        console.log(this.semesterService)
+        this.semesterService.getSemesters()        
             .subscribe(semesters => this.semesters = semesters,
                 error => console.log('get error: ', error));
 
