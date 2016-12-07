@@ -4,7 +4,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
-import { Prefix } from './prefix.model'
+import { Prefix } from './prefix.model';
 import {PrefixService} from "./prefix.service";
 import {ActivatedRoute} from '@angular/router';
 import {IPrefix} from "./prefix";

@@ -24,9 +24,25 @@ var SemesterService = (function () {
         this._semesterUrl = 'http://localhost:8000/semester/';
     }
     SemesterService.prototype.getSemesters = function () {
-        return this._http.get(this._semesterUrl)
+        return this._http.get('http://localhost:8000/semester/list')
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    SemesterService.prototype.getSemester = function (id) {
+        console.log(this._semesterUrl + String(id));
+        return this._http.get(this._semesterUrl + String(id))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    SemesterService.prototype.putSemesterForm = function (semester) {
+        console.log('putting semester: ', semester);
+        var body = JSON.stringify(semester);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._semesterUrl, body, options)
+            .map(this.extractData)
             .catch(this.handleError);
     };
     SemesterService.prototype.postSemesterForm = function (semester) {

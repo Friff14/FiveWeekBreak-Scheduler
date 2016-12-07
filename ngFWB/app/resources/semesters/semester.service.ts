@@ -20,9 +20,29 @@ export class SemesterService {
     constructor(private _http: Http) { }
 
     getSemesters(): Observable<ISemester[]> {
-        return this._http.get(this._semesterUrl)
+        return this._http.get('http://localhost:8000/semester/list')
             .map((response: Response) => <ISemester[]> response.json())
             .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getSemester(id: number): Observable<ISemester> {
+        console.log(this._semesterUrl + String(id));
+        return this._http.get(this._semesterUrl + String(id))
+            .map((response: Response) => <ISemester> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    putSemesterForm(semester: Semester): Observable<any> {
+        console.log('putting semester: ', semester);
+
+        let body = JSON.stringify(semester);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._semesterUrl, body, options)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 

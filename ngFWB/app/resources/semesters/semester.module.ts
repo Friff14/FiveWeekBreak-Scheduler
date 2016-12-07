@@ -19,6 +19,7 @@ import { SemesterService } from './semester.service';
     RouterModule.forChild([
         { path: 'semesterList', component: SemesterListComponent },
         { path: 'semesterForm', component: SemesterFormComponent },
+        { path: 'semesterForm/edit/:id', component: SemesterFormComponent },
         { path: 'editSemester', component: SemesterFormComponent },
         { path: 'remove', component: SemesterFormComponent }
     ])

@@ -13,15 +13,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var SemesterListComponent = (function () {
-    function SemesterListComponent() {
+    function SemesterListComponent(_semesterService) {
+        this._semesterService = _semesterService;
         this.pageTitle = 'Semester List';
     }
+    SemesterListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._semesterService.getSemesters()
+            .subscribe(function (prefixes) { return _this.semesters = semesters; }, function (error) { return console.log('get error: ', error); });
+    };
     SemesterListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'semester-list.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [Object])
     ], SemesterListComponent);
     return SemesterListComponent;
 }());
