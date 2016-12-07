@@ -23,7 +23,7 @@ class FeatureController(object):
             feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             feature.feature_name = data['feature_name']
 
-            return feature
+            return feature.to_data()
 
     def post(self, data):
         session = DBSession()
