@@ -41,37 +41,6 @@ export class InstructorService {
             .catch(this.handleError);
     }
 
-    // getInstructors(): Observable<IInstructor[]> {
-    //     return this.jsonp.get(this._instructorUrl)
-    //                 .map((response: Response) => <IInstructor[]> response.json())
-    //                 .do(data => console.log(JSON.stringify(data)))
-    //                 .catch(this.handleError);
-    // }
-    
-    // getInstructors(): Observable<IInstructor[]> {
-    //   return this._http.get(this._otherInstructorUrl)
-    //     .map((response: Response) => <IInstructor[]> response.json())
-    //     .do(data => console.log(JSON.stringify(data)))
-    //     .catch(this.handleError);
-    // }
-    
-
-    //getInstructors(): Observable<Instructor[]> {
-    //    return this._http.get(this._instructorUrl)
-    //        .map((response: Response) => <Instructor[]> response.json())
-    //        .do(data => console.log(JSON.stringify(data)))
-    //        .catch(this.handleError);
-    //}
-
-    // getInstructor(id: number): Observable<IInstructor> {
-    //     return this.getInstructors()
-    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
-    // }
-
-    // getInstructor(id: number): Observable<IInstructor> {
-    //     return this.getInstructors()
-    //         .map((instructors: IInstructor[]) => instructors.find(i => i.instructor_id === id));
-    // }
 
     putInstructorForm(instructor: Instructor): Observable<any> {
         console.log('putting instructor: ', instructor);
@@ -99,7 +68,7 @@ export class InstructorService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || { };
+        return body.fields || { };
     }
 
     // private handleError(error: Response) {
