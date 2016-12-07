@@ -76,7 +76,7 @@ class InstructorController(object):
 
     def on_get(self, req, resp, instructor_id=None):
         resp.status = falcon.HTTP_200
-        resp.body = '[' + json.dumps(self.get({"instructor_id": instructor_id}, req)) + ']'
+        resp.body = json.dumps(self.get({"instructor_id": instructor_id}, req))
         resp.set_header('Access-Control-Allow-Origin', '*')
 
     def on_post(self, req, resp):
