@@ -72,6 +72,7 @@ class xlsx_creation:
             total_hours = 0
             instructor_row_count = 0
             for section in instructor.sections:
+                print(current_row)
                 hours = ['', '']
                 days = ''
                 hrs = 0
@@ -126,11 +127,14 @@ class xlsx_creation:
                 current_row += 1
                 instructor_row_count += 1
 
-            ws.merge_cells(start_column=1, end_column=1, start_row=current_row - instructor_row_count,
-                           end_row=current_row - 1)
-            ws['A' + str(current_row - instructor_row_count)].style = light_highlight
+            # ws.merge_cells(start_column=1, end_column=1, start_row=current_row - instructor_row_count,
+            #                end_row=current_row - 1)
 
         filename = 'output_' + str(semester) + '.xlsx'
         wb.save(filename)
 
         return {"url": filename}
+
+if __name__ == '__main__':
+    x = xlsx_creation()
+    x.make_xlsx_file(1)
