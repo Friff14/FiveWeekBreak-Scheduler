@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /**
  * Created by doebo on 11/27/2016.
  */
@@ -25,6 +28,7 @@ var BuildingModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
                     { path: 'buildingForm', component: building_form_component_1.BuildingFormComponent },
+                    { path: 'buildingForm/edit/:id', component: building_form_component_1.BuildingFormComponent },
                     { path: 'buildingList', component: building_list_component_1.BuildingListComponent }
                 ])
             ],
@@ -39,7 +43,8 @@ var BuildingModule = (function () {
             providers: [
                 building_service_1.BuildingService
             ]
-        })
+        }), 
+        __metadata('design:paramtypes', [])
     ], BuildingModule);
     return BuildingModule;
 }());

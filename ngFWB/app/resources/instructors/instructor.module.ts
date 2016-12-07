@@ -17,7 +17,7 @@ import { InstructorService2 } from './instructor.service2';
     RouterModule.forChild([
       { path: 'instructorList', component: InstructorListComponent },
       { path: 'instructorForm', component: InstructorFormComponent },
-      { path: 'instructorForm/edit', component: InstructorFormComponent }
+      { path: 'instructorForm/edit/:id', component: InstructorFormComponent }
     // { path: 'product/:id',
     //  canActivate: [ ProductDetailGuard],
       // component: ProductDetailComponent
