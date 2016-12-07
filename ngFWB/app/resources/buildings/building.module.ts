@@ -18,6 +18,7 @@ import { BuildingService } from './building.service';
       FormsModule,
       RouterModule.forChild([
           { path: 'buildingForm', component: BuildingFormComponent },
+          { path: 'buildingForm/edit/:id', component: BuildingFormComponent},
           { path: 'buildingList', component: BuildingListComponent }
         ])
   ],
