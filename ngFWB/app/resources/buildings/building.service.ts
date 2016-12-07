@@ -26,10 +26,25 @@ export class BuildingService {
             .catch(this.handleError);
     }
 
-    // getBuilding(id: number): Observable<IBuilding> {
-    //     return this.getBuildings()
-    //         .map((buildings: IBuilding[]) => buildings.find(i => i.building_id === id));
-    // }
+    getBuilding(id: number): Observable<IBuilding> {
+        console.log(this._buildingUrl + String(id));
+        return this._http.get(this._buildingUrl + String(id))
+            .map((response: Response) => <IBuilding> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    putBuildingForm(building: Building): Observable<any> {
+        console.log('putting building: ', building);
+
+        let body = JSON.stringify(building);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._buildingUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     postBuildingForm(building: Building): Observable<any> {
         console.log('posting building: ', building);

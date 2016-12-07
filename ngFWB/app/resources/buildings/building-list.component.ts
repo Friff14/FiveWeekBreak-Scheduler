@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 
 import { IBuilding } from './building';
+import {BuildingService} from "./building.service";
 
 @Component({
     moduleId: module.id,
@@ -12,4 +13,14 @@ import { IBuilding } from './building';
 export class BuildingListComponent {
     buildings: IBuilding[];
     pageTitle: string = 'Building List';
+
+    constructor(
+       private _buildingService: BuildingService
+    ){}
+
+    ngOnInit(): void{
+        this._buildingService.getBuildings()
+            .subscribe(buildings => this.buildings = buildings,
+            error => console.log('get error: ', error));
+    }
 }
