@@ -1,7 +1,5 @@
 import json
-
 import falcon
-
 from data.tables import *
 import datetime
 from dateutil import parser
@@ -13,10 +11,12 @@ class SemesterController(object):
     def put(self, data):
         session = DBSession()
         with session.no_autoflush:
-            semester = session.query(Semester).filter(semester_id=data['semester_id']).first()
+            semester = session.query(Semester).filter(Semester.semester_id == data['semester_id']).first()
             semester.semester_name = data['semester_name']
-            semester.semester_start_date = data['semester_start_date']
-            semester.semester_end_date = data['semester_end_date']
+            semester.semester_start_date = parser.parse(data['semester_start_date'])
+            semester.semester_end_date = parser.parse(data['semester_end_date'])
+
+            session.commit()
 
             return semester.to_data()
 

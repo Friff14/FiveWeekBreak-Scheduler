@@ -20,13 +20,14 @@ class InstructorController(object):
     def put(self, data):
         session = DBSession()
         with session.no_autoflush:
-            instructor = session.query(Instructor).filter(instructor_id=data['instructor_id']).first()
+            instructor = session.query(Instructor).filter(Instructor.instructor_id == data['instructor_id']).first()
             instructor.instructor_first_name = data['instructor_first_name']
             instructor.instructor_last_name = data['instructor_last_name']
             instructor.instructor_hours_required = data['instructor_hours_required']
             instructor.instructor_notes = data['instructor_notes']
 
-            return instructor
+            session.commit()
+            return instructor.to_data()
 
     def post(self, data):
         session = DBSession()

@@ -20,208 +20,210 @@ def pretty_print(data):
 def http_test():
     pass
 
-    # # POST # #
-    # building
-    r = requests.post(
-        'http://localhost:8000/building/',
-        data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
-    )
-    print(r.text)
+    HOST = 'http://localhost:8000/'
 
-    # campus
-    data = {
-        "campus_name": "Tanner's House"
-    }
-    r = requests.post(
-        'http://localhost:8000/campus',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # course
-    data = {
-        "course_name": 'TEST COURSE',
-        "course_number": '1010',
-        "course_credit_hours": 4.0,
-        "course_description": "hi",
-        "prefix_id": 1,
-        "instructor_id": 1
-    }
-    r = requests.post(
-        'http://localhost:8000/course',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # room
-    data = {
-        "room_name": "The Party Room",
-        "room_capacity": 7,
-        "building_id": 1
-    }
-    r = requests.post(
-        'http://localhost:8000/room',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # feature
-    data = {
-        "feature_name": 'TEST FEATURE'
-    }
-    r = requests.post(
-        'http://localhost:8000/feature',
-        data=json.dumps(data)
-    )
-    print(r.text)
-    # feature part 2 - courses and rooms
-    data = {
-        'feature': 1,
-        'room': 1
-    }
-    r = requests.post(
-        'http://localhost:8000/feature',
-        data=json.dumps(data)
-    )
-    print(r.text)
-    data = {
-        'feature': 1,
-        'course': 1
-    }
-    r = requests.post(
-        'http://localhost:8000/feature',
-        data=json.dumps(data)
-    )
-    print(r.text)
-    # instructor
-    data = {
-        "instructor_first_name": "TEST",
-        "instructor_last_name": "INSTRUCTOR",
-        "instructor_hours_required": 12,
-        "instructor_notes": "my name is doug i have just met you and i love you"
-    }
-    r = requests.post(
-        "http://localhost:8000/instructor",
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # prefix
-    data = {
-        "prefix_name": "TP"
-    }
-    r = requests.post(
-        "http://localhost:8000/prefix",
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # release
-
-    data = {
-        "release_name": "Student Advisor",
-        "release_hours": 4,
-        "instructor_id": 1
-    }
-    r = requests.post(
-        "http://localhost:8000/release",
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # room
-
-    data = {
-        "room_name": "A301",
-        "room_capacity": 30,
-        "building_id": 1
-    }
-    r = requests.post(
-        "http://localhost:8000/room",
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    # semester
-
-    data = {
-        "semester_name": 'Fall 2016',
-        "semester_start_date": '2016-08-25',
-        "semester_end_date": '2016-12-14'
-    }
-    r = requests.post(
-        'http://localhost:8000/semester',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    data = {
-        "section_name": "Test Section 1",
-        "section_crn": None,
-        "section_capacity": 25,
-        "course_id": 1,
-        "instructor_id": 1,
-        "semester_id": 1,
-        "room_id": 1,
-        "schedule_times": [
-            {
-                "schedule_time_day_of_week": "Tu",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            },
-            {
-                "schedule_time_day_of_week": "Th",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            }
-        ]
-    }
-    r = requests.post(
-        'http://localhost:8000/section',
-        data=json.dumps(data)
-    )
-
-    print(r.text)
-    data = {
-        "section_name": "Test Section 1",
-        "section_crn": None,
-        "section_capacity": 25,
-        "course_id": 1,
-        "instructor_id": 1,
-        "semester_id": 1,
-        "room_id": 1,
-        "schedule_times": [
-            {
-                "schedule_time_day_of_week": "Mo",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            },
-            {
-                "schedule_time_day_of_week": "We",
-                "schedule_time_start_time": "09:30",
-                "schedule_time_end_time": "11:20"
-            }
-        ]
-    }
-
-
-
-    r = requests.post(
-        'http://localhost:8000/section',
-        data=json.dumps(data)
-    )
-    print(r.text)
-
-    r = requests.get(
-        'http://localhost:8000/xlsx/1'
-    )
-    print(r.text)
+    # # # # POST # #
+    # # # building
+    # # r = requests.post(
+    # #     'http://localhost:8000/building/',
+    # #     data='''{"building_name": "Test!!!","building_abbreviation": "TS","campus_id": "1"}'''
+    # # )
+    # # print(r.text)
+    # #
+    # # # campus
+    # # data = {
+    # #     "campus_name": "Tanner's House"
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/campus',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # course
+    # # data = {
+    # #     "course_name": 'TEST COURSE',
+    # #     "course_number": '1010',
+    # #     "course_credit_hours": 4.0,
+    # #     "course_description": "hi",
+    # #     "prefix_id": 1,
+    # #     "instructor_id": 1
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/course',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # room
+    # # data = {
+    # #     "room_name": "The Party Room",
+    # #     "room_capacity": 7,
+    # #     "building_id": 1
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/room',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # feature
+    # # data = {
+    # #     "feature_name": 'TEST FEATURE'
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/feature',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # # # feature part 2 - courses and rooms
+    # # data = {
+    # #     'feature': 1,
+    # #     'room': 1
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/feature',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # # data = {
+    # #     'feature': 1,
+    # #     'course': 1
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/feature',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # # # instructor
+    # # data = {
+    # #     "instructor_first_name": "TEST",
+    # #     "instructor_last_name": "INSTRUCTOR",
+    # #     "instructor_hours_required": 12,
+    # #     "instructor_notes": "my name is doug i have just met you and i love you"
+    # # }
+    # # r = requests.post(
+    # #     "http://localhost:8000/instructor",
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # prefix
+    # # data = {
+    # #     "prefix_name": "TP"
+    # # }
+    # # r = requests.post(
+    # #     "http://localhost:8000/prefix",
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # release
+    # #
+    # # data = {
+    # #     "release_name": "Student Advisor",
+    # #     "release_hours": 4,
+    # #     "instructor_id": 1
+    # # }
+    # # r = requests.post(
+    # #     "http://localhost:8000/release",
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # room
+    # #
+    # # data = {
+    # #     "room_name": "A301",
+    # #     "room_capacity": 30,
+    # #     "building_id": 1
+    # # }
+    # # r = requests.post(
+    # #     "http://localhost:8000/room",
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # # semester
+    # #
+    # # data = {
+    # #     "semester_name": 'Fall 2016',
+    # #     "semester_start_date": '2016-08-25',
+    # #     "semester_end_date": '2016-12-14'
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/semester',
+    # #     data=json.dumps(data)
+    # # )
+    # # print(r.text)
+    # #
+    # # data = {
+    # #     "section_name": "Test Section 1",
+    # #     "section_crn": None,
+    # #     "section_capacity": 25,
+    # #     "course_id": 1,
+    # #     "instructor_id": 1,
+    # #     "semester_id": 1,
+    # #     "room_id": 1,
+    # #     "schedule_times": [
+    # #         {
+    # #             "schedule_time_day_of_week": "Tu",
+    # #             "schedule_time_start_time": "09:30",
+    # #             "schedule_time_end_time": "11:20"
+    # #         },
+    # #         {
+    # #             "schedule_time_day_of_week": "Th",
+    # #             "schedule_time_start_time": "09:30",
+    # #             "schedule_time_end_time": "11:20"
+    # #         }
+    # #     ]
+    # # }
+    # # r = requests.post(
+    # #     'http://localhost:8000/section',
+    # #     data=json.dumps(data)
+    # # )
+    # #
+    # # print(r.text)
+    # # data = {
+    # #     "section_name": "Test Section 1",
+    # #     "section_crn": None,
+    # #     "section_capacity": 25,
+    # #     "course_id": 1,
+    # #     "instructor_id": 1,
+    # #     "semester_id": 1,
+    # #     "room_id": 1,
+    # #     "schedule_times": [
+    # #         {
+    # #             "schedule_time_day_of_week": "Mo",
+    # #             "schedule_time_start_time": "09:30",
+    # #             "schedule_time_end_time": "11:20"
+    # #         },
+    # #         {
+    # #             "schedule_time_day_of_week": "We",
+    # #             "schedule_time_start_time": "09:30",
+    # #             "schedule_time_end_time": "11:20"
+    # #         }
+    # #     ]
+    # # }
+    #
+    #
+    #
+    # r = requests.post(
+    #     'http://localhost:8000/section',
+    #     data=json.dumps(data)
+    # )
+    # print(r.text)
+    #
+    # r = requests.get(
+    #     'http://localhost:8000/xlsx/1'
+    # )
+    # print(r.text)
 
     # # PUT
     # building
     data = {
-        "building_name": "TEST_BUILDING",
-        "building_abbreviation": "TB",
+        "building_name": "Another buildin'",
+        "building_abbreviation": "AB",
         "campus_id": 1,
         "building_id": 1
     }
@@ -234,9 +236,117 @@ def http_test():
     # campus
     r = requests.put(
         'http://localhost:8000/campus',
-        data='''{"campus_name": "Test!!!!", "campus_id": 1}'''
+        data='''{"campus_name": "WSU Davis", "campus_id": 1}'''
     )
     print(r.text)
+
+    # course
+    data = {
+        'course_id': 1,
+        'course_name': "Another course",
+        "course_credit_hours": 2,
+        "course_number": 1030,
+        "course_description": "It's another course!",
+        "prefix_id": 1
+    }
+    r = requests.put(
+        HOST + 'course',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # feature
+    data = {
+        'feature_id': 1,
+        'feature_name': "It's another feature!"
+    }
+    r = requests.put(
+        HOST + 'feature',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # instructor
+    data = {
+        "instructor_first_name": "Another",
+        "instructor_last_name": "Instructor",
+        "instructor_hours_required": 10,
+        "instructor_notes": "This is another instructor",
+        "instructor_id": 1
+    }
+    r = requests.put(
+        HOST + 'instructor',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # prefix
+    data = {
+        "prefix_id": 1,
+        "prefix_name": "AP"
+    }
+    r = requests.put(
+        HOST + 'prefix',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # release
+    data = {
+        "release_name": "Course Scheduler",
+        "release_hours": 2,
+        "instructor_id": 1,
+        "release_id": 1
+    }
+    r = requests.put(
+        HOST + 'release',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # room
+    data = {
+        "room_id": 1,
+        "room_name": "Another room",
+        "room_capacity": 20,
+        "building_id": 1
+    }
+    r = requests.put(
+        HOST + 'room',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # semester
+    data = {
+        "semester_id": 1,
+        "semester_name": "Spring 2017",
+        "semester_start_date": "2017-01-08",
+        "semester_end_date": "2017-05-14"
+    }
+    r = requests.put(
+        HOST + 'semester',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
+    # section
+    data = {
+        "section_name": "Another Section",
+        "section_crn": "",
+        "section_capacity": 20,
+        "course_id": 1,
+        "instructor_id": 1,
+        "semester_id": 1,
+        "room_id": 1,
+        "section_id": 1
+    }
+    r = requests.put(
+        HOST + 'section',
+        data=json.dumps(data)
+    )
+    print(r.text)
+
 
 
 def data_test():

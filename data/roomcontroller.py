@@ -20,11 +20,12 @@ class RoomController(object):
     def put(self, data):
         session = DBSession()
         with session.no_autoflush:
-            room = session.query(Room).filter(room_id=data['room_id']).first()
+            room = session.query(Room).filter(Room.room_id == data['room_id']).first()
             room.room_name = data['room_name']
             room.room_capacity = data['room_capacity']
             room.building_id = data['building_id']
 
+            session.commit()
             return room.to_data()
 
     def post(self, data):

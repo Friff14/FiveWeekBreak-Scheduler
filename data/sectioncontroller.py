@@ -20,28 +20,19 @@ class SectionController(object):
     def put(self, data):
         session = DBSession()
         with session.no_autoflush:
-            section = session.query(Section).filter(section_id=data['course_id']).first()
+            section = session.query(Section).filter_by(section_id=data['section_id']).first()
+
             section.section_name = data['section_name']
-            section.seection_crn = data['section_crn']
+            section.section_crn = data['section_crn']
             section.section_capacity = data['section_capacity']
             section.course_id = data['course_id']
             section.instructor_id = data['instructor_id']
             section.semester_id = data['semester_id']
             section.room_id = data['room_id']
 
-            # for schedule_time in data['schedule_times']:
-            #     inserted_time = ScheduleTime(
-            #         schedule_time_day_of_week=schedule_time['schedule_time_day_of_week'],
-            #         schedule_time_start_time=datetime.strptime(schedule_time['schedule_time_start_time'], '%H:%M').time(),
-            #         schedule_time_end_time=datetime.strptime(schedule_time['schedule_time_end_time'], '%H:%M').time(),
-            #         section_id=section.section_id
-            #     )
-            #     session.add(inserted_time)
-            #     session.flush()
-            #     session.refresh(inserted_time)
-            #     session.commit()
-            #
-            #     return section.to_data()
+            session.commit()
+
+            return section.to_data()
 
     def post(self, data):
         session = DBSession()
@@ -148,7 +139,7 @@ class SectionController(object):
         resp.body = json.dumps(data)
 
     def on_put(self, req, resp):
-        pass
+        resp.body = json.dumps(self.put(req.passed_parameters))
 
     def on_delete(self, req, resp):
         pass

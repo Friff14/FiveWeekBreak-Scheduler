@@ -17,7 +17,7 @@ class PrefixController(object):
         with session.no_autoflush:
             prefix = session.query(Prefix).filter(Prefix.prefix_id == data['prefix_id']).first()
             prefix.prefix_name = data['prefix_name']
-
+            session.commit()
             return prefix.to_data()
 
     def post(self, data):

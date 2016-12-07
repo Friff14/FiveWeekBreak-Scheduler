@@ -25,6 +25,7 @@ class CourseController(object):
             course.course_description = data['course_description']
             course.prefix_id = data['prefix_id']
 
+            session.commit()
             return course.to_data()
 
     def post(self, data):

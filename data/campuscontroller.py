@@ -14,6 +14,7 @@ class CampusController(object):
             campus.campus_name = data['campus_name']
             # campus.campus_address = data['campus_address']
 
+            session.commit()
             return campus.to_data()
 
     def post(self, data):

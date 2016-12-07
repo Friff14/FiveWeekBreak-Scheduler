@@ -27,6 +27,7 @@ class BuildingController(object):
             building.building_abbreviation = data['building_abbreviation']
             building.campus_id = data['campus_id']
 
+            session.commit()
             return building.to_data()
 
     def post(self, data):

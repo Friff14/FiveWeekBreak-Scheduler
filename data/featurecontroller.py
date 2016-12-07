@@ -23,6 +23,7 @@ class FeatureController(object):
             feature = session.query(Feature).filter(Feature.feature_id == data['feature_id']).first()
             feature.feature_name = data['feature_name']
 
+            session.commit()
             return feature.to_data()
 
     def post(self, data):

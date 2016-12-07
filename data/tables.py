@@ -76,7 +76,7 @@ class Semester(Base):
 
     def to_data(self, top_level=True):
         # returned_data = row2dict(self)
-        returned_data={
+        returned_data = {
             "semester_id": self.semester_id,
             "semester_name": self.semester_name,
             "semester_start_date": datetime.datetime.strftime(self.semester_start_date, "%d %B %Y"),
