@@ -185,10 +185,14 @@ class Building(Base):
     campus = relationship('Campus')
     rooms = relationship('Room', back_populates='building')
 
+    def get_full_name(self):
+        return self.campus.campus_name + ' - ' + self.building_name
+
     def to_data(self, top_level=True):
         returned_data = row2dict(self)
         if top_level:
             returned_data['rooms'] = []
+            returned_data['full_building_name'] = self.get_full_name()
             for room in self.rooms:
                 returned_data['rooms'].append(room.to_data(top_level=False))
             if self.campus:
