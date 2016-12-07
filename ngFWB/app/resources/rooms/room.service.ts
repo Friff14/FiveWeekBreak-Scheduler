@@ -9,12 +9,28 @@ import 'rxjs/Rx';
 
 import { IRoom } from './room';
 import { Room } from './room.model'
+import {ICampus} from "../campuses/campus";
+import {IBuilding} from "../buildings/building";
 
 @Injectable()
 export class RoomService {
     private _roomUrl = 'http://localhost:8000/room/';
 
     constructor(private _http: Http) { }
+
+    // getCampuses(): Observable<ICampus[]> {
+    //     return this._http.get('http://localhost:8000/campus/list')
+    //         .map((response: Response) => <ICampus[]> response.json())
+    //         .do(data => console.log(JSON.stringify(data)))
+    //         .catch(this.handleError);
+    // }
+
+    getBuildings(): Observable<IBuilding[]> {
+        return this._http.get('http://localhost:8000/building/list')
+            .map((response: Response) => <IBuilding[]> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
 
     getRooms(): Observable<IRoom[]> {
         return this._http.get(this._roomUrl)
@@ -23,10 +39,30 @@ export class RoomService {
             .catch(this.handleError);
     }
 
-    postRoomForm(room: Room): Observable<any> {
+    getRoom(id: number): Observable<IRoom> {
+        console.log(this._roomUrl + String(id));
+        return this._http.get(this._roomUrl+ String(id))
+            .map((response: Response) => <IRoom> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    putRoomForm(room: Room): Observable<any> {
         console.log('posting room: ', room);
 
         let body = JSON.stringify(room);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._roomUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    postRoomForm(room: Room): Observable<any> {
+        console.log('posting room: ', room);
+        let body = JSON.stringify(room);
+
         let headers = new Headers({ 'Content-type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 

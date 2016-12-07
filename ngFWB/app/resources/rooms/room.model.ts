@@ -4,9 +4,10 @@ import {IBuilding} from "../buildings/building";
  */
 export class Room{
     constructor(
+        public room_id: number,
         public room_name: string,
         public room_capacity: number,
-        public building: IBuilding
+        public building_id: number,
     ){
 
     }

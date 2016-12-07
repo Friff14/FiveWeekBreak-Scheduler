@@ -1,31 +1,32 @@
+<script src="../rooms/room-form.component.ts"></script>
 <div id="form-wrapper">
     <h2 class="header">{{pageTitle}}</h2>
     <hr class="header-line">
 
     <div class="form-content">
-        <form>
+        <form #form="ngForm" (submit)='submitForm(form)'>
             <div class="form-group">
-                <label>Campus</label>
-                <select>
-                    <option>Just to see at least one option</option>
-                    <option *ngFor='let campus of campuses'>
-                        {{ campus.campus_name }}
-                    </option>
-                </select>
-                <br/>
+                <!--<label>Campus</label>-->
+                <!--<select name="campus_id">-->
+                    <!--<option>Just to see at least one option</option>-->
+                    <!--<option *ngFor='let campus of campuses' value="{{campus.campus_id}}">-->
+                        <!--{{ campus.campus_name }}-->
+                    <!--</option>-->
+                <!--</select>-->
+                <!--<br/>-->
                 <label>Building</label>
-                <select>
-                    <option>Just to see at least one option</option>
-                    <option *ngFor='let building of buildings'>
-                        {{ building.building_name }}
+                <select name="building_id" [(ngModel)]="model.building_id">
+                    <!--<option>Just to see at least one option</option>-->
+                    <option *ngFor='let building of buildings' id="building" value='{{building.building_id}}' name="building_id"  ngDefaultControl >
+                        {{ building.full_building_name }}
                     </option>
                 </select>
                             <br/>
                 <label>Room #</label>
-                    <input type="text" class="form-control" required placeholder="#####"/>
+                    <input type="text" class="form-control" required placeholder="1000" name="room_name" [(ngModel)]="model.room_name"/>
                                 <br/>
                 <label>Capacity</label>
-                    <input type="text" class="form-control" required placeholder="#####"/>
+                    <input type="text" class="form-control" required placeholder="30" name="room_capacity" [(ngModel)]="model.room_capacity"/>
                                 <br/>
                 <label>Features</label>
                             <br/>
@@ -36,4 +37,10 @@
             </div>
         </form>
     </div>
+
+    Model: {{ model | json }}
+    <br>
+    Angular: {{ form.value | json }}
+
+
  </div>
