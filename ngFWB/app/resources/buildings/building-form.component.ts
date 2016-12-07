@@ -36,12 +36,13 @@ export class BuildingFormComponent implements OnInit {
                     err => console.log('error: ', err)
                 )
         }
-
-        this.buildingService.postBuildingForm(this.model)
-            .subscribe(
-                data => console.log('success: ', data),
-                err => console.log('error: ', err)
-        )
+        else {
+            this.buildingService.postBuildingForm(this.model)
+                .subscribe(
+                    data => console.log('success: ', data),
+                    err => console.log('error: ', err)
+                )
+        }
     }
 
     ngOnInit(): void {
