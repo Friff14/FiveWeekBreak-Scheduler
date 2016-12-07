@@ -5,8 +5,8 @@ export class Semester {
     constructor(
         //public semester_id: number,
         public semester_name: string,
-        public semester_start_date: number,
-        public semester_end_date: number
+        public semester_start_date: Date,
+        public semester_end_date: Date
     ){
 
     }

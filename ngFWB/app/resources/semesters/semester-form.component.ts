@@ -16,7 +16,7 @@ import {ISemester} from "./semester";
 })
 export class SemesterFormComponent implements OnInit{
     pageTitle: string = 'Semester Form';
-    model = new Semester('~~~');
+    model = new Semester('~~~', null, null);
     prefixes: ISemester[];
     prefix: ISemester;
     id: number;

@@ -22,7 +22,7 @@ var SemesterFormComponent = (function () {
         this.location = location;
         this._route = _route;
         this.pageTitle = 'Semester Form';
-        this.model = new semester_model_1.Semester('~~~');
+        this.model = new semester_model_1.Semester('~~~', null, null);
     }
     SemesterFormComponent.prototype.submitForm = function (form) {
         console.log(this.model);
