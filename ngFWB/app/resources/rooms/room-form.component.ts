@@ -60,6 +60,10 @@ export class RoomFormComponent {
         if (this.id) {
             this.pageTitle = `Edit Prefix: ${this.id}`;
 
+            this.roomService.getRoom(this.id)
+                .subscribe(room => this.model = room,
+                error => console.log('get error: ', error));
+
 
         }
     }
