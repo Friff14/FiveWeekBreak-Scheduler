@@ -38,12 +38,13 @@ export class PrefixFormComponent implements OnInit{
                     err => console.log ('error: ', err)
                 )
         }
-
-        this.prefixService.postPrefixForm(this.model)
-            .subscribe(
-                data => console.log('success: ', data),
-                err => console.log('error: ', err)
-            )
+        else {
+            this.prefixService.postPrefixForm(this.model)
+                .subscribe(
+                    data => console.log('success: ', data),
+                    err => console.log('error: ', err)
+                )
+        }
     }
 
 
