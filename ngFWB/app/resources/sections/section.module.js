@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
 var section_list_component_1 = require('./section-list.component');
 var section_form_component_1 = require('./section-form.component');
 var section_service_1 = require('./section.service');
@@ -21,6 +22,7 @@ var SectionModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
+                forms_1.FormsModule,
                 router_1.RouterModule.forChild([
                     { path: 'sectionList', component: section_list_component_1.SectionListComponent },
                     // { path: 'product/:id',

@@ -16,7 +16,7 @@ import {IPrefix} from "./prefix";
 })
 export class PrefixFormComponent implements OnInit{
     pageTitle: string = 'Add Prefix';
-    model = new Prefix('~~~');
+    model = new Prefix('');
     //model: Prefix;\
     prefixes: IPrefix[];
     prefix: IPrefix;
@@ -28,7 +28,7 @@ export class PrefixFormComponent implements OnInit{
         private location: Location,
         private _route: ActivatedRoute) {
         }
-//TODO: DO A PUT IF THE ID IS NOT THERE.
+
     submitForm(form: NgForm) {
         console.log(this.model);
         if(this.id) {

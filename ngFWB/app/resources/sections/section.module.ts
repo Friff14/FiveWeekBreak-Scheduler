@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SectionListComponent } from './section-list.component';
 import { SectionFormComponent } from './section-form.component';
@@ -11,6 +12,7 @@ import { SectionService } from './section.service';
   imports: 
   [ 
     CommonModule,
+      FormsModule,
     RouterModule.forChild([
       { path: 'sectionList', component: SectionListComponent },
      // { path: 'product/:id',

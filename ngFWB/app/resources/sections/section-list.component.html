@@ -29,10 +29,10 @@
                         <td class="name-column">{{ section.section_name }}</td>
                         <td class="crn-column">{{ section.section_crn }}</td>
                         <td class="cap-column">{{ section.section_capacity }}</td>
-                        <td class="name-column">{{ section.course }}</td>
-                        <td class="name-column">{{ section.instructor }}</td>
-                        <td class="name-column">{{ section.semester }}</td>
-                        <td class="name-column">{{ section.room }}</td>
+                        <td class="name-column">{{ section.course.course_name }}</td>
+                        <td class="name-column">{{ section.instructor.instructor_first_name + ' ' + section.instructor.instructor_last_name}}</td>
+                        <td class="name-column">{{ section.semester.semester_name }}</td>
+                        <td class="name-column">{{ section.room.room_name }}</td>
 
                         <td class="edit-column"><a [routerLink]="['/editSection']">Edit</a></td>
                         <td class="remove-column"><a [routerLink]="['/removeSection']">Remove</a></td>

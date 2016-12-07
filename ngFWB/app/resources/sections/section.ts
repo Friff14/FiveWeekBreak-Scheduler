@@ -8,8 +8,8 @@ export interface ISection {
     section_name: string;
     section_crn: string;
     section_capacity: number;
-    course: ICourse;
-    instructor: IInstructor;
-    semester: ISemester;
-    room: IRoom;
+    course_id: number,
+    instructor_id: number,
+    semester_id: number,
+    room_id: number
 }

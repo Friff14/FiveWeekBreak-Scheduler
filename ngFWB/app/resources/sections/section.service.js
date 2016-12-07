@@ -31,6 +31,30 @@ var SectionService = (function () {
     //  return this.getSections()
     //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
     //}
+    SectionService.prototype.getCourses = function () {
+        return this._http.get('http://localhost:8000/course/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    SectionService.prototype.getInstructors = function () {
+        return this._http.get('http://localhost:8000/instructor/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    SectionService.prototype.getSemesters = function () {
+        return this._http.get('http://localhost:8000/semester/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    SectionService.prototype.getRooms = function () {
+        return this._http.get('http://localhost:8000/room/list')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     SectionService.prototype.getSections = function () {
         return this._http.get(this._sectionUrl)
             .map(function (response) { return response.json(); })

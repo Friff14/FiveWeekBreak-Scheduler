@@ -1,3 +1,4 @@
+import {ISectionTime} from "./section-time";
 export class Section {
     constructor(
     public section_id: number,
@@ -7,6 +8,9 @@ export class Section {
     public course_id: number,
     public instructor_id: number,
     public semester_id: number,
-    public room_id: number
+    public room_id: number,
+    public schedule_times: ISectionTime[] = []
+
+
     ){}
 }

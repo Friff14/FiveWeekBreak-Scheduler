@@ -5,4 +5,5 @@ export interface IRoom {
     room_name: string;
     room_capacity: number;
     building_id: number;
+    full_room_name: string;
 }

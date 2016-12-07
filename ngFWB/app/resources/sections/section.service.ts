@@ -9,6 +9,10 @@ import 'rxjs/Rx';
 
 import { ISection } from './section';
 import {Section} from "./section.model";
+import {ICourse} from "../courses/course";
+import {IInstructor} from "../instructors/instructor";
+import {ISemester} from "../semesters/semester";
+import {IRoom} from "../rooms/room";
 
 @Injectable()
 export class SectionService {
@@ -28,6 +32,34 @@ export class SectionService {
       //  return this.getSections()
         //    .map((sections: ISection[]) => sections.find(i => i.section_id === id));
     //}
+
+    getCourses(): Observable<ICourse[]> {
+        return this._http.get('http://localhost:8000/course/list')
+            .map((response: Response) => <ICourse[]> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getInstructors(): Observable<IInstructor[]> {
+      return this._http.get('http://localhost:8000/instructor/list')
+        .map((response: Response) => <IInstructor[]> response.json())
+        .do(data => console.log(JSON.stringify(data)))
+        .catch(this.handleError);
+    }
+
+    getSemesters(): Observable<ISemester[]> {
+      return this._http.get('http://localhost:8000/semester/list')
+        .map((response: Response) => <ISemester[]> response.json())
+        .do(data => console.log(JSON.stringify(data)))
+        .catch(this.handleError);
+    }
+
+    getRooms(): Observable<IRoom[]> {
+      return this._http.get('http://localhost:8000/room/list')
+        .map((response: Response) => <IRoom[]> response.json())
+        .do(data => console.log(JSON.stringify(data)))
+        .catch(this.handleError);
+    }
 
     getSections(): Observable<Section[]> {
         return this._http.get(this._sectionUrl)
