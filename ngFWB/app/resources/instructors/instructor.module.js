@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
@@ -23,7 +26,8 @@ var InstructorModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
                     { path: 'instructorList', component: instructor_list_component_1.InstructorListComponent },
-                    { path: 'instructorForm', component: instructor_form_component_1.InstructorFormComponent }
+                    { path: 'instructorForm', component: instructor_form_component_1.InstructorFormComponent },
+                    { path: 'instructorForm/edit/:id', component: instructor_form_component_1.InstructorFormComponent }
                 ])
             ],
             declarations: [
@@ -38,7 +42,8 @@ var InstructorModule = (function () {
                 instructor_service_1.InstructorService,
                 instructor_service2_1.InstructorService2
             ]
-        })
+        }), 
+        __metadata('design:paramtypes', [])
     ], InstructorModule);
     return InstructorModule;
 }());

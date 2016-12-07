@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /**
  * Created by doebo on 11/27/2016.
  */
@@ -26,10 +29,22 @@ var BuildingService = (function () {
             .do(function (data) { return console.log(JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    // getBuilding(id: number): Observable<IBuilding> {
-    //     return this.getBuildings()
-    //         .map((buildings: IBuilding[]) => buildings.find(i => i.building_id === id));
-    // }
+    BuildingService.prototype.getBuilding = function (id) {
+        console.log(this._buildingUrl + String(id));
+        return this._http.get(this._buildingUrl + String(id))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log(JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    BuildingService.prototype.putBuildingForm = function (building) {
+        console.log('putting building: ', building);
+        var body = JSON.stringify(building);
+        var headers = new http_1.Headers({ 'Content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._buildingUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     BuildingService.prototype.postBuildingForm = function (building) {
         console.log('posting building: ', building);
         var body = JSON.stringify(building);
@@ -50,7 +65,8 @@ var BuildingService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     BuildingService = __decorate([
-        core_1.Injectable()
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
     ], BuildingService);
     return BuildingService;
 }());
