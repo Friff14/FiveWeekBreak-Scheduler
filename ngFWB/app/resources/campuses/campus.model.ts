@@ -5,7 +5,6 @@ export class Campus {
     constructor(
         //public campus_id: number,
         public campus_name: string,
-        public campus_address: string
     ){
 
     }
