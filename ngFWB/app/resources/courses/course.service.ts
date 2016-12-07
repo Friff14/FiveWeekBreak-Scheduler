@@ -8,8 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
 import { ICourse } from './course';
-import {Course} from "./course.model";
-import {IPrefix} from "../prefixes/prefix";
+import { Course } from "./course.model";
+import { IPrefix } from "../prefixes/prefix";
 
 @Injectable()
 export class CourseService {
@@ -32,8 +32,23 @@ export class CourseService {
     }
 
     getCourse(id: number): Observable<ICourse> {
-        return this.getCourses()
-            .map((courses: ICourse[]) => courses.find(i => i.course_id === id));
+        console.log(this._courseUrl + String(id));
+        return this._http.get(this._courseUrl + String(id))
+            .map((response: Response) => <ICourse> response.json())
+            .do(data => console.log(JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    putCourseForm(course: Course): Observable<any> {
+        console.log('posting course: ', course);
+
+        let body = JSON.stringify(course);
+        let headers = new Headers({ 'Content-type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.put(this._courseUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
     }
 
     postCourseForm(course: Course): Observable<any> {

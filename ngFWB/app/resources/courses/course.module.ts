@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { CourseListComponent } from './course-list.component';
@@ -11,15 +12,11 @@ import { CourseService } from './course.service';
   imports: 
   [ 
     CommonModule,
+    FormsModule,
     RouterModule.forChild([
       { path: 'courseList', component: CourseListComponent },
-     // { path: 'product/:id',
-      //  canActivate: [ ProductDetailGuard],
-       // component: ProductDetailComponent
-      //}
       { path: 'courseForm', component: CourseFormComponent },
-      { path: 'editCourse', component: CourseFormComponent },
-      { path: 'removeCourse', component: CourseListComponent }
+      { path: 'courseFrom/edit/:id', component: CourseFormComponent }
     ])
   ],
   declarations: 

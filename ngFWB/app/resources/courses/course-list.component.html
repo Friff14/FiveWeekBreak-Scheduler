@@ -15,20 +15,22 @@
             <table>
                 <tr>
                     <th class="id-column">Course ID</th>
+                    <th class="name-column">Prefix</th>
+                    <th class="name-column">Number</th>
                     <th class="name-column">Name</th>
                     <th class="desc-column">Description</th>
                     <th class="credit-column">Credit Hours</th>
-                    <th class="name-column">Prefix</th>
                 </tr>
                 <tbody>
                     <tr *ngFor='let course of courses'>
                         <td class="id-column">{{ course.course_id }}</td>
+                        <td class="name-column">{{ course.prefix.prefix_name }}</td>
+                        <td class="name-column">{{ course.course_number }}</td>
                         <td class="name-column">{{ course.course_name }}</td>
                         <td class="desc-column">{{ course.course_description }}</td>
                         <td class="credit-column">{{ course.course_credit_hours }}</td>
-                        <td class="name-column">{{ course.prefix_name }}</td>
 
-                        <td class="edit-column"><a [routerLink]="['/editCourse']">Edit</a></td>
+                        <td class="edit-column"><a [routerLink]="['/courseForm/edit/', course.course_id]">Edit</a></td>
                         <td class="remove-column"><a [routerLink]="['/removeCourse']">Remove</a></td>
                     </tr>
                 </tbody>
