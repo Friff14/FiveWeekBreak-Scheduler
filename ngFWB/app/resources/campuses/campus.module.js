@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /**
  * Created by adsal on 11/26/2016.
  */
@@ -25,6 +28,7 @@ var CampusModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild([
                     { path: 'campusForm', component: campus_form_component_1.CampusFormComponent },
+                    { path: 'campusForm/edit/:id', component: campus_form_component_1.CampusFormComponent },
                     { path: 'campusList', component: campus_list_component_1.CampusListComponent }
                 ])
             ],
@@ -39,7 +43,8 @@ var CampusModule = (function () {
             providers: [
                 campus_service_1.CampusService
             ]
-        })
+        }), 
+        __metadata('design:paramtypes', [])
     ], CampusModule);
     return CampusModule;
 }());

@@ -16,7 +16,7 @@ export class InstructorListComponent implements OnInit {
 
     constructor(
         private _instructorService: InstructorService,
-        private _instructorService2: InstructorService2
+        //private _instructorService2: InstructorService2
     ){}
 
     getInstructors() {
@@ -26,14 +26,6 @@ export class InstructorListComponent implements OnInit {
                 error => console.log('get error: ', error));
         console.log(this.instructors);
     }
-
-    // getInstructors() {
-    //     this._instructorService2.getInstructors()
-    //         .subscribe(
-    //             instructors => this.instructors = instructors,
-    //             error => console.log('get error: ', error)
-    //         );
-    // }
 
     ngOnInit(): void {
         this.getInstructors();

@@ -18,6 +18,7 @@ import { CampusService } from './campus.service';
     FormsModule,
     RouterModule.forChild([
         { path: 'campusForm', component: CampusFormComponent },
+        { path: 'campusForm/edit/:id', component: CampusFormComponent },
         { path: 'campusList', component: CampusListComponent }
     ])
   ],

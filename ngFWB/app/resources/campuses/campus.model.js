@@ -5,9 +5,8 @@
 var Campus = (function () {
     function Campus(
         //public campus_id: number,
-        campus_name, campus_address) {
+        campus_name) {
         this.campus_name = campus_name;
-        this.campus_address = campus_address;
     }
     return Campus;
 }());
