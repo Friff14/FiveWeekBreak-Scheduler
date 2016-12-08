@@ -1,7 +1,7 @@
 /**
  * Created by bpalm_000 on 11/28/2016.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
 import { Prefix } from './prefix.model';
@@ -26,7 +26,8 @@ export class PrefixFormComponent implements OnInit{
     constructor(
         private prefixService: PrefixService,
         private location: Location,
-        private _route: ActivatedRoute) {
+        private _route: ActivatedRoute,
+        private zone: NgZone) {
         }
 
     submitForm(form: NgForm) {
@@ -64,4 +65,7 @@ export class PrefixFormComponent implements OnInit{
         this.location.back();
     }
 
+    processAndGoBack(): void {
+        this.zone.runOutsideAngular(() => this.goBack());
+    }
 }

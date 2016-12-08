@@ -1,7 +1,7 @@
 /**
  * Created by doebo on 11/28/2016.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
 import { Building } from './building.model'
@@ -24,7 +24,8 @@ export class BuildingFormComponent implements OnInit {
     constructor(
         private buildingService: BuildingService,
         private location: Location,
-        private _route: ActivatedRoute){
+        private _route: ActivatedRoute,
+        private zone: NgZone){
     }
 
     submitForm(form: NgForm) {
@@ -59,5 +60,9 @@ export class BuildingFormComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    processAndGoBack(): void {
+        this.zone.runOutsideAngular(() => this.goBack());
     }
 }

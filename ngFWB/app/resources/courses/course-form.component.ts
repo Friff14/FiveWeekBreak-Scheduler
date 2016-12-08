@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
 
@@ -25,7 +25,8 @@ export class CourseFormComponent implements OnInit {
         private courseService: CourseService,
         private location: Location,
         private _route: ActivatedRoute,
-        private _router: Router) {
+        private _router: Router,
+        private zone: NgZone) {
     }
 
     submitForm(form: NgForm) {
@@ -68,5 +69,9 @@ export class CourseFormComponent implements OnInit {
     goBack(): void {
         //this._router.navigate(['/courseList']);
         this.location.back();
+    }
+
+    processAndGoBack(): void {
+        this.zone.runOutsideAngular(() => this.goBack());
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { Location } from '@angular/common';
 import { Section } from './section.model'
@@ -32,7 +32,8 @@ export class SectionFormComponent {
     constructor(
         private sectionService: SectionService,
         private location: Location,
-        private _route: ActivatedRoute) {
+        private _route: ActivatedRoute,
+        private zone: NgZone) {
     }
 //TODO: EDIT SECTION POPULATE FORM
     submitForm(form: NgForm) {
@@ -79,5 +80,7 @@ export class SectionFormComponent {
         this.location.back();
     }
 
-    
+    processAndGoBack(): void {
+        this.zone.runOutsideAngular(() => this.goBack());
+    }
 }

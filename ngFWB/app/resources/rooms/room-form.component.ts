@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { IRoom } from './room';
@@ -26,7 +26,8 @@ export class RoomFormComponent {
     constructor(
         private roomService: RoomService,
         private location: Location,
-        private _route: ActivatedRoute) {}
+        private _route: ActivatedRoute,
+        private zone: NgZone) {}
 
 
     submitForm(form: NgForm) {
@@ -70,5 +71,9 @@ export class RoomFormComponent {
 
     goBack(): void {
         this.location.back();
+    }
+
+    processAndGoBack(): void {
+        this.zone.runOutsideAngular(() => this.goBack());
     }
 }
