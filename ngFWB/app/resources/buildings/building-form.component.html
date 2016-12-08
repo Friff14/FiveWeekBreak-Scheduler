@@ -13,7 +13,12 @@
                     <input type="text" class="form-control" required placeholder="Building Abbreviation" name="building_abbreviation" [(ngModel)]="model.building_abbreviation"/>
                     <br/>
                 <label>Campus ID</label>
-                    <input type="text" class="form-control" required placeholder="Campus ID" name="campus_id" [(ngModel)]="model.campus_id"/>
+                    <!--<input type="text" class="form-control" required placeholder="Campus ID" name="campus_id" [(ngModel)]="model.campus_id"/>-->
+                <select name="campus_id" [(ngModel)]="model.campus_id">
+                    <option *ngFor='let campus of campuses' id="campus" value='{{campus.campus_id}}' name="campus_id"  ngDefaultControl >
+                        {{ campus.campus_id }}
+                    </option>
+                </select>
                     <br/>
 
                 <button (click)="processAndGoBack()" type="submit">Submit</button>

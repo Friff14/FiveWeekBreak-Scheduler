@@ -8,6 +8,8 @@ import { Building } from './building.model'
 import {BuildingService} from "./building.service";
 import {ActivatedRoute} from '@angular/router';
 import {IBuilding} from "./building";
+import { ICampus } from '../campuses/campus';
+import { CampusService } from '../campuses/campus.service';
 
 @Component({
     selector: 'building-form',
@@ -16,13 +18,15 @@ import {IBuilding} from "./building";
 })
 export class BuildingFormComponent implements OnInit {
     pageTitle: string = 'Add Building';
-    model = new Building('Building 3', 'D3', 1);
+    model = new Building('', '', null);
     buildings: IBuilding[];
     building: IBuilding;
+    campuses: ICampus[];
     id: number;
 
     constructor(
         private buildingService: BuildingService,
+        private campusService: CampusService,
         private location: Location,
         private _route: ActivatedRoute,
         private zone: NgZone){
@@ -47,6 +51,10 @@ export class BuildingFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.campusService.getCampuses()
+                .subscribe(campuses => this.campuses = campuses,
+                    error => console.log('get error: ', error));
+
         this.id = +this._route.snapshot.params['id'];
         if (this.id) {
             this.pageTitle = `Edit Building: ${this.id}`;
